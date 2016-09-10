@@ -626,7 +626,7 @@ export class WebdriverIO {
      * 
      * @returns self reference
      * 
-     * ### Usagae
+     * ### Usage
      * ```
      * client.back();
      * ```
@@ -642,7 +642,7 @@ export class WebdriverIO {
      * @param {Number} button  Which button, enum: *{LEFT = 0, MIDDLE = 1 , RIGHT = 2}*. Defaults to the left mouse button if not specified.
      * @returns self reference
      * 
-     * ### Usagae
+     * ### Usage
      * 
      * ```
      * client.buttonDown(button);
@@ -660,7 +660,7 @@ export class WebdriverIO {
      * @returns self reference
      * @type protocol
      * 
-     * ### Usagae
+     * ### Usage
      * 
      * ```
      * client.buttonPress(button);
@@ -677,13 +677,45 @@ export class WebdriverIO {
      * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidbuttonup
      * @type protocol
      * 
-     * ### Usagae
+     * ### Usage
      * 
      * ```
      * client.buttonUp(button);
      * ```
      */
     buttonUp(button: number): WebdriverIO;
+
+    /**
+     * Protocol binding to operate with cookies on the current page.
+     * 
+     * @param {String}         method  request method
+     * @param {Object|String} args    contains cookie information if you want to set a cookie or contains name of cookie if you want to delete it
+     * @returns self reference
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#cookies
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.cookie([method][,args]);
+     * ```
+     */
+    cookie(method?: string, args?: Object | string): WebdriverIO;
+
+    /**
+     * Double-clicks at the current mouse coordinates (set by moveto. (Not part of the official Webdriver specification).
+     *
+     * @returns self reference
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessioniddoubleclick
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.doDoubleClick();
+     * ```
+     */
+    doDoubleClick(): WebdriverIO;
 
     /**
      * Search for an element on the page, starting from the document root. The located element will be returned as a WebElement JSON object.
@@ -702,6 +734,231 @@ export class WebdriverIO {
      * ```
      */
     element(selector: string): WebdriverIO;
+
+    /**
+     * Get the element on the page that currently has focus. The element will be returned as a WebElement JSON object.
+     *
+     * @returns self reference
+     *
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-active-element
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.elementActive();
+     * ```
+     */
+    elementActive(): WebdriverIO;
+
+    /**
+     * Get the value of an element's attribute.
+     *
+     * @param {String} ID             ID of a WebElement JSON object to route the command to
+     * @param {String} attributeName  attribute name of element you want to receive
+     *
+     * @returns self reference
+     *
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-element-attribute
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdAttribute(ID,attributeName);
+     * ```
+     */
+    elementIdAttribute(ID: string, attributeName: string): WebdriverIO;
+
+    /**
+     *  Clear a `TEXTAREA` or text `INPUT element's value.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-element-clear
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdClear(ID);
+     * ```
+     */
+    elementIdClear(ID: string): WebdriverIO;
+
+    /**
+     * Click on an element.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-element-click
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdClick(ID);
+     * ```
+     */
+    elementIdClick(ID: string): WebdriverIO;
+
+    /**
+     * Query the value of an element's computed CSS property. The CSS property to query should be specified using the CSS property name,
+     * not the JavaScript property name (e.g. background-color instead of backgroundColor).
+     *
+     * @param {String} ID                ID of a WebElement JSON object to route the command to
+     * @param  {String} cssPropertyName  CSS property
+     * @returns self reference
+     *
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-element-property
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdCssProperty(ID,cssPropertyName);
+     * ```
+     */
+    elementIdCssProperty(ID: string, cssPropertyName: string): WebdriverIO;
+
+    /**
+     * Determine if an element is currently displayed.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference
+     *
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidelementiddisplayed
+     * @type protocol
+     * 
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdDisplayed(ID);
+     * ```
+     */
+    elementIdDisplayed(ID: string): WebdriverIO;
+
+    /**
+     * Search for an element on the page, starting from an element. The located element will be returned as a WebElement JSON object.
+     * The table below lists the locator strategies that each server should support. Each locator must return the first matching element located in the DOM.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @param {String} selector selector to query the element
+     * @returns self reference
+     *
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidelementidelement
+     * @type protocol
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdElement(ID,selector);
+     * ```
+     */
+    elementIdElement(ID: string, selector: string): WebdriverIO;
+
+    /**
+     * Search for multiple elements on the page, starting from an element. The located elements will be returned as a WebElement JSON objects.
+     * The table below lists the locator strategies that each server should support. Elements should be returned in
+     * the order located in the DOM.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @param {String} selector selector to query the elements
+     * @returns  self reference &mdash; **Object[]** A list of WebElement JSON objects for the located elements.
+     *
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidelementidelements
+     * @type protocol
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdElements(ID,selector);
+     * ```
+     */
+    elementIdElements(ID: string, selector: string): WebdriverIO;
+
+    /**
+     * Determine if an element is currently enabled.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference &mdash; **Boolean** true if the element is enabled
+     *
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-is-element-enabled
+     * @type protocol
+     * ### Usage
+     * 
+     * ```
+     * client.elementIdEnabled(ID);
+     * ```
+     */
+    elementIdEnabled(ID: string): WebdriverIO;
+
+    /**
+     * Determine an element's location on the page. The point (0, 0) refers to the upper-left corner of the page. The element's coordinates are returned as a
+     * JSON object with x and y properties.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference &mdash; **Object** The X and Y coordinates for the element on the page (`{x:number, y:number}`)
+     *
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidelementidlocation
+     * @type protocol
+     * @deprecated please use {@link elementIdRect}.
+     * 
+     * ### Usage
+     * ```
+     * client.elementIdLocation(ID);
+     * ```
+     */
+    elementIdLocation(ID: string): WebdriverIO;
+
+    /**
+     * Determine an element's location on the screen once it has been scrolled into view.
+     *
+     * *Note:* This is considered an internal command and should only be used to determine an element's location for correctly generating native events.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference &mdash; **Object** The X and Y coordinates for the element (`{x:number, y:number}`)
+     *
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidelementidlocation_in_view
+     * @type protocol
+     * @deprecated please use {@link elementIdRect}.
+     * ### Usage
+     * ```
+     * elementIdLocationInView(ID);
+     * ```
+     */
+    elementIdLocationInView(ID: string): WebdriverIO;
+
+    /**
+     * Query for an element's tag name.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference &mdash; **String**  the element's tag name, as a lowercase string
+     *
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-element-tag-name
+     * @type protocol
+     * ### Usage
+     * ```
+     * client.elementIdName(ID);
+     * ```
+     */
+    elementIdName(ID: string): WebdriverIO;
+
+    /**
+     * The Get Element Rect command returns the dimensions and coordinates of the given web element. The returned value is a dictionary 
+     * with `x`. `y`, `width` and `height` properties.
+     *
+     * Note: this command was recently added to the official Webdriver protocol and might not be working with current Selenium driver.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference &mdash; **Object** The X and Y coordinates for the element on the page (`{x:number, y:number}`)
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-element-rect
+     * @type protocol
+     * 
+     * ### Usage
+     * ```
+     * client.elementIdRect(ID);
+     * ```
+     */
+    elementIdRect(ID: string): WebdriverIO;
 
     // end of "protocol" section
 
