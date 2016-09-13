@@ -1,7 +1,5 @@
 export class WebdriverIO {
 
-    end(): WebdriverIO;
-
     then(onFulfilled?: Function, onRejected?: Function): WebdriverIO;
 
     catch(onRejected?: Function): WebdriverIO;
@@ -327,7 +325,7 @@ export class WebdriverIO {
      */
     setCookie(cookie: Object): WebdriverIO;
 
-    // end of "cookie" section
+    // end of "Cookie" section
 
     // strat of "grid" section
 
@@ -366,13 +364,29 @@ export class WebdriverIO {
      */
     gridTestSession(): WebdriverIO;
 
-    // end of "grid" section
+    // end of "Grid" section
 
-    // strat of "mobile" section
+    // strat of "Mobile" section
 
-    // end of "mobile" section
+    /**
+     * Performs a specific touch action. The action object need to contain the action name (longPress, press, tap, wait, moveTo, release) and additional 
+     * information about either the element, x/y coordinates or touch counts.
+     * 
+     * @param {Object} actions  touch action as object or object[] with attributes like touchCount, x, y, duration
+     * @return self reference
+     * @see  https://github.com/appium/node-mobile-json-wire-protocol/blob/master/docs/protocol-methods.md#mobile-json-wire-protocol-endpoints
+     * @type mobile
+     * @for android, ios 
+     * ### Usage
+     * ```
+     * client.touchPerform(actions);
+     * ```
+     */
+    touchPerform(actions: Object): WebdriverIO;
 
-    // strat of "property" section
+    // end of "Mobile" section
+
+    // strat of "Property" section
 
     /**
      * Get an attribute from an DOM-element based on the selector and attribute name. Returns a list of attribute values if selector matches multiple elements.
@@ -550,9 +564,9 @@ export class WebdriverIO {
      */
     getValue(selector: string): WebdriverIO;
 
-    // end of "property" section
+    // end of "Property" section
 
-    // start of "protocol" section
+    // start of "Protocol" section
 
     /**
      * Accepts the currently displayed alert dialog. Usually, this is equivalent to clicking on the 'OK' button in the dialog.
@@ -1539,10 +1553,413 @@ export class WebdriverIO {
      * ```
      */
     timeoutsImplicitWait(ms: string): WebdriverIO;
-    // end of "protocol" section
+
+    /**
+     * Gets an object containing the current page title.
+     * 
+     * @returns self reference &mdash; **String** The current page title.
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-title
+     * @type protocol
+     * ### Usage
+     * ```
+     * client.title();
+     * ```
+     */
+    title(): WebdriverIO;
+
+    /**
+     * Single tap on the touch enabled device.
+     *
+     * @param {String} ID ID of a WebElement JSON object to route the command to
+     * @returns self reference
+     * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchclick
+     * @type protocol
+     * @for android
+     * @depcrecated Please use {@link touchPerform} instead.
+     * ### Usage
+     * ```
+     * client. touchClick(ID);
+     * ```
+     */
+    touchClick(ID: string): WebdriverIO;
+
+    /**
+     * Finger down on the screen.
+     *
+     * @param {Number} x  X coordinate on the screen
+     * @param {Number} y  Y coordinate on the screen
+     * @returns self reference
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchdown
+     * @type protocol
+     * @depcrecated Please use {@link touchPerform} instead.
+     * ### Usage
+     * ```
+     * client.touchDown(x,y);
+     * ```
+     */
+    touchDown(x: number, y: number): WebdriverIO;
+
+    /**
+     * Flick on the touch screen using finger motion events. This flick command starts at a particular screen location.
+     *
+     * @param {String} ID      ID of the element where the flick starts
+     * @param {Number} xoffset the x offset in pixels to flick by
+     * @param {Number} yoffset the y offset in pixels to flick by
+     * @param {Number} speed   the speed in pixels per seconds
+     * @returns self reference
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchflick
+     * @type protocol
+     * @depcrecated Please use {@link touchPerform} instead.
+     * ### Usage
+     * ```
+     * client.touchFlick(ID,xoffset,yoffset,speed);
+     * ```
+     */
+    touchFlick(ID: string, xoffset: number, yoffset: number, speed: number): WebdriverIO;
+
+    /**
+     * Long press on the touch screen using finger motion events.
+     *
+     * @param {String} id ID of the element to long press on
+     * @returns self reference
+     * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchlongclick
+     * @type protocol
+     * @depcrecated Please use {@link touchPerform} instead.
+     * @for android
+     * 
+     * ### Usage
+     * ```
+     * client.touchLongClick(id);
+     * ```
+     */
+    touchLongClick(id: string): WebdriverIO;
+
+    /**
+     * Finger move on the screen.
+     *
+     * @param {Number} x  coordinate on the screen
+     * @param {Number} y  coordinate on the screen
+     * @returns self reference
+     * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchmove
+     * @type protocol
+     * @depcrecated Please use {@link touchPerform} instead.
+     * 
+     * ### Usage
+     * ```
+     * client.touchMove(x,y);
+     * ```
+     */
+    touchMove(x: number, y: number): WebdriverIO;
+
+    /**
+     * croll on the touch screen using finger based motion events. If element ID is given start scrolling at a particular screen location.
+     * 
+     * @param {String} id       the element where the scroll starts.
+     * @param {Number} xoffset  in pixels to scroll by
+     * @param {Number} yoffset  in pixels to scroll by 
+     * @returns self references
+     * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchscroll
+     * @type protocol
+     * @depcrecated Please use {@link touchPerform} instead.
+     * 
+     * ### Usage
+     * ```
+     * client.touchScroll(id,xoffset,yoffset);
+     * ```
+     */
+    touchScroll(id: string, xoffset: number, yoffset: number): WebdriverIO;
+
+    /**
+     * Finger up on the screen.
+     *
+     * @param {Number} x  coordinate on the screen
+     * @param {Number} y  coordinate on the screen
+     * @returns self references
+     * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchup
+     * @type protocol
+     * @depcrecated Please use {@link touchPerform} instead.
+     * 
+     * ### Usage
+     * ```
+     * client.touchUp(x,y);
+     * ```
+     */
+    touchUp(x: number, y: number): WebdriverIO;
+
+    /**
+     * Protocol binding to load or get the URL of the browser.
+     * 
+     * @param {String} url  the URL to navigate to
+     * @returns self references &mdash; **String**     the current URL
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get
+     * @type protocol
+     * 
+     * ### Usage
+     * ```
+     * client.url([url]);
+     * ```
+     */
+    url(url?: string): WebdriverIO;
+
+    /**
+     * Protocol binding to handle with tabs in the browser.
+     * 
+     * @param {String} windowHandle the window to change focus to
+     * @returns self references
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-switch-to-window
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-close-window
+     * @type protocol
+     * 
+     * ### Usage
+     * ```
+     * client.window([windowHandle]);
+     * ```
+     */
+    window(windowHandle?: string): WebdriverIO;
+
+    /**
+     * Retrieve the current window handle.
+     * 
+     * @returns self references &mdash; **String** the current window handle
+     * @see https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-window-handle
+     * @type protocol
+     * ### Usage
+     * ```
+     * client.windowHandle();
+     * ```
+     */
+    windowHandle(): WebdriverIO;
+
+    /**
+     * The Fullscreen Window command invokes the window manager-specific “full screen” operation, if any, on the window containing the current 
+     * top-level browsing context. This typically increases the window to the size of the physical display and can hide browser UI elements such as toolbars.
+     *
+     * **Note:** this command was recently added to the official Webdriver protocol and might not be working with current Selenium driver.
+     *
+     * @returns self references
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-fullscreen-window
+     * @type protocol
+     * ### Usage
+     * ```
+     * client.windowHandleFullscreen();
+     * ```
+     */
+    windowHandleFullscreen(): WebdriverIO;
+
+    /**
+     * Maximize the specified window if not already maximized. If the :windowHandle URL parameter is "current", the currently active window will be maximized.
+     *
+     * @param {String} windowHandle window to maximize (if parameter is falsy the currently active window will be maximized)
+     * @returns self references
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-maximize-window
+     * @type protocol
+     * ### Usage
+     * ```
+     * client.windowHandleMaximize([windowHandle]);
+     * ```
+     */
+    windowHandleMaximize(windowHandle?: string): WebdriverIO;
+
+    /**
+     *  Protocol bindings to receive or change the position of the browser window. If the `windowHandle` URL parameter is falsy, the currently active window will be considered.
+     * *(Not part of the official Webdriver specification).*
+     * 
+     * @param {String} windowHandle the window to receive/change the position
+     * @param {Object} position     the X and Y coordinates to position the window at, relative to the upper left corner of the screen
+     * @returns self references &mdash; **Object** the X and Y coordinates for the window, relative to the upper left corner of the screen (`{x: number, y: number}`)
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidwindowwindowhandleposition
+     * @type protocol
+     * ###Usage
+     * ```
+     * client.windowHandlePosition([windowHandle][,position]);
+     * ```
+     */
+    windowHandlePosition(windowHandle?: string, position?: Object): WebdriverIO;
+
+    /**
+     * Protocol binding to get or change the size of the browser.
+     *  
+     * @param {String} windowH  andle the window to receive/change the size
+     * @param {Object} dimensi  on    the new size of the window
+     * @returns self reference  s &mdash; **Object** the size of the window (`{width: number, height: number}`)
+     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-set-window-size
+     * @type protocol
+     * ### Usage
+     * ```  
+     * client.windowHandleSize([windowHandle][,dimension]);
+     * ```
+     */
+    windowHandleSize(windowHandle?: string, dimension?: Object): WebdriverIO;
+
+    /** 
+     * Retrieve the list of all window handles available to the session.
+     *  
+     * @returns self reference  s &mdash; **String[]** a list of window handles
+     * @see https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-window-handles
+     * @type protocol
+     * ### Usage
+     * ```  
+     * client.windowHandles();
+     * ```
+     */
+    windowHandles(): WebdriverIO;
+    // end of "Protocol" section
+
+    // start of "State" section
+    /** 
+     * Return true or false if the selected DOM-element currently has focus.
+     *  
+     * @param {String} selecto  r   select active element
+     * @returns self references &mdash; **Boolean**         true if element has focus
+     * @type state
+     * ### Usage
+     * ```  
+     * client.hasFocus(selector);
+     * ```
+     */
+    hasFocus(selector: string): WebdriverIO;
+
+    /**
+     * Return true or false if the selected DOM-element found by given selector is enabled.
+     * 
+     * @param   {String}             selector  DOM-element
+     * @returns self references &mdash; **Boolean|Boolean[]**            true if element(s)* (is|are) enabled
+     * @type state
+     * ### Usage
+     * ```
+     * client.isEnabled(selector);
+     * ```
+     */
+    isEnabled(selector: string): WebdriverIO;
+
+    /**
+     * Returns true if at least one element is existing by given selector.
+     * 
+     * @param   {String}             selector  DOM-element
+     * @returns self references &mdash; **Boolean|Boolean[]**            true if element(s)* [is|are] existing
+     * @type state
+     * ### Usage
+     * ```
+     * client.isExisting(selector);
+     * ```
+     */
+    isExisting(selector: string): WebdriverIO;
+
+    /**
+     * Return true or false if an `<option>` element, or an `<input>` element of type checkbox or radio is currently selected found by given selector.
+     * 
+     * @param   {String}             selector  option element or input of type checkbox or radio
+     * @returns self references &mdash; **Boolean|Boolean[]**            true if element is selected
+     * @type state
+     * ### Usage
+     * ```
+     * client.isSelected(selector);
+     * ```
+     */
+    isSelected(selector: string): WebdriverIO;
+
+    /**
+     * Return true if the selected DOM-element found by given selector is visible. Returns an array if multiple DOM-elements are found for the given selector.
+     * 
+     * @param   {String}             selector  DOM-element
+     * @returns self references &mdash; **Boolean|Boolean[]**           true if element(s)* [is|are] visible
+     * @type state
+     * ### Usage
+     * ```
+     * client.isVisible(selector);
+     * ```
+     */
+    isVisible(selector: string): WebdriverIO;
+
+    /**
+     * Return true if the selected DOM-element found by given selector is visible and within the viewport.
+     * 
+     * @param   {String}             selector  DOM-element
+     * @returns self references &mdash; **Boolean|Boolean[]**            true if element(s)* [is|are] visible
+     * @type state
+     * ### Usage
+     * ```
+     * client.isVisibleWithinViewport(selector);
+     * ```
+     */
+    isVisibleWithinViewport(selector: string): WebdriverIO;
+    // end of "State" section
+
+    // start of "Utilty" section
+    /**
+     * Add custom command to client/browser instance. Read more about `addCommand` [here](http://webdriver.io/guide/usage/customcommands.html).
+     * 
+     * @param {String}   commandName   name of your custom command
+     * @param {Function} customMethod  your custom method
+     * @param {Boolean}  overwrite     if set to `true` you can overwrite existing commands
+     * @returns self references
+     * @type utility
+     * ### Usage
+     * ```
+     * client.addCommand(commandName,customMethod,overwrite);
+     * ```
+     */
+    addCommand(commandName: string, customMethod: Function, overwrite?: boolean): WebdriverIO;
+
+    /**
+     * Call an own function within running chain. It is mostly used to end an async BDD/TDD block (see example below) when running in standalone mode. Using the wdio test runner this command
+     * is obsolete and should not be used.
+     * 
+     * @param {Function} callback  function to be called
+     * @returns self references
+     * @type utility
+     * ### Usage
+     * ```
+     * client.call(callback);
+     * ```
+     */
+    call(callback: Function): WebdriverIO;
+
+    /**
+     * Given a selector corresponding to an `<input type=file>`, will upload the local file to the browser machine and fill the form accordingly.
+     *  It does not submit the form for you.
+     * 
+     * @param {String} selector   input element
+     * @param {String} localPath  local path to file to be uploaded
+     * @returns self references
+     * @type utility
+     * ### Usage
+     * ```
+     * client.chooseFile(selector,localPath);
+     * ```
+     */
+    chooseFile(selector: string, localPath: string): WebdriverIO;
+
+    /**
+     * This command helps you to debug your integration tests. It stops the running queue and gives  you time to jump into the browser and check the state of 
+     * your application (e.g. using the dev tools). Once you are done go to the command line and press Enter.
+     *
+     * Make sure you increase the timeout property of your test framework your are using (e.g. Mocha or Jasmine) in order to prevent the continuation due to a test timeout.
+     *
+     * <iframe width="560" height="315" src="https://www.youtube.com/embed/xWwP-3B_YyE" frameborder="0" allowfullscreen></iframe>
+     * 
+     * @returns self references
+     * @type utility
+     * ### Usage
+     * ```
+     * client.debug();
+     * ```
+     */
+    debug(): WebdriverIO;
+
+    /**
+     * End the session and close browser.
+     * 
+     * @returns self references
+     * @type utility
+     * ### Usage
+     * ```
+     * client.end();
+     * ```
+     */
+    end(): WebdriverIO;
 
     pause(ms: number): WebdriverIO;
 
-    // protocols
-    url(url?: string): WebdriverIO;
+    // end of "Utilty" section
 }
