@@ -1959,7 +1959,209 @@ export class WebdriverIO {
      */
     end(): WebdriverIO;
 
+    /**
+     * End all selenium server sessions at once.
+     *
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.endAll();
+     * ```
+     */
+    endAll(): WebdriverIO;
+
+    /**
+     * Returns a list of previous called commands + their arguments.
+     * 
+     * @returns self reference &mdash; **Object[]** list of recent called commands + their arguments
+     * @type utility
+     * ### Usage
+     * ```
+     * client.getCommandHistory();
+     * ```
+     */
+    getCommandHistory(): WebdriverIO;
+
+    /**
+     * Pauses queue execution for a specific amount of time.
+     * 
+     * @param {Number} milliseconds time in ms
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.pause(milliseconds);
+     * ```
+     */
     pause(ms: number): WebdriverIO;
+
+    /**
+     * Creates a new Selenium session with your current capabilities. This is useful if you test highly stateful application where you need to
+     *  clean the browser session between the tests in your spec file to avoid creating hundreds of single test files with WDIO. Be careful though, 
+     * this command affects your test time tremendously since spawning new Selenium sessions is very time consuming especially when using cloud services.
+     * 
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.reload();
+     * ```
+     */
+    reload(): WebdriverIO;
+
+    /**
+     * Save a screenshot as a base64 encoded PNG with the current state of the browser. Be aware that some Selenium driver are taking screenshots
+     *  of the whole document (e.g. phantomjs) and others only of the current viewport. If you want to always be sure that the screenshot has the 
+     * size of the whole document, use [WebdriverCSS](https://github.com/webdriverio/webdrivercss) to enhance this command with that functionality.
+     * 
+     * @param {Function|String}   filename    path to the generated image (relative to the execution directory)
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.saveScreenshot([filename]);
+     * ```
+     */
+    saveScreenshot(filenam?: Function | string): WebdriverIO;
+
+    /**
+     * Scroll to a specific element. You can also append/pass two offset values as parameter to scroll to a specific position.
+     * 
+     * @param {String}  selector  element to scroll to
+     * @param {Number}   xoffset   x offset to scroll to
+     * @param {Number}   yoffset   y offset to scroll to
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.scroll([selector],xoffset,yoffset);
+     * ```
+     */
+    scroll(selector: string, xoffset: number, yoffset: number): WebdriverIO;
+
+    /**
+     * Uploads a file to the selenium server.
+     *
+     * @param {String} localPath local path to file
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.uploadFile(localPath);
+     * ```
+     */
+    uploadFile(localPath: string): WebdriverIO;
+
+    /**
+     * Wait for an element (selected by css selector) for the provided amount of milliseconds to be (dis/en)abled. If multiple elements get queryied by given
+     * selector, it returns true (or false if reverse flag is set) if at least one element is (dis/en)abled.
+     *
+     * @param {String}   selector element to wait for
+     * @param {Number}  ms       time in ms (default: 500)
+     * @param {Boolean} reverse  if true it waits for the opposite (default: false)
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.waitForEnabled(selector[,ms][,reverse]);
+     * ```
+     */
+    waitForEnabled(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+
+    /**
+     * Wait for an element (selected by css selector) for the provided amount of milliseconds to be present within the DOM. Returns true if the selector
+     * matches at least one element that exists in the DOM, otherwise throws an error. If the reverse flag is true, the command will instead return true
+     * if the selector does not match any elements.
+     *
+     * @param {String}   selector element to wait for
+     * @param {Number}  ms       time in ms (default: 500)
+     * @param {Boolean} reverse  if true it instead waits for the selector to not match any elements (default: false)
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.waitForExist(selector[,ms][,reverse]);
+     * ```
+     */
+    waitForExist(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+
+    /**
+     * Wait for an option or radio/checkbox element (selected by css selector) for the provided amount of milliseconds to be (un)selected or (un)checked.
+     *  If multiple elements get queryied by given selector, it returns true (or false if reverse flag is set) if at least one element is (un)selected.
+     *
+     * @param {String}   selector element to wait for
+     * @param {Number}  ms       time in ms (default: 500)
+     * @param {Boolean} reverse  if true it waits for the opposite (default: false)
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.waitForSelected(selector[,ms][,reverse]);
+     * ```
+     */
+    waitForSelected(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+
+    /**
+     * Wait for an element (selected by css selector) for the provided amount of milliseconds to have text/content. If multiple elements get queryied by 
+     * given selector, it returns true (or false if reverse flag is set) if at least one element has text/content.
+     *
+     * @param {String}   selector element to wait for
+     * @param {Number}  ms       time in ms (default: 500)
+     * @param {Boolean} reverse  if true it waits for the opposite (default: false)
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.waitForText(selector[,ms][,reverse]);
+     * ```
+     */
+    waitForText(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+
+    /**
+     * Wait for an element (selected by css selector) for the provided amount of milliseconds to have a value. If multiple elements get queryied by given selector,
+     *  it returns true (or false if reverse flag is set) if at least one element has a value.
+     *
+     * @param {String}   selector element to wait for
+     * @param {Number}  ms       time in ms (default: 500)
+     * @param {Boolean} reverse  if true it waits for the opposite (default: false)
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.waitForValue(selector[,ms][,reverse]);
+     * ```
+     */
+    waitForValue(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+
+    /**
+     * Wait for an element (selected by css selector) for the provided amount of milliseconds to be (in)visible. If multiple elements get queryied by given selector,
+     *  it returns true (or false if reverse flag is set) if at least one element is visible.
+     *
+     * @param {String}   selector element to wait for
+     * @param {Number}  ms       time in ms (default: 500)
+     * @param {Boolean} reverse  if true it waits for the opposite (default: false)
+     * @returns self reference
+     * @type utility
+     * ### Usage
+     * ```
+     * client.waitForVisible(selector[,ms][,reverse]);
+     * ```
+     */
+    waitForVisible(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+
+    /**
+     * This wait command is your universal weapon if you want to wait on something. It expects a condition and waits until that condition is fulfilled with an 
+     * truthy value. A condition can be either a promise or a command that returns a promise.
+     * 
+     * @param {Function|Promise} condition  condition to wait on
+     * @param {Number}          timeout    timeout in ms (default: 500)
+     * @param {String}          timeoutMsg error message to throw when waitUntil times out
+     * @param {Number}          interval   interval between condition checks (default: 500)
+     * @returns self reference
+     * @type utility
+     */
+    waitUntil(condition: Function, timeout?: number, timeoutMsg?: string, interval?: number): WebdriverIO;
 
     // end of "Utilty" section
 }
