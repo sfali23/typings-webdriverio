@@ -1657,7 +1657,7 @@ export class WebdriverIO {
      * @param {String} id       the element where the scroll starts.
      * @param {Number} xoffset  in pixels to scroll by
      * @param {Number} yoffset  in pixels to scroll by 
-     * @returns self references
+     * @returns self reference
      * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchscroll
      * @type protocol
      * @depcrecated Please use {@link touchPerform} instead.
@@ -1674,7 +1674,7 @@ export class WebdriverIO {
      *
      * @param {Number} x  coordinate on the screen
      * @param {Number} y  coordinate on the screen
-     * @returns self references
+     * @returns self reference
      * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidtouchup
      * @type protocol
      * @depcrecated Please use {@link touchPerform} instead.
@@ -1690,7 +1690,7 @@ export class WebdriverIO {
      * Protocol binding to load or get the URL of the browser.
      * 
      * @param {String} url  the URL to navigate to
-     * @returns self references &mdash; **String**     the current URL
+     * @returns self reference &mdash; **String**     the current URL
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get
      * @type protocol
      * 
@@ -1705,7 +1705,7 @@ export class WebdriverIO {
      * Protocol binding to handle with tabs in the browser.
      * 
      * @param {String} windowHandle the window to change focus to
-     * @returns self references
+     * @returns self reference
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-switch-to-window
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-close-window
      * @type protocol
@@ -1720,7 +1720,7 @@ export class WebdriverIO {
     /**
      * Retrieve the current window handle.
      * 
-     * @returns self references &mdash; **String** the current window handle
+     * @returns self reference &mdash; **String** the current window handle
      * @see https://w3c.github.io/webdriver/webdriver-spec.html#dfn-get-window-handle
      * @type protocol
      * ### Usage
@@ -1736,7 +1736,7 @@ export class WebdriverIO {
      *
      * **Note:** this command was recently added to the official Webdriver protocol and might not be working with current Selenium driver.
      *
-     * @returns self references
+     * @returns self reference
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-fullscreen-window
      * @type protocol
      * ### Usage
@@ -1750,7 +1750,7 @@ export class WebdriverIO {
      * Maximize the specified window if not already maximized. If the :windowHandle URL parameter is "current", the currently active window will be maximized.
      *
      * @param {String} windowHandle window to maximize (if parameter is falsy the currently active window will be maximized)
-     * @returns self references
+     * @returns self reference
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dfn-maximize-window
      * @type protocol
      * ### Usage
@@ -1766,7 +1766,7 @@ export class WebdriverIO {
      * 
      * @param {String} windowHandle the window to receive/change the position
      * @param {Object} position     the X and Y coordinates to position the window at, relative to the upper left corner of the screen
-     * @returns self references &mdash; **Object** the X and Y coordinates for the window, relative to the upper left corner of the screen (`{x: number, y: number}`)
+     * @returns self reference &mdash; **Object** the X and Y coordinates for the window, relative to the upper left corner of the screen (`{x: number, y: number}`)
      * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidwindowwindowhandleposition
      * @type protocol
      * ###Usage
@@ -1810,7 +1810,7 @@ export class WebdriverIO {
      * Return true or false if the selected DOM-element currently has focus.
      *  
      * @param {String} selecto  r   select active element
-     * @returns self references &mdash; **Boolean**         true if element has focus
+     * @returns self reference &mdash; **Boolean**         true if element has focus
      * @type state
      * ### Usage
      * ```  
@@ -1823,7 +1823,7 @@ export class WebdriverIO {
      * Return true or false if the selected DOM-element found by given selector is enabled.
      * 
      * @param   {String}             selector  DOM-element
-     * @returns self references &mdash; **Boolean|Boolean[]**            true if element(s)* (is|are) enabled
+     * @returns self reference &mdash; **Boolean|Boolean[]**            true if element(s)* (is|are) enabled
      * @type state
      * ### Usage
      * ```
@@ -1836,7 +1836,7 @@ export class WebdriverIO {
      * Returns true if at least one element is existing by given selector.
      * 
      * @param   {String}             selector  DOM-element
-     * @returns self references &mdash; **Boolean|Boolean[]**            true if element(s)* [is|are] existing
+     * @returns self reference &mdash; **Boolean|Boolean[]**            true if element(s)* [is|are] existing
      * @type state
      * ### Usage
      * ```
@@ -1849,7 +1849,7 @@ export class WebdriverIO {
      * Return true or false if an `<option>` element, or an `<input>` element of type checkbox or radio is currently selected found by given selector.
      * 
      * @param   {String}             selector  option element or input of type checkbox or radio
-     * @returns self references &mdash; **Boolean|Boolean[]**            true if element is selected
+     * @returns self reference &mdash; **Boolean|Boolean[]**            true if element is selected
      * @type state
      * ### Usage
      * ```
@@ -1862,7 +1862,7 @@ export class WebdriverIO {
      * Return true if the selected DOM-element found by given selector is visible. Returns an array if multiple DOM-elements are found for the given selector.
      * 
      * @param   {String}             selector  DOM-element
-     * @returns self references &mdash; **Boolean|Boolean[]**           true if element(s)* [is|are] visible
+     * @returns self reference &mdash; **Boolean|Boolean[]**           true if element(s)* [is|are] visible
      * @type state
      * ### Usage
      * ```
@@ -1875,7 +1875,7 @@ export class WebdriverIO {
      * Return true if the selected DOM-element found by given selector is visible and within the viewport.
      * 
      * @param   {String}             selector  DOM-element
-     * @returns self references &mdash; **Boolean|Boolean[]**            true if element(s)* [is|are] visible
+     * @returns self reference &mdash; **Boolean|Boolean[]**            true if element(s)* [is|are] visible
      * @type state
      * ### Usage
      * ```
@@ -1892,7 +1892,7 @@ export class WebdriverIO {
      * @param {String}   commandName   name of your custom command
      * @param {Function} customMethod  your custom method
      * @param {Boolean}  overwrite     if set to `true` you can overwrite existing commands
-     * @returns self references
+     * @returns self reference
      * @type utility
      * ### Usage
      * ```
@@ -1906,7 +1906,7 @@ export class WebdriverIO {
      * is obsolete and should not be used.
      * 
      * @param {Function} callback  function to be called
-     * @returns self references
+     * @returns self reference
      * @type utility
      * ### Usage
      * ```
@@ -1921,7 +1921,7 @@ export class WebdriverIO {
      * 
      * @param {String} selector   input element
      * @param {String} localPath  local path to file to be uploaded
-     * @returns self references
+     * @returns self reference
      * @type utility
      * ### Usage
      * ```
@@ -1938,7 +1938,7 @@ export class WebdriverIO {
      *
      * <iframe width="560" height="315" src="https://www.youtube.com/embed/xWwP-3B_YyE" frameborder="0" allowfullscreen></iframe>
      * 
-     * @returns self references
+     * @returns self reference
      * @type utility
      * ### Usage
      * ```
@@ -1950,7 +1950,7 @@ export class WebdriverIO {
     /**
      * End the session and close browser.
      * 
-     * @returns self references
+     * @returns self reference
      * @type utility
      * ### Usage
      * ```
