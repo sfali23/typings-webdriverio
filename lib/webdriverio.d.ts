@@ -2160,8 +2160,109 @@ export class WebdriverIO {
      * @param {Number}          interval   interval between condition checks (default: 500)
      * @returns self reference
      * @type utility
+     * ### Usage
+     * ```
+     * client.waitUntil(condition[,timeout][,timeoutMsg][,interval]);
+     * ```
      */
     waitUntil(condition: Function, timeout?: number, timeoutMsg?: string, interval?: number): WebdriverIO;
 
     // end of "Utilty" section
+
+    // start of "Windown" section
+    /**
+     * Close current window (and focus on an other window). If no window handle is given it automatically switches back to the first handle.
+     * 
+     * @param {String} windowHandle new window to focus on
+     * @returns self reference
+     * @type window
+     * ### Usage
+     * ```
+     * client.close([windowHandle]);
+     * ```
+     */
+    close(windowHandle?: string): WebdriverIO;
+
+    /**
+     * Retrieve the current window handle.
+     * 
+     * @returns self reference
+     * @type window
+     * ### Usage
+     * ```
+     * client.getCurrentTabId();
+     * ```
+     */
+    getCurrentTabId(): WebdriverIO;
+
+    /**
+     * Retrieve a list of all window handles available in the session.
+     * 
+     * @returns self reference
+     * @type window
+     * ### Usage
+     * ```
+     * client.getTabIds();
+     * ```
+     */
+    getTabIds(): WebdriverIO;
+
+    /**
+     * Get viewport size of the current browser window.
+     * 
+     * @param {String} property if “width” or “height” is set it returns only that property
+     * @returns self reference
+     * @type window
+     * ### Usage
+     * ```
+     * client.getViewportSize([property]);
+     */
+    getViewportSize(property?: string): WebdriverIO;
+
+    /**
+     * Open new window in browser. This command is the equivalent function to `window.open()`. This command does not work in mobile environments.
+     *
+     * __Note:__ When calling this command you automatically switch to the new window.
+     * 
+     * @param {String} url            website URL to open
+     * @param {String} windowName     name of the new window
+     * @param {String} windowFeatures features of opened window (e.g. size, position, scrollbars, etc.)
+     * @returns self reference
+     * @type window
+     * ### Usage
+     * ```
+     * client.newWindow(url,windowName,windowFeatures);
+     * ```
+     */
+    newWindow(url: string, windowName: string, windowFeatures: string): WebdriverIO;
+
+    /**
+     * This command changes the viewport size of the browser. When talking about browser size we have to differentiate between the actual window size
+     *  of the browser application and the document/viewport size of the website. The window size will always be bigger since it includes the height of
+     *  any menu or status bars.
+     * 
+     * @param {Object}   size  window width/height
+     * @param {Boolean}  type  set to `false` to change window size, `true` (default) to change viewport size
+     * @returns self reference
+     * @type window
+     * ### Usage
+     * ```
+     * client.setViewportSize(size,type);
+     * ```
+     */
+    setViewportSize(size: Object, type: boolean): WebdriverIO;
+
+    /**
+     * Switch focus to a particular tab / window handle.
+     *
+     * @param {String} windowHandle window handle URL to focus on (if no handle was specified the command switches to the first available one)
+     * @returns self reference
+     * @type window
+     * ### Usage
+     * ```
+     * client.switchTab([windowHandle]);
+     * ```
+     */
+    switchTab(windowHandle?: string): WebdriverIO;
+    // end of "Windown" section
 }
