@@ -1,5 +1,3 @@
-import {WebdriverIO} from 'webdriverio';
-
 import client = require('webdriverio');
 
 let options = {
@@ -8,16 +6,10 @@ let options = {
     }
 };
 
-let wd: WebdriverIO = client.remote(options)
+client.remote(options)
     .init()
-    .url('http://www.google.com/ncr');
-
-wd.element('#hplogo')
-    .then((result: Object) => {
-        console.log('||||||||||||||| %s', JSON.stringify(result));
-    });
-
-wd.setValue('*[name="q"]', 'webdriverio')
+    .url('http://www.google.com/ncr')
+    .setValue('*[name="q"]', 'webdriverio')
     .click('*[name="btnG"]')
     .pause(5000)
     .end();
