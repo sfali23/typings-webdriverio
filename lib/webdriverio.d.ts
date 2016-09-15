@@ -279,11 +279,9 @@ export class WebdriverIO {
      * ```
      */
     submitForm(selector: string): WebdriverIO;
-
     // End of "Action" section
 
     // Start of "Cookie" section
-
     /**
      * Delete cookies visible to the current page. By providing a cookie name it just removes the single cookie.
      * 
@@ -324,11 +322,9 @@ export class WebdriverIO {
      * client.setCookie(cookie);
      */
     setCookie(cookie: Object): WebdriverIO;
+    // End of "Cookie" section
 
-    // end of "Cookie" section
-
-    // strat of "grid" section
-
+    // Start of "grid" section
     /**
      * Get the details of the Selenium Grid node running a session.
      * 
@@ -363,10 +359,773 @@ export class WebdriverIO {
      * client.gridTestSession();
      */
     gridTestSession(): WebdriverIO;
+    // End of "Grid" section
 
-    // end of "Grid" section
+    // Strat of "Mobile" section
+    /**
+     * Send the currently active app to the background.
+     * 
+     * @param {Number} seconds  number of seconds after the app gets send to background
+     * @return self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#background-app
+     * @type mobile
+     * @for android
+     * ###Usage
+     * ```
+     * client.background(seconds);
+     * ```
+     */
+    background(seconds: number): WebdriverIO;
 
-    // strat of "Mobile" section
+    /**
+     * Close the given application.
+     *
+     * @return self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#close-app
+     * @type mobile
+     * @for ios
+     * ### Usage
+     * ```
+     * client.closeApp();
+     * ```
+     */
+    closeApp(): WebdriverIO;
+
+    /**
+     * Retrieve current context or switch to the specified context
+     *
+     * @param {String} id the context to switch to
+     * @return self reference
+     * @see http://appium.io/slate/en/v1.1.0/?javascript#automating-hybrid-ios-apps
+     * @see https://github.com/admc/wd/blob/master/lib/commands.js#L279
+     * @type mobile
+     * @for android, ios
+     * ### Usage
+     * ```
+     * client.context([id]);
+     * ```
+     */
+    context(id?: string): WebdriverIO;
+
+    /**
+     * list all available contexts.
+     *
+     * @return self reference
+     * @see http://appium.io/slate/en/v1.1.0/?javascript#automating-hybrid-ios-apps
+     * @see https://github.com/admc/wd/blob/master/lib/commands.js#L279
+     * @type mobile
+     * @for android, ios
+     * ### Usage
+     * ```
+     * client.contexts();
+     * ```
+     */
+    contexts(): WebdriverIO;
+
+    /**
+     * Receive the current activity on an Android device.
+     *
+     * @return self reference
+     * @see https://github.com/appium/appium-android-driver/blob/master/lib/commands/general.js#L59-L61
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.currentActivity();
+     * ```
+     */
+    currentActivity(): WebdriverIO;
+
+    /**
+     * Send a key event to the device.
+     *
+     * @param {Number} keyValue  device specifc key value
+     * @param {Object} metastate device specifc metastate
+     * @return self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/appium-bindings.md#key-event
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.deviceKeyEvent(keycode[, metastate]);
+     * ```
+     */
+    deviceKeyEvent(keycode: number, metastate?: Object): WebdriverIO;
+
+    /**
+     * Get all defined Strings from an app for the default language.
+     *
+     * @param {String} language  strings language code
+     * @return self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/appium-bindings.md#app-strings
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.getAppStrings(language);
+     * ```
+     */
+    getAppStrings(language: string): WebdriverIO;
+
+    /**
+     * Get current device activity.
+     * 
+     * @return self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/appium-bindings.md#current-activity
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.getCurrentDeviceActivity();
+     * ```
+     */
+    getCurrentDeviceActivity(): WebdriverIO;
+
+    /**
+     * Captures iOS device date and time (command works only for real devices).
+     * 
+     * @return self reference
+     * @see https://github.com/appium/appium-ios-driver/blob/master/lib/commands/general.js#L19-L35
+     * @type mobile
+     * @for ios
+     * ### Usage
+     * ```
+     * client.getDeviceTime();
+     * ```
+     */
+    getDeviceTime(): WebdriverIO;
+
+    /**
+     * Get the current geolocation.
+     *
+     * @returns self reference &mdash; **Object** the current geo location (`{latitude: number, longitude: number, altitude: number}`)
+     * @uses protocol/location
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.getGeoLocation();
+     * ```
+     */
+    getGeoLocation(): WebdriverIO;
+
+    /**
+     * Get informations about the current network connection (Data/WIFI/Airplane). The actual server value will be a number
+     *  (see `getNetworkConnection.js` example). However WebdriverIO additional properties to the response object to allow
+     *  easier assertions (see `getNetworkConnectionEasier.js` example).
+     * 
+     * @return self reference
+     * @type mobile
+     * @see https://github.com/appium/appium-android-driver/blob/master/lib/commands/network.js#L8-L22
+     * @for android
+     * ### Usage
+     * ```
+     * client.getNetworkConnection();
+     * ```
+     */
+    getNetworkConnection(): WebdriverIO;
+
+    /**
+     * Get the current browser orientation.
+     * 
+     * @returns self reference &mdash; **String** device orientation (`landscape/portrait`)
+     * @for android, ios
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.getOrientation();
+     * ```
+     */
+    getOrientation(): WebdriverIO;
+
+    /**
+     * Hide the keyboard.
+     *
+     * @param {String} strategy  desired strategy to close keyboard ('tapOutside' or 'pressKey')
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/appium-bindings.md#hide-keyboard-ios-only
+     * @type mobile
+     * @for ios, android
+     * 
+     * ### Usage
+     * ```
+     * client.hideDeviceKeyboard(strategy);
+     * ```
+     */
+    hideDeviceKeyboard(strategy: string): WebdriverIO;
+
+    /**
+     * Long press on an element using finger motion events. This command works only in a mobile context.
+     *
+     * @param {String} selector element to hold on
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.hold(selector);
+     * ```
+     */
+    hold(selector: string): WebdriverIO;
+
+    /**
+     * Install an app on device.
+     * 
+     * @param {String} path  path to Android application
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#install-app
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.installApp(path);
+     * ```
+     */
+    installApp(path: string): WebdriverIO;
+
+    /**
+     * Check if an app is installed.
+     * 
+     * @param {String} bundleId  ID of bundled app
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#is-installed
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.isAppInstalled(bundleId);
+     * ```
+     */
+    isAppInstalled(bundleId: string): WebdriverIO;
+
+    /**
+     * Check whether the device is locked or not.
+     *
+     * @returns self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.isLocked();
+     * ```
+     */
+    isLocked(): WebdriverIO;
+
+    /**
+     * Launch the session for the desired capabilities. Note that this is the companion to the `autoLaunch=false` capability. 
+     * This is not for launching arbitrary apps/activities --- for that use [startActivity](/api/mobile/startActivity.html). 
+     * This is for continuing the initialization ("launch") process if you have used `autoLaunch=false`.
+     * 
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#launch
+     * @type mobile
+     * @for ios, android
+     * ### Usage
+     * ```
+     * client.launch();
+     * ```
+     */
+    launch(): WebdriverIO;
+
+    /**
+     * Lock the device.
+     * 
+     * @param {Number} seconds  wait in seconds until lock screen
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#lock
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.lock(seconds);
+     * ```
+     */
+    lock(seconds: number): WebdriverIO;
+
+    /**
+     * Press a particular key code on the device.
+     *
+     * @param {String} keycode    key code to press
+     * @param {String} metastate  meta state to be activated
+     * @returns self reference
+     * @see http://developer.android.com/reference/android/view/KeyEvent.html
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.longPressKeycode(keycode,metastate);
+     * ```
+     */
+    longPressKeycode(keycode: string, metastate: string): WebdriverIO;
+
+    /**
+     * Open the notifications pane on the device.
+     * 
+     * @returns self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.openNotifications();
+     * ```
+     */
+    openNotifications(): WebdriverIO;
+
+    /**
+     * Protocol bindings for all mobile orientation operations. (Not part of the official Webdriver specification).
+     * 
+     * @param   {String} deviceOrientation  The new browser orientation as defined in ScreenOrientation: `{LANDSCAPE|PORTRAIT}`
+     * @returns self reference &mdash; **String** device orientation (`LANDSCAPE/PORTRAIT`)
+     * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidorientation
+     * @type mobile
+     * @for android, ios
+     * ### Usage
+     * ```
+     * client.orientation([deviceOrientation]);
+     * ```
+     */
+    orientation(deviceOrientation?: string): WebdriverIO;
+
+    /**
+     * Perform multi touch action
+     *
+     * @param {Object} touchAttr contains attributes of touch gesture (e.g. `element`, `x` and `y`)
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/appium-bindings.md#touchaction--multitouchaction
+     * @type mobile
+     * @for android, ios
+     * ### Usage
+     * ```
+     * client.performMultiAction(touchAttr);
+     * ```
+     */
+    performMultiAction(touchAttr: Object): WebdriverIO;
+
+    /**
+     * Perform touch action
+     *
+     * @param {Object} touchAttr contains attributes of touch gesture (e.g. `element`, `x` and `y`)
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/appium-bindings.md#touchaction--multitouchaction
+     * @type mobile
+     * @for android, ios
+     * ### Usage
+     * ```
+     * client.performTouchAction(touchAttr);
+     * ```
+     */
+    performTouchAction(touchAttr: Object): WebdriverIO;
+
+    /**
+     * Press a particular key code on the device.
+     * 
+     * @param {String} keycode    key code to press
+     * @param {String} metastate  meta state to be activated
+     * @returns self reference
+     * @see http://developer.android.com/reference/android/view/KeyEvent.html
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.pressKeycode(keycode,metastate);
+     * ```
+     */
+    pressKeycode(keycode: string, metastate: string): WebdriverIO;
+
+    /**
+     * Pulls a file from the device.
+     * 
+     * @param {String} path  device path to file
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/appium-bindings.md#pull-file
+     * @type mobile
+     * @for ios, android
+     * ### Usage
+     * ```
+     * client.pullFile(path);
+     * ```
+     */
+    pullFile(path: string): WebdriverIO;
+
+    /**
+     * Pulls a folder from the device's file system.
+     *
+     * @param {String} path  device path to folder  
+     * @returns self reference
+     * @type mobile
+     * @for ios, android
+     * ### Usage
+     * ```
+     * client.pullFolder(path);
+     * ```
+     */
+    pullFolder(path: string): WebdriverIO;
+
+    /**
+     *
+     * Pushes a file to the device.
+     *
+     * @param {String} path  local path to file
+     * @param {String} data
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#push-file
+     * @type mobile
+     * @for ios, android
+     */
+    pushFile(path: string, base64Data: string): WebdriverIO;
+
+    /**
+     * Release touch sequenz on specific element.
+     *
+     * @param {String} selector element to release on
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.release(selector);
+     * ```
+     */
+    release(selector: string): WebdriverIO;
+
+    /**
+     * Remove an app from the device.
+     *
+     * @param {String} bundleId  bundle ID of application
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#remove-app
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.removeApp(bundleId);
+     * ```
+     */
+    removeApp(bundleId: string): WebdriverIO;
+
+    /**
+     * Reset the device by clearing the device un- and reinstalling app package (if existing).  
+     *
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#reset
+     * @type mobile
+     * @for android
+     */
+    reset(): WebdriverIO;
+
+    /**
+     * Perform a rotation gesture centered on the specified element.
+     *
+     * @param {Number} x          x offset to use for the center of the rotate gesture (default 0)
+     * @param {Number} y          y offset to use for the center of the rotate gesture (default 0)
+     * @param {Number} duration   The length of hold time for the specified gesture, in seconds. (default 1)
+     * @param {Number} radius     The distance in points from the center to the edge of the circular path.
+     * @param {Number} rotation   The length of rotation in radians. (default pi (π))
+     * @param {Number} touchCount The number of touches to use in the specified gesture. (Effectively, the number of fingers a user would use to make the specified gesture.) Valid values are 1 to 5. (default 2)
+     * @returns self reference
+     * @see https://developer.apple.com/library/ios/documentation/ToolsLanguages/Reference/UIAElementClassReference/#//apple_ref/javascript/instm/UIAElement/rotateWithOptions
+     * @type mobile
+     * @for ios
+     * ### Usage
+     * ```
+     * client.rotate(x, y, duration, radius, rotation, touchCount);
+     * ```
+     */
+    rotate(x: number, y: number, duration: number, radius: number, rotation: number, touchCount: number): WebdriverIO;
+
+    /**
+     * Set the current geo location
+     * 
+     * @param {Object} location the new location (`{latitude: number, longitude: number, altitude: number}`)
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.setGeoLocation(location)
+     * ```
+     */
+    setGeoLocation(location: Object): WebdriverIO;
+
+    /**
+     * Set immediate value in app.
+     *
+     * @param {String} id id
+     * @param {value} value value
+     * @returns self reference
+     * @type mobile
+     * @for ios
+     * ### Usage
+     * ```
+     * client.setImmediateValue(id, value)
+     * ```
+     */
+    setImmediateValue(id: string, value: string): WebdriverIO;
+
+    /**
+     * Set network connection.<br>
+     * Types:<br>
+     * 	- airplane mode
+     * 	- wifi on
+     * 	- data on
+     *
+     * These properties behave like a bitmask so if you set the network connection to 0 everything will get turned off. However if you 
+     * for example set the network connection to 4 it will disable the airplane mode and turn off the wifi so that only data will be enabled. 
+     * WebdriverIO provides a simplified interface to set these values without calculating bitmasks.
+     *
+     * __Note:__ if you have airplane mode enabled you can't have wifi or data be enabled too (for obvious reasons)
+     * 
+     * Possible values for `type` are: 
+     *  
+     * | Type | Airplane mode | WIFI | Data |
+     * |------|---------------|------|------|
+     * |   0  |      OFF      |  OFF |  OFF |
+     * |   1  |      ON       |  OFF |  OFF |
+     * |   2  |      OFF      |  ON  |  OFF |
+     * |   4  |      OFF      |  OFF |  ON  |
+     * |   6  |      OFF      |  ON  |  ON  |
+     * 
+     * @param {number} type type of connection
+     * @returns self reference
+     * @type mobile
+     * @for selendroid
+     * @see https://github.com/appium/appium-android-driver/blob/master/lib/commands/network.js#L24-L46
+     * ### Usage
+     * ```
+     * client.setNetworkConnection(type);
+     * ```
+     */
+    setNetworkConnection(type: number): WebdriverIO;
+
+    /**
+     * Set the current browser orientation.
+     *
+     * @param {String} orientation the new browser orientation (`landscape/portrait`)
+     * @returns self reference
+     * @type mobile
+     * @for android, ios
+     * ### Usage
+     * ```
+     * client.setOrientation(orientation);
+     * ```
+     */
+    setOrientation(orientation: string): WebdriverIO;
+
+    /**
+     * Either retrieve a JSON hash of all the currently specified settings or update the current setting on the device.
+     *
+     * @param {String} settings the new browser settings
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.settings(settings);
+     * ```
+     */
+    settings(settings: Object): WebdriverIO;
+
+    /**
+     *
+     * Perform a shake action on the device.
+     *
+     * @returns self reference
+     * @see  https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#shake
+     * @type mobile
+     * @for ios
+     * ### Usage
+     * ```
+     * client.shake();
+     * ```
+     *
+     */
+    shake(): WebdriverIO;
+
+    /**
+     * Start an arbitrary Android activity during a session.
+     *
+     * @param {String} appPackage name of app package
+     * @param {String} appActivity name of app activity
+     * @returns self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.startActivity(appPackage, appActivity);
+     * ```
+     */
+    startActivity(appPackage: string, appActivity: string): WebdriverIO;
+
+    /**
+     * Returns application strings of the application in a specific language.
+     *
+     * @param {String} language application strings of the application in the given language, if left empty returns all app strings.
+     * @returns self reference
+     * @see https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/appium-bindings.md#app-strings
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.strings([language});
+     * ```
+     */
+    strings(language?: string): WebdriverIO;
+
+    /**
+     * Perform a swipe on the screen or an element. If you want to swipe on a specific element make sure you provide
+     *  a selector argument. If not just pass `xoffset` and `yoffset` as command arguments.
+     *
+     * Start at a particulat screen location
+     *
+     * @param {String} selector   element to swipe on
+     * @param {Number} xoffset    x offset of swipe gesture (in pixels or relative units)
+     * @param {Number} yoffset    y offset of swipe gesture (in pixels or relative units)
+     * @param {Number} speed      time (in seconds) to spend performing the swipe
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * client.swipe(selector, xoffset, yoffset, speed);
+     * ```
+     */
+    swipe(selector?: string, xoffset?: number, yoffset?: number, speed?: number): WebdriverIO;
+
+    /**
+     * Perform a swipe down on an element.
+     *
+     * @param {String} selector  element to swipe on
+     * @param {Number} yoffset    y offset of swipe gesture (in pixels or relative units)
+     * @param {Number} speed     number of pixels go per second
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.swipeDown(selector, yOffset, speed);
+     * ```
+     */
+    swipeDown(selector: string, yOffset: number, speed: number): WebdriverIO;
+
+    /**
+     * Perform a swipe left on an element.
+     * 
+     * @param {String} selector  element to swipe on
+     * @param {Number} xoffset    x offset of swipe gesture (in pixels or relative units)
+     * @param {Number} speed     time (in seconds) to spend performing the swipe
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.swipeLeft(selector, xOffset, speed);
+     * ```
+     */
+    swipeLeft(selector: string, xOffset: number, speed: number): WebdriverIO;
+
+    /**
+     * Perform a swipe right on an element.
+     * 
+     * @param {String} selector  element to swipe on
+     * @param {Number} xoffset    x offset of swipe gesture (in pixels or relative units)
+     * @param {Number} speed     time (in seconds) to spend performing the swipe
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.swipeRight(selector, xOffset, speed);
+     * ```
+     */
+    swipeRight(selector: string, xOffset: number, speed: number): WebdriverIO;
+
+    /**
+     * Perform a swipe up on an element.
+     *
+     * @param {String} selector  element to swipe on
+     * @param {Number} yoffset    y offset of swipe gesture (in pixels or relative units)
+     * @param {Number} speed     number of pixels go per second
+     * @returns self reference
+     * @type mobile
+     * ### Usage
+     * ```
+     * client.swipeUp(selector, yOffset, speed);
+     * ```
+     */
+    swipeUp(selector: string, yOffset: number, speed: number): WebdriverIO;
+
+    /**
+     * Switch the state (enabled/disabled) of airplane mode.
+     *
+     * @returns self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.toggleAirplaneMode();
+     * ```
+     */
+    toggleAirplaneMode(): WebdriverIO;
+
+    /**
+     * Switch the state (enabled/disabled) of data service.
+     *
+     * @returns self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.toggleData();
+     * ```
+     */
+    toggleData(): WebdriverIO;
+
+    /**
+     * Switch the state (enabled/disabled) of the location service.
+     *
+     * @returns self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.toggleLocationServices();
+     * ```
+     */
+    toggleLocationServices(): WebdriverIO;
+
+    /**
+     * Switch the state (enabled/disabled) of the wifi service.
+     *
+     * @returns self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.toggleWiFi();
+     * ```
+     */
+    toggleWiFi(): WebdriverIO;
+
+    /**
+     * Put finger on an element (only in mobile context).
+     *
+     * @param {String}  selector  element to put finger on
+     * @param {Boolean} longClick if true touch click will be long (default: false)
+     * @returns self reference
+     * @type mobile
+     * @uses android
+     * ### Usage
+     * ```
+     * client.touch(selector, longClick);
+     * ```
+     */
+    touch(selector: string, longClick: boolean): WebdriverIO;
+
+    /**
+     * Performs multiple touch actions. The action object is an array and its objects have to contain the action name (longPress, press, 
+     * tap, wait, moveTo, release) and additional information about either the element, x/y coordinates or touch counts.
+     *
+     * @param {Object} actions  touch action as object or object[] with attributes like touchCount, x, y, duration
+     * @returns self reference
+     * @see  https://github.com/appium/node-mobile-json-wire-protocol/blob/master/docs/protocol-methods.md#mobile-json-wire-protocol-endpoints
+     * @type mobile
+     * @for android, ios
+     * ### Usage
+     * ```
+     * client.touchMultiPerform(actions);
+     * ```
+     */
+    touchMultiPerform(actions: Object): WebdriverIO;
 
     /**
      * Performs a specific touch action. The action object need to contain the action name (longPress, press, tap, wait, moveTo, release) and additional 
@@ -384,10 +1143,20 @@ export class WebdriverIO {
      */
     touchPerform(actions: Object): WebdriverIO;
 
-    // end of "Mobile" section
+    /**
+     * Unlock the device.
+     * @return self reference
+     * @type mobile
+     * @for android
+     * ### Usage
+     * ```
+     * client.unlock();
+     * ```
+     */
+    unlock(): WebdriverIO;
+    // End of "Mobile" section
 
-    // strat of "Property" section
-
+    // Start of "Property" section
     /**
      * Get an attribute from an DOM-element based on the selector and attribute name. Returns a list of attribute values if selector matches multiple elements.
      * 
@@ -563,11 +1332,9 @@ export class WebdriverIO {
      * ```
      */
     getValue(selector: string): WebdriverIO;
+    // End of "Property" section
 
-    // end of "Property" section
-
-    // start of "Protocol" section
-
+    // Start of "Protocol" section
     /**
      * Accepts the currently displayed alert dialog. Usually, this is equivalent to clicking on the 'OK' button in the dialog.
      *
@@ -1803,9 +2570,9 @@ export class WebdriverIO {
      * ```
      */
     windowHandles(): WebdriverIO;
-    // end of "Protocol" section
+    // End of "Protocol" section
 
-    // start of "State" section
+    // Start of "State" section
     /** 
      * Return true or false if the selected DOM-element currently has focus.
      *  
@@ -1883,9 +2650,9 @@ export class WebdriverIO {
      * ```
      */
     isVisibleWithinViewport(selector: string): WebdriverIO;
-    // end of "State" section
+    // End of "State" section
 
-    // start of "Utilty" section
+    // Start of "Utilty" section
     /**
      * Add custom command to client/browser instance. Read more about `addCommand` [here](http://webdriver.io/guide/usage/customcommands.html).
      * 
@@ -2167,9 +2934,9 @@ export class WebdriverIO {
      */
     waitUntil(condition: Function, timeout?: number, timeoutMsg?: string, interval?: number): WebdriverIO;
 
-    // end of "Utilty" section
+    // End of "Utilty" section
 
-    // start of "Windown" section
+    // Start of "Windown" section
     /**
      * Close current window (and focus on an other window). If no window handle is given it automatically switches back to the first handle.
      * 
@@ -2264,5 +3031,5 @@ export class WebdriverIO {
      * ```
      */
     switchTab(windowHandle?: string): WebdriverIO;
-    // end of "Windown" section
+    // End of "Windown" section
 }
