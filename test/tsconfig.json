@@ -6,6 +6,8 @@
     },
     "files": [
         "test.ts",
+        "commands/webdriverio.selectBy.ts",
+        "commands/webdriverio.selectorExecute.ts",
         "bundle.d.ts",
         "../typings/index.d.ts"
     ]
