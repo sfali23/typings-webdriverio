@@ -320,6 +320,7 @@ export class WebdriverIO {
      * 
      * ```
      * client.setCookie(cookie);
+     * ```
      */
     setCookie(cookie: Object): WebdriverIO;
     // End of "Cookie" section
@@ -346,6 +347,7 @@ export class WebdriverIO {
      * 
      * ```
      * client.gridProxyDetails();
+     * ```
      */
     gridProxyDetails(): WebdriverIO;
 
@@ -357,6 +359,7 @@ export class WebdriverIO {
      * 
      * ```
      * client.gridTestSession();
+     * ```
      */
     gridTestSession(): WebdriverIO;
     // End of "Grid" section
@@ -979,6 +982,7 @@ export class WebdriverIO {
      * @returns self reference
      * @type mobile
      * ### Usage
+     * ```
      * client.swipe(selector, xoffset, yoffset, speed);
      * ```
      */
@@ -1168,6 +1172,7 @@ export class WebdriverIO {
      * 
      * ```
      * client.getAttribute(selector,attributeName);
+     * ```
      */
     getAttribute(selector: string, attributeName: string): WebdriverIO;
 
@@ -1839,6 +1844,7 @@ export class WebdriverIO {
      * ### Usage
      * ```
      * client.execute(script[,argument1,...,argumentN]);
+     * ```
      */
     execute(script: string | Function, ...args: any[]): WebdriverIO;
 
@@ -2299,6 +2305,7 @@ export class WebdriverIO {
      * ### Usage
      * ```
      * client.timeoutsAsyncScript(ms);
+     * ```
      */
     timeoutsAsyncScript(ms: number): WebdriverIO;
 
@@ -2983,6 +2990,7 @@ export class WebdriverIO {
      * ### Usage
      * ```
      * client.getViewportSize([property]);
+     * ```
      */
     getViewportSize(property?: string): WebdriverIO;
 
