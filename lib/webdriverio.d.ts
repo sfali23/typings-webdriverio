@@ -1200,16 +1200,18 @@ export class WebdriverIO {
     /**
      * Get the width and height for an DOM-element based given selector.
      * 
-     * @param   {String} selector element with requested size
+     * @param {String} selector element with requested size
+     * @param {String} property property to get the value, possible values are either `width` or `height`.
      * @returns self reference
      * 
+     * @see {@link Size}
      * ### Usage
      * 
      * ```
-     * client.getElementSize(selector);
+     * client.getElementSize(selector[, property]);
      * ```
      */
-    getElementSize(selector: string): WebdriverIO;
+    getElementSize(selector: string, property?: string): WebdriverIO;
 
     /**
      * Get source code of specified DOM element by selector.
@@ -3040,4 +3042,9 @@ export class WebdriverIO {
      */
     switchTab(windowHandle?: string): WebdriverIO;
     // End of "Windown" section
+}
+
+export interface Size {
+    width: number;
+    height: number;
 }
