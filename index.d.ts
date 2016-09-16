@@ -1,7 +1,7 @@
-import {WebdriverIO, Size} from './lib/webdriverio';
+import {WebdriverIO, Size, CssProperty, ParsedCssProperty} from './lib/webdriverio';
 
-export function remote(options?: {}, modifier?: {}): WebdriverIO;
+export function remote(options?: {}, modifier?: {}): WebdriverIO<void>;
 
-export function multiremote(options?: {}): WebdriverIO;
+export function multiremote<T>(options?: {}): WebdriverIO<T>;
 
-export {WebdriverIO, Size}
+export {WebdriverIO, Size, CssProperty, ParsedCssProperty}

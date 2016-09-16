@@ -1,10 +1,10 @@
-export class WebdriverIO {
+export class WebdriverIO<T> {
 
-    then(onFulfilled?: Function, onRejected?: Function): WebdriverIO;
+    then<P>(onFulfilled?: (value: T) => P | WebdriverIO<P>, onRejected?: (err: any) => P | WebdriverIO<P>): WebdriverIO<T>;
 
-    catch(onRejected?: Function): WebdriverIO;
+    catch<P>(onRejected?: (err: any) => P | WebdriverIO<P>): WebdriverIO<P>;
 
-    finally(fn?: Function): WebdriverIO;
+    finally(fn?: Function): WebdriverIO<T>;
 
     // Start of "Action" section
     /**
@@ -21,7 +21,7 @@ export class WebdriverIO {
      * client.addValue(selector,values);
      * ```
      */
-    addValue(selector: string, value: string | number): WebdriverIO;
+    addValue(selector: string, value: string | number): WebdriverIO<void>;
 
     /**
      * Clear a `<textarea>` or text `<input>` element’s value.
@@ -34,7 +34,7 @@ export class WebdriverIO {
      * client.clearElement(selector);
      * ```
      */
-    clearElement(selector: string): WebdriverIO;
+    clearElement(selector: string): WebdriverIO<void>;
 
     /**
      * Click on an element based on given selector.
@@ -48,7 +48,7 @@ export class WebdriverIO {
      * client.click(selector);
      * ```
      */
-    click(selector: string): WebdriverIO;
+    click(selector: string): WebdriverIO<void>;
 
     /**
      * Click on an element based on given selector.
@@ -62,7 +62,7 @@ export class WebdriverIO {
      * client.doubleClick(selector);
      * ```
      */
-    doubleClick(selector: string): WebdriverIO;
+    doubleClick(selector: string): WebdriverIO<void>;
 
     /**
      * Drag an item to a destination element.
@@ -77,7 +77,7 @@ export class WebdriverIO {
      * client.dragAndDrop(sourceElem,destinationElem);
      * ```
      */
-    dragAndDrop(selector: string, destinationElem: string): WebdriverIO;
+    dragAndDrop(selector: string, destinationElem: string): WebdriverIO<void>;
 
     /**
      * Apply left click on an element. If selector is not provided, click on the last moved-to location.
@@ -93,7 +93,7 @@ export class WebdriverIO {
      * client.leftClick(selector,xoffset,yoffset);
      * ```
      */
-    leftClick(selector: string, xoffset: number, yoffset: number): WebdriverIO;
+    leftClick(selector: string, xoffset: number, yoffset: number): WebdriverIO<void>;
 
     /**
      * Apply middle click on an element. If selector is not provided, click on the last moved-to location.
@@ -109,16 +109,30 @@ export class WebdriverIO {
      * client.middleClick(selector,xoffset,yoffset);
      * ```
      */
-    middleClick(selector: string, xoffset: number, yoffset: number): WebdriverIO;
+    middleClick(selector: string, xoffset: number, yoffset: number): WebdriverIO<void>;
 
     /**
      *
-     * Move the mouse by an offset of the specificed element. If an element is provided but no offset, the mouse will be moved to the center of the element. If the element is not
+     * Move the mouse by an offset of the specificed element. The mouse will be moved to the center of the element. If the element is not
      * visible, it will be scrolled into view.
      *
      * @param {String} selector element to move to
-     * @param {Number} xoffset  X offset to move to, relative to the top-left corner of the element. If not specified, the mouse will move to the middle of the element.
-     * @param {Number} yoffset  Y offset to move to, relative to the top-left corner of the element. If not specified, the mouse will move to the middle of the element.
+     * @return self reference
+     * ### Usage
+     * 
+     * ```
+     * client.moveToObject(selector);
+     * ```
+     */
+    moveToObject(selector: string): WebdriverIO<void>;
+
+    /**
+     *
+     * Move the mouse by an offset of the specificed element. The element will move according to x & y offset. If the element is not visible, it will be scrolled into view.
+     *
+     * @param {String} selector element to move to
+     * @param {Number} xoffset  X offset to move to, relative to the top-left corner of the element.
+     * @param {Number} yoffset  Y offset to move to, relative to the top-left corner of the element.
      * @return self reference
      * 
      * ### Usage
@@ -127,7 +141,7 @@ export class WebdriverIO {
      * client.moveToObject(selector,xoffset,yoffset);
      * ```
      */
-    moveToObject(selector: string, xoffset: number, yoffset: number): WebdriverIO;
+    moveToObject(selector: string, xoffset: number, yoffset: number): WebdriverIO<void>;
 
     /**
      * Apply right click on an element. If selector is not provided, click on the last moved-to location.
@@ -143,7 +157,7 @@ export class WebdriverIO {
      * client.rightClick(selector,xoffset,yoffset);
      * ```
      */
-    rightClick(selector: string, xoffset: number, yoffset: number): WebdriverIO;
+    rightClick(selector: string, xoffset: number, yoffset: number): WebdriverIO<void>;
 
     /**
      * Select option with a specific value.
@@ -159,7 +173,7 @@ export class WebdriverIO {
      * client.selectByAttribute(selector,attribute,value);
      * ```
      */
-    selectByAttribute(selector: string, attribute: string, value: string): WebdriverIO;
+    selectByAttribute(selector: string, attribute: string, value: string): WebdriverIO<void>;
 
     /**
      * Select option with a specific index.
@@ -174,7 +188,7 @@ export class WebdriverIO {
      * client.selectByIndex(selector,index);
      * ```
      */
-    selectByIndex(selector: string, index: number): WebdriverIO;
+    selectByIndex(selector: string, index: number): WebdriverIO<void>;
 
     /**
      * Select option with a specific value.
@@ -189,7 +203,7 @@ export class WebdriverIO {
      * client.selectByValue(selector,value);
      * ```
      */
-    selectByValue(selector: string, value: string): WebdriverIO;
+    selectByValue(selector: string, value: string): WebdriverIO<void>;
 
     /**
      * Select option that display text matching the argument.
@@ -204,7 +218,7 @@ export class WebdriverIO {
      * client.selectByVisibleText(selector,text);
      * ```
      */
-    selectByVisibleText(selector: string, text: string): WebdriverIO;
+    selectByVisibleText(selector: string, text: string): WebdriverIO<void>;
 
     /**
      * Works just like execute, only you can use selectors to pass html elements to the function you wish to execute in the browser.
@@ -226,7 +240,7 @@ export class WebdriverIO {
      * client.selectorExecute(selectors,script[,argument1,...,argumentN]);
      * ```
      */
-    selectorExecute(selectors: string | string[], script: Function, ...args: any[]): WebdriverIO;
+    selectorExecute<P>(selectors: string | string[], script: (elements: HTMLElement | HTMLElement[], ...args: any[]) => P, ...args: any[]): WebdriverIO<P>;
 
     /**
      * Works just like execute, only you can use Selenium selector strategies to pass html elements to the asynchronous function you wish to execute in the browser.
@@ -247,10 +261,10 @@ export class WebdriverIO {
      * client.selectorExecuteAsync(selectors,script[,argument1,...,argumentN]);
      * ```
      */
-    selectorExecuteAsync(selectors: string | string[], script: Function, ...args: any[]): WebdriverIO;
+    selectorExecuteAsync<P>(selectors: string | string[], script: (elements: HTMLElement | HTMLElement[], ...args: any[]) => P, ...args: any[]): WebdriverIO<P>;
 
     /**
-     * Send a sequence of key strokes to an element (clears value before). You can also use unicode characters like Left arrow or Back space. WebdriverIO will take care of
+     * Send a sequence of key strokes to an element (clears value before). You can also use unicode characters like Left arrow or Back space. WebdriverIO<T> will take care of
      * translating them into unicode characters. You’ll find all supported characters [here](https://w3c.github.io/webdriver/webdriver-spec.html#dfn-character-types).
      * To do that, the value has to correspond to a key from the table.
      * 
@@ -264,7 +278,7 @@ export class WebdriverIO {
      * client.setValue(selector[,values]);
      * ```
      */
-    setValue(selector: string, values?: string | number): WebdriverIO;
+    setValue(selector: string, values?: string | number): WebdriverIO<void>;
 
     /**
      * Submits a form found by given selector. The submit command may also be applied o any element that is a descendant of a `<form>` element.
@@ -278,7 +292,7 @@ export class WebdriverIO {
      * client.submitForm(selector);
      * ```
      */
-    submitForm(selector: string): WebdriverIO;
+    submitForm(selector: string): WebdriverIO<void>;
     // End of "Action" section
 
     // Start of "Cookie" section
@@ -293,7 +307,7 @@ export class WebdriverIO {
      * client.deleteCookie([name]);
      * ```
      */
-    deleteCookie(name?: string): WebdriverIO;
+    deleteCookie(name?: string): WebdriverIO<T>;
 
     /**
      * Retrieve a [cookie](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page. You can query a specific cookie by
@@ -308,7 +322,7 @@ export class WebdriverIO {
      * client.getCookie([name]);
      * ```
      */
-    getCookie(name?: string): WebdriverIO;
+    getCookie(name?: string): WebdriverIO<T>;
 
     /**
      * Sets a [cookie](https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#cookie-json-object) for current page.
@@ -322,7 +336,7 @@ export class WebdriverIO {
      * client.setCookie(cookie);
      * ```
      */
-    setCookie(cookie: Object): WebdriverIO;
+    setCookie(cookie: Object): WebdriverIO<T>;
     // End of "Cookie" section
 
     // Start of "grid" section
@@ -337,7 +351,7 @@ export class WebdriverIO {
      * client.getGridNodeDetails();
      * ```
      */
-    getGridNodeDetails(): WebdriverIO;
+    getGridNodeDetails(): WebdriverIO<T>;
 
     /**
      * 
@@ -349,7 +363,7 @@ export class WebdriverIO {
      * client.gridProxyDetails();
      * ```
      */
-    gridProxyDetails(): WebdriverIO;
+    gridProxyDetails(): WebdriverIO<T>;
 
     /**
      * 
@@ -361,7 +375,7 @@ export class WebdriverIO {
      * client.gridTestSession();
      * ```
      */
-    gridTestSession(): WebdriverIO;
+    gridTestSession(): WebdriverIO<T>;
     // End of "Grid" section
 
     // Strat of "Mobile" section
@@ -378,7 +392,7 @@ export class WebdriverIO {
      * client.background(seconds);
      * ```
      */
-    background(seconds: number): WebdriverIO;
+    background(seconds: number): WebdriverIO<T>;
 
     /**
      * Close the given application.
@@ -392,7 +406,7 @@ export class WebdriverIO {
      * client.closeApp();
      * ```
      */
-    closeApp(): WebdriverIO;
+    closeApp(): WebdriverIO<T>;
 
     /**
      * Retrieve current context or switch to the specified context
@@ -408,7 +422,7 @@ export class WebdriverIO {
      * client.context([id]);
      * ```
      */
-    context(id?: string): WebdriverIO;
+    context(id?: string): WebdriverIO<T>;
 
     /**
      * list all available contexts.
@@ -423,7 +437,7 @@ export class WebdriverIO {
      * client.contexts();
      * ```
      */
-    contexts(): WebdriverIO;
+    contexts(): WebdriverIO<T>;
 
     /**
      * Receive the current activity on an Android device.
@@ -437,7 +451,7 @@ export class WebdriverIO {
      * client.currentActivity();
      * ```
      */
-    currentActivity(): WebdriverIO;
+    currentActivity(): WebdriverIO<T>;
 
     /**
      * Send a key event to the device.
@@ -453,7 +467,7 @@ export class WebdriverIO {
      * client.deviceKeyEvent(keycode[, metastate]);
      * ```
      */
-    deviceKeyEvent(keycode: number, metastate?: Object): WebdriverIO;
+    deviceKeyEvent(keycode: number, metastate?: Object): WebdriverIO<T>;
 
     /**
      * Get all defined Strings from an app for the default language.
@@ -468,7 +482,7 @@ export class WebdriverIO {
      * client.getAppStrings(language);
      * ```
      */
-    getAppStrings(language: string): WebdriverIO;
+    getAppStrings(language: string): WebdriverIO<T>;
 
     /**
      * Get current device activity.
@@ -482,7 +496,7 @@ export class WebdriverIO {
      * client.getCurrentDeviceActivity();
      * ```
      */
-    getCurrentDeviceActivity(): WebdriverIO;
+    getCurrentDeviceActivity(): WebdriverIO<T>;
 
     /**
      * Captures iOS device date and time (command works only for real devices).
@@ -496,7 +510,7 @@ export class WebdriverIO {
      * client.getDeviceTime();
      * ```
      */
-    getDeviceTime(): WebdriverIO;
+    getDeviceTime(): WebdriverIO<T>;
 
     /**
      * Get the current geolocation.
@@ -509,11 +523,11 @@ export class WebdriverIO {
      * client.getGeoLocation();
      * ```
      */
-    getGeoLocation(): WebdriverIO;
+    getGeoLocation(): WebdriverIO<T>;
 
     /**
      * Get informations about the current network connection (Data/WIFI/Airplane). The actual server value will be a number
-     *  (see `getNetworkConnection.js` example). However WebdriverIO additional properties to the response object to allow
+     *  (see `getNetworkConnection.js` example). However WebdriverIO<T> additional properties to the response object to allow
      *  easier assertions (see `getNetworkConnectionEasier.js` example).
      * 
      * @return self reference
@@ -525,7 +539,7 @@ export class WebdriverIO {
      * client.getNetworkConnection();
      * ```
      */
-    getNetworkConnection(): WebdriverIO;
+    getNetworkConnection(): WebdriverIO<T>;
 
     /**
      * Get the current browser orientation.
@@ -538,7 +552,7 @@ export class WebdriverIO {
      * client.getOrientation();
      * ```
      */
-    getOrientation(): WebdriverIO;
+    getOrientation(): WebdriverIO<T>;
 
     /**
      * Hide the keyboard.
@@ -554,7 +568,7 @@ export class WebdriverIO {
      * client.hideDeviceKeyboard(strategy);
      * ```
      */
-    hideDeviceKeyboard(strategy: string): WebdriverIO;
+    hideDeviceKeyboard(strategy: string): WebdriverIO<T>;
 
     /**
      * Long press on an element using finger motion events. This command works only in a mobile context.
@@ -567,7 +581,7 @@ export class WebdriverIO {
      * client.hold(selector);
      * ```
      */
-    hold(selector: string): WebdriverIO;
+    hold(selector: string): WebdriverIO<T>;
 
     /**
      * Install an app on device.
@@ -582,7 +596,7 @@ export class WebdriverIO {
      * client.installApp(path);
      * ```
      */
-    installApp(path: string): WebdriverIO;
+    installApp(path: string): WebdriverIO<T>;
 
     /**
      * Check if an app is installed.
@@ -597,7 +611,7 @@ export class WebdriverIO {
      * client.isAppInstalled(bundleId);
      * ```
      */
-    isAppInstalled(bundleId: string): WebdriverIO;
+    isAppInstalled(bundleId: string): WebdriverIO<T>;
 
     /**
      * Check whether the device is locked or not.
@@ -610,7 +624,7 @@ export class WebdriverIO {
      * client.isLocked();
      * ```
      */
-    isLocked(): WebdriverIO;
+    isLocked(): WebdriverIO<T>;
 
     /**
      * Launch the session for the desired capabilities. Note that this is the companion to the `autoLaunch=false` capability. 
@@ -626,7 +640,7 @@ export class WebdriverIO {
      * client.launch();
      * ```
      */
-    launch(): WebdriverIO;
+    launch(): WebdriverIO<T>;
 
     /**
      * Lock the device.
@@ -641,7 +655,7 @@ export class WebdriverIO {
      * client.lock(seconds);
      * ```
      */
-    lock(seconds: number): WebdriverIO;
+    lock(seconds: number): WebdriverIO<T>;
 
     /**
      * Press a particular key code on the device.
@@ -657,7 +671,7 @@ export class WebdriverIO {
      * client.longPressKeycode(keycode,metastate);
      * ```
      */
-    longPressKeycode(keycode: string, metastate: string): WebdriverIO;
+    longPressKeycode(keycode: string, metastate: string): WebdriverIO<T>;
 
     /**
      * Open the notifications pane on the device.
@@ -670,7 +684,7 @@ export class WebdriverIO {
      * client.openNotifications();
      * ```
      */
-    openNotifications(): WebdriverIO;
+    openNotifications(): WebdriverIO<T>;
 
     /**
      * Protocol bindings for all mobile orientation operations. (Not part of the official Webdriver specification).
@@ -685,7 +699,7 @@ export class WebdriverIO {
      * client.orientation([deviceOrientation]);
      * ```
      */
-    orientation(deviceOrientation?: string): WebdriverIO;
+    orientation(deviceOrientation?: string): WebdriverIO<T>;
 
     /**
      * Perform multi touch action
@@ -700,7 +714,7 @@ export class WebdriverIO {
      * client.performMultiAction(touchAttr);
      * ```
      */
-    performMultiAction(touchAttr: Object): WebdriverIO;
+    performMultiAction(touchAttr: Object): WebdriverIO<T>;
 
     /**
      * Perform touch action
@@ -715,7 +729,7 @@ export class WebdriverIO {
      * client.performTouchAction(touchAttr);
      * ```
      */
-    performTouchAction(touchAttr: Object): WebdriverIO;
+    performTouchAction(touchAttr: Object): WebdriverIO<T>;
 
     /**
      * Press a particular key code on the device.
@@ -731,7 +745,7 @@ export class WebdriverIO {
      * client.pressKeycode(keycode,metastate);
      * ```
      */
-    pressKeycode(keycode: string, metastate: string): WebdriverIO;
+    pressKeycode(keycode: string, metastate: string): WebdriverIO<T>;
 
     /**
      * Pulls a file from the device.
@@ -746,7 +760,7 @@ export class WebdriverIO {
      * client.pullFile(path);
      * ```
      */
-    pullFile(path: string): WebdriverIO;
+    pullFile(path: string): WebdriverIO<T>;
 
     /**
      * Pulls a folder from the device's file system.
@@ -760,7 +774,7 @@ export class WebdriverIO {
      * client.pullFolder(path);
      * ```
      */
-    pullFolder(path: string): WebdriverIO;
+    pullFolder(path: string): WebdriverIO<T>;
 
     /**
      *
@@ -773,7 +787,7 @@ export class WebdriverIO {
      * @type mobile
      * @for ios, android
      */
-    pushFile(path: string, base64Data: string): WebdriverIO;
+    pushFile(path: string, base64Data: string): WebdriverIO<T>;
 
     /**
      * Release touch sequenz on specific element.
@@ -786,7 +800,7 @@ export class WebdriverIO {
      * client.release(selector);
      * ```
      */
-    release(selector: string): WebdriverIO;
+    release(selector: string): WebdriverIO<T>;
 
     /**
      * Remove an app from the device.
@@ -801,7 +815,7 @@ export class WebdriverIO {
      * client.removeApp(bundleId);
      * ```
      */
-    removeApp(bundleId: string): WebdriverIO;
+    removeApp(bundleId: string): WebdriverIO<T>;
 
     /**
      * Reset the device by clearing the device un- and reinstalling app package (if existing).  
@@ -811,7 +825,7 @@ export class WebdriverIO {
      * @type mobile
      * @for android
      */
-    reset(): WebdriverIO;
+    reset(): WebdriverIO<T>;
 
     /**
      * Perform a rotation gesture centered on the specified element.
@@ -831,7 +845,7 @@ export class WebdriverIO {
      * client.rotate(x, y, duration, radius, rotation, touchCount);
      * ```
      */
-    rotate(x: number, y: number, duration: number, radius: number, rotation: number, touchCount: number): WebdriverIO;
+    rotate(x: number, y: number, duration: number, radius: number, rotation: number, touchCount: number): WebdriverIO<T>;
 
     /**
      * Set the current geo location
@@ -844,7 +858,7 @@ export class WebdriverIO {
      * client.setGeoLocation(location)
      * ```
      */
-    setGeoLocation(location: Object): WebdriverIO;
+    setGeoLocation(location: Object): WebdriverIO<T>;
 
     /**
      * Set immediate value in app.
@@ -859,7 +873,7 @@ export class WebdriverIO {
      * client.setImmediateValue(id, value)
      * ```
      */
-    setImmediateValue(id: string, value: string): WebdriverIO;
+    setImmediateValue(id: string, value: string): WebdriverIO<T>;
 
     /**
      * Set network connection.<br>
@@ -870,7 +884,7 @@ export class WebdriverIO {
      *
      * These properties behave like a bitmask so if you set the network connection to 0 everything will get turned off. However if you 
      * for example set the network connection to 4 it will disable the airplane mode and turn off the wifi so that only data will be enabled. 
-     * WebdriverIO provides a simplified interface to set these values without calculating bitmasks.
+     * WebdriverIO<T> provides a simplified interface to set these values without calculating bitmasks.
      *
      * __Note:__ if you have airplane mode enabled you can't have wifi or data be enabled too (for obvious reasons)
      * 
@@ -894,7 +908,7 @@ export class WebdriverIO {
      * client.setNetworkConnection(type);
      * ```
      */
-    setNetworkConnection(type: number): WebdriverIO;
+    setNetworkConnection(type: number): WebdriverIO<T>;
 
     /**
      * Set the current browser orientation.
@@ -908,7 +922,7 @@ export class WebdriverIO {
      * client.setOrientation(orientation);
      * ```
      */
-    setOrientation(orientation: string): WebdriverIO;
+    setOrientation(orientation: string): WebdriverIO<T>;
 
     /**
      * Either retrieve a JSON hash of all the currently specified settings or update the current setting on the device.
@@ -921,7 +935,7 @@ export class WebdriverIO {
      * client.settings(settings);
      * ```
      */
-    settings(settings: Object): WebdriverIO;
+    settings(settings: Object): WebdriverIO<T>;
 
     /**
      *
@@ -937,7 +951,7 @@ export class WebdriverIO {
      * ```
      *
      */
-    shake(): WebdriverIO;
+    shake(): WebdriverIO<T>;
 
     /**
      * Start an arbitrary Android activity during a session.
@@ -952,7 +966,7 @@ export class WebdriverIO {
      * client.startActivity(appPackage, appActivity);
      * ```
      */
-    startActivity(appPackage: string, appActivity: string): WebdriverIO;
+    startActivity(appPackage: string, appActivity: string): WebdriverIO<T>;
 
     /**
      * Returns application strings of the application in a specific language.
@@ -967,7 +981,7 @@ export class WebdriverIO {
      * client.strings([language});
      * ```
      */
-    strings(language?: string): WebdriverIO;
+    strings(language?: string): WebdriverIO<T>;
 
     /**
      * Perform a swipe on the screen or an element. If you want to swipe on a specific element make sure you provide
@@ -986,7 +1000,7 @@ export class WebdriverIO {
      * client.swipe(selector, xoffset, yoffset, speed);
      * ```
      */
-    swipe(selector?: string, xoffset?: number, yoffset?: number, speed?: number): WebdriverIO;
+    swipe(selector?: string, xoffset?: number, yoffset?: number, speed?: number): WebdriverIO<T>;
 
     /**
      * Perform a swipe down on an element.
@@ -1001,7 +1015,7 @@ export class WebdriverIO {
      * client.swipeDown(selector, yOffset, speed);
      * ```
      */
-    swipeDown(selector: string, yOffset: number, speed: number): WebdriverIO;
+    swipeDown(selector: string, yOffset: number, speed: number): WebdriverIO<T>;
 
     /**
      * Perform a swipe left on an element.
@@ -1016,7 +1030,7 @@ export class WebdriverIO {
      * client.swipeLeft(selector, xOffset, speed);
      * ```
      */
-    swipeLeft(selector: string, xOffset: number, speed: number): WebdriverIO;
+    swipeLeft(selector: string, xOffset: number, speed: number): WebdriverIO<T>;
 
     /**
      * Perform a swipe right on an element.
@@ -1031,7 +1045,7 @@ export class WebdriverIO {
      * client.swipeRight(selector, xOffset, speed);
      * ```
      */
-    swipeRight(selector: string, xOffset: number, speed: number): WebdriverIO;
+    swipeRight(selector: string, xOffset: number, speed: number): WebdriverIO<T>;
 
     /**
      * Perform a swipe up on an element.
@@ -1046,7 +1060,7 @@ export class WebdriverIO {
      * client.swipeUp(selector, yOffset, speed);
      * ```
      */
-    swipeUp(selector: string, yOffset: number, speed: number): WebdriverIO;
+    swipeUp(selector: string, yOffset: number, speed: number): WebdriverIO<T>;
 
     /**
      * Switch the state (enabled/disabled) of airplane mode.
@@ -1059,7 +1073,7 @@ export class WebdriverIO {
      * client.toggleAirplaneMode();
      * ```
      */
-    toggleAirplaneMode(): WebdriverIO;
+    toggleAirplaneMode(): WebdriverIO<T>;
 
     /**
      * Switch the state (enabled/disabled) of data service.
@@ -1072,7 +1086,7 @@ export class WebdriverIO {
      * client.toggleData();
      * ```
      */
-    toggleData(): WebdriverIO;
+    toggleData(): WebdriverIO<T>;
 
     /**
      * Switch the state (enabled/disabled) of the location service.
@@ -1085,7 +1099,7 @@ export class WebdriverIO {
      * client.toggleLocationServices();
      * ```
      */
-    toggleLocationServices(): WebdriverIO;
+    toggleLocationServices(): WebdriverIO<T>;
 
     /**
      * Switch the state (enabled/disabled) of the wifi service.
@@ -1098,7 +1112,7 @@ export class WebdriverIO {
      * client.toggleWiFi();
      * ```
      */
-    toggleWiFi(): WebdriverIO;
+    toggleWiFi(): WebdriverIO<T>;
 
     /**
      * Put finger on an element (only in mobile context).
@@ -1113,7 +1127,7 @@ export class WebdriverIO {
      * client.touch(selector, longClick);
      * ```
      */
-    touch(selector: string, longClick: boolean): WebdriverIO;
+    touch(selector: string, longClick: boolean): WebdriverIO<T>;
 
     /**
      * Performs multiple touch actions. The action object is an array and its objects have to contain the action name (longPress, press, 
@@ -1129,7 +1143,7 @@ export class WebdriverIO {
      * client.touchMultiPerform(actions);
      * ```
      */
-    touchMultiPerform(actions: Object): WebdriverIO;
+    touchMultiPerform(actions: Object): WebdriverIO<T>;
 
     /**
      * Performs a specific touch action. The action object need to contain the action name (longPress, press, tap, wait, moveTo, release) and additional 
@@ -1145,7 +1159,7 @@ export class WebdriverIO {
      * client.touchPerform(actions);
      * ```
      */
-    touchPerform(actions: Object): WebdriverIO;
+    touchPerform(actions: Object): WebdriverIO<T>;
 
     /**
      * Unlock the device.
@@ -1157,7 +1171,7 @@ export class WebdriverIO {
      * client.unlock();
      * ```
      */
-    unlock(): WebdriverIO;
+    unlock(): WebdriverIO<T>;
     // End of "Mobile" section
 
     // Start of "Property" section
@@ -1174,7 +1188,7 @@ export class WebdriverIO {
      * client.getAttribute(selector,attributeName);
      * ```
      */
-    getAttribute(selector: string, attributeName: string): WebdriverIO;
+    getAttribute(selector: string, attributeName: string): WebdriverIO<T>;
 
     /**
      *  Get a css property from a DOM-element selected by given selector. The return value is formatted to be testable. 
@@ -1195,7 +1209,7 @@ export class WebdriverIO {
      * client.getCssProperty(selector,cssProperty);
      * ```
      */
-    getCssProperty(selector: string, cssProperty: string): WebdriverIO;
+    getCssProperty(selector: string, cssProperty: string): WebdriverIO<CssProperty | CssProperty[]>;
 
     /**
      * Get the width and height for an DOM-element based given selector.
@@ -1204,14 +1218,28 @@ export class WebdriverIO {
      * @param {String} property property to get the value, possible values are either `width` or `height`.
      * @returns self reference
      * 
-     * @see {@link Size}
      * ### Usage
      * 
      * ```
      * client.getElementSize(selector[, property]);
      * ```
      */
-    getElementSize(selector: string, property?: string): WebdriverIO;
+    getElementSize(selector: string, property: string): WebdriverIO<number | number[]>;
+
+    /**
+     * Get the width and height for an DOM-element based given selector.
+     * 
+     * @param {String} selector element with requested size
+     * @returns self reference
+     * 
+     * @see {@link Size}
+     * ### Usage
+     * 
+     * ```
+     * client.getElementSize(selector);
+     * ```
+     */
+    getElementSize(selector: string): WebdriverIO<Size | Size[]>;
 
     /**
      * Get source code of specified DOM element by selector.
@@ -1226,7 +1254,7 @@ export class WebdriverIO {
      * client.getHTML(selector[,includeSelectorTag]);
      * ```
      */
-    getHTML(selector: string, includeSelectorTag?: boolean): WebdriverIO;
+    getHTML(selector: string, includeSelectorTag?: boolean): WebdriverIO<T>;
 
     /**
      * Determine an element’s location on the page. The point (0, 0) refers to the upper-left corner of the page.
@@ -1254,7 +1282,7 @@ export class WebdriverIO {
      * client.getLocationInView(selector);
      * ```
      */
-    getLocationInView(selector: string): WebdriverIO;
+    getLocationInView(selector: string): WebdriverIO<T>;
 
     /**
      * Get source code of the page.
@@ -1267,7 +1295,7 @@ export class WebdriverIO {
      * client.getSource();
      * ```
      */
-    getSource(): WebdriverIO;
+    getSource(): WebdriverIO<T>;
 
     /**
      * Get tag name of a DOM-element found by given selector.
@@ -1281,7 +1309,7 @@ export class WebdriverIO {
      * client.getTagName(selector);
      * ```
      */
-    getTagName(selector: string): WebdriverIO;
+    getTagName(selector: string): WebdriverIO<T>;
 
     /**
      * Get the text content from a DOM-element found by given selector. Make sure the element you want to request the text from 
@@ -1298,7 +1326,7 @@ export class WebdriverIO {
      * client.getText(selector);
      * ```
      */
-    getText(selector: string): WebdriverIO;
+    getText(selector: string): WebdriverIO<string>;
 
     /**
      * Get the title of current opened website.
@@ -1311,7 +1339,7 @@ export class WebdriverIO {
      * client.getTitle();
      * ```
      */
-    getTitle(): WebdriverIO;
+    getTitle(): WebdriverIO<T>;
 
     /**
      * Get the url of current opened website.
@@ -1324,7 +1352,7 @@ export class WebdriverIO {
      * client.getUrl();
      * ```
      */
-    getUrl(): WebdriverIO;
+    getUrl(): WebdriverIO<T>;
 
     /**
      * Get the value of a `<textarea>` or text `<input>` found by given selector.
@@ -1338,7 +1366,7 @@ export class WebdriverIO {
      * client.getValue(selector);
      * ```
      */
-    getValue(selector: string): WebdriverIO;
+    getValue(selector: string): WebdriverIO<T>;
     // End of "Property" section
 
     // Start of "Protocol" section
@@ -1356,7 +1384,7 @@ export class WebdriverIO {
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#accept-alert
      * @type protocol
      */
-    alertAccept(): WebdriverIO;
+    alertAccept(): WebdriverIO<T>;
 
     /**
      * Dismisses the currently displayed alert dialog. For confirm() and prompt() dialogs, this is equivalent to clicking the 'Cancel' button. For alert()
@@ -1372,7 +1400,7 @@ export class WebdriverIO {
      * * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dismiss-alert
      * @type protocol
      */
-    alertDismiss(): WebdriverIO;
+    alertDismiss(): WebdriverIO<T>;
 
     /**
      * Gets the text of the currently displayed JavaScript alert(), confirm(), or prompt() dialog.
@@ -1389,7 +1417,7 @@ export class WebdriverIO {
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#send-alert-text
      * @type protocol
      */
-    alertText(text?: string): WebdriverIO;
+    alertText(text?: string): WebdriverIO<T>;
 
     /**
      * Get the status of the html5 application cache.
@@ -1405,7 +1433,7 @@ export class WebdriverIO {
      * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidapplication_cachestatus
      * @type protocol
      */
-    applicationCacheStatus(): WebdriverIO;
+    applicationCacheStatus(): WebdriverIO<T>;
 
     /**
      * Navigate backwards in the browser history, if possible.
@@ -1419,7 +1447,7 @@ export class WebdriverIO {
      * @see https://w3c.github.io/webdriver/webdriver-spec.html#back
      * @type protocol
      */
-    back(): WebdriverIO;
+    back(): WebdriverIO<T>;
 
     /**
      * * Click and hold the left mouse button (at the coordinates set by the last moveto command). Note that the next mouse-related command 
@@ -1436,7 +1464,7 @@ export class WebdriverIO {
      * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidbuttondown
      * @type protocol
      */
-    buttonDown(button: number): WebdriverIO;
+    buttonDown(button: number): WebdriverIO<T>;
 
     /**
      * Click any mouse button (at the coordinates set by the last moveto command). Note  that calling this command after calling 
@@ -1452,7 +1480,7 @@ export class WebdriverIO {
      * client.buttonPress(button);
      * ```
      */
-    buttonPress(button: number): WebdriverIO;
+    buttonPress(button: number): WebdriverIO<T>;
 
     /**
      * Releases the mouse button previously held (where the mouse is currently at). Must be called once for every buttondown command issued. See the note in click and
@@ -1469,7 +1497,7 @@ export class WebdriverIO {
      * client.buttonUp(button);
      * ```
      */
-    buttonUp(button: number): WebdriverIO;
+    buttonUp(button: number): WebdriverIO<T>;
 
     /**
      * Protocol binding to operate with cookies on the current page.
@@ -1486,7 +1514,7 @@ export class WebdriverIO {
      * client.cookie([method][,args]);
      * ```
      */
-    cookie(method?: string, args?: Object | string): WebdriverIO;
+    cookie(method?: string, args?: Object | string): WebdriverIO<T>;
 
     /**
      * Double-clicks at the current mouse coordinates (set by moveto. (Not part of the official Webdriver specification).
@@ -1501,7 +1529,7 @@ export class WebdriverIO {
      * client.doDoubleClick();
      * ```
      */
-    doDoubleClick(): WebdriverIO;
+    doDoubleClick(): WebdriverIO<T>;
 
     /**
      * Search for an element on the page, starting from the document root. The located element will be returned as a WebElement JSON object.
@@ -1519,7 +1547,7 @@ export class WebdriverIO {
      * client.element(selector);
      * ```
      */
-    element(selector: string): WebdriverIO;
+    element(selector: string): WebdriverIO<T>;
 
     /**
      * Get the element on the page that currently has focus. The element will be returned as a WebElement JSON object.
@@ -1535,7 +1563,7 @@ export class WebdriverIO {
      * client.elementActive();
      * ```
      */
-    elementActive(): WebdriverIO;
+    elementActive(): WebdriverIO<T>;
 
     /**
      * Get the value of an element's attribute.
@@ -1554,7 +1582,7 @@ export class WebdriverIO {
      * client.elementIdAttribute(ID,attributeName);
      * ```
      */
-    elementIdAttribute(ID: string, attributeName: string): WebdriverIO;
+    elementIdAttribute(ID: string, attributeName: string): WebdriverIO<T>;
 
     /**
      *  Clear a `TEXTAREA` or text `INPUT element's value.
@@ -1570,7 +1598,7 @@ export class WebdriverIO {
      * client.elementIdClear(ID);
      * ```
      */
-    elementIdClear(ID: string): WebdriverIO;
+    elementIdClear(ID: string): WebdriverIO<T>;
 
     /**
      * Click on an element.
@@ -1586,7 +1614,7 @@ export class WebdriverIO {
      * client.elementIdClick(ID);
      * ```
      */
-    elementIdClick(ID: string): WebdriverIO;
+    elementIdClick(ID: string): WebdriverIO<T>;
 
     /**
      * Query the value of an element's computed CSS property. The CSS property to query should be specified using the CSS property name,
@@ -1605,7 +1633,7 @@ export class WebdriverIO {
      * client.elementIdCssProperty(ID,cssPropertyName);
      * ```
      */
-    elementIdCssProperty(ID: string, cssPropertyName: string): WebdriverIO;
+    elementIdCssProperty(ID: string, cssPropertyName: string): WebdriverIO<T>;
 
     /**
      * Determine if an element is currently displayed.
@@ -1622,7 +1650,7 @@ export class WebdriverIO {
      * client.elementIdDisplayed(ID);
      * ```
      */
-    elementIdDisplayed(ID: string): WebdriverIO;
+    elementIdDisplayed(ID: string): WebdriverIO<T>;
 
     /**
      * Search for an element on the page, starting from an element. The located element will be returned as a WebElement JSON object.
@@ -1640,7 +1668,7 @@ export class WebdriverIO {
      * client.elementIdElement(ID,selector);
      * ```
      */
-    elementIdElement(ID: string, selector: string): WebdriverIO;
+    elementIdElement(ID: string, selector: string): WebdriverIO<T>;
 
     /**
      * Search for multiple elements on the page, starting from an element. The located elements will be returned as a WebElement JSON objects.
@@ -1659,7 +1687,7 @@ export class WebdriverIO {
      * client.elementIdElements(ID,selector);
      * ```
      */
-    elementIdElements(ID: string, selector: string): WebdriverIO;
+    elementIdElements(ID: string, selector: string): WebdriverIO<T>;
 
     /**
      * Determine if an element is currently enabled.
@@ -1675,7 +1703,7 @@ export class WebdriverIO {
      * client.elementIdEnabled(ID);
      * ```
      */
-    elementIdEnabled(ID: string): WebdriverIO;
+    elementIdEnabled(ID: string): WebdriverIO<T>;
 
     /**
      * Determine an element's location on the page. The point (0, 0) refers to the upper-left corner of the page. The element's coordinates are returned as a
@@ -1693,7 +1721,7 @@ export class WebdriverIO {
      * client.elementIdLocation(ID);
      * ```
      */
-    elementIdLocation(ID: string): WebdriverIO;
+    elementIdLocation(ID: string): WebdriverIO<T>;
 
     /**
      * Determine an element's location on the screen once it has been scrolled into view.
@@ -1711,7 +1739,7 @@ export class WebdriverIO {
      * elementIdLocationInView(ID);
      * ```
      */
-    elementIdLocationInView(ID: string): WebdriverIO;
+    elementIdLocationInView(ID: string): WebdriverIO<T>;
 
     /**
      * Query for an element's tag name.
@@ -1726,7 +1754,7 @@ export class WebdriverIO {
      * client.elementIdName(ID);
      * ```
      */
-    elementIdName(ID: string): WebdriverIO;
+    elementIdName(ID: string): WebdriverIO<T>;
 
     /**
      * The Get Element Rect command returns the dimensions and coordinates of the given web element. The returned value is a dictionary 
@@ -1744,7 +1772,7 @@ export class WebdriverIO {
      * client.elementIdRect(ID);
      * ```
      */
-    elementIdRect(ID: string): WebdriverIO;
+    elementIdRect(ID: string): WebdriverIO<T>;
 
     /**
      * Determine if an OPTION element, or an INPUT element of type checkbox or radiobutton is currently selected.
@@ -1759,7 +1787,7 @@ export class WebdriverIO {
      * client.elementIdSelected(ID);
      * ```
      */
-    elementIdSelected(ID: string): WebdriverIO;
+    elementIdSelected(ID: string): WebdriverIO<T>;
 
     /**
      * Determine an element's size in pixels. The size will be returned as a JSON object with width and height properties.
@@ -1775,7 +1803,7 @@ export class WebdriverIO {
      * client.elementIdSize(ID);
      * ```
      */
-    elementIdSize(ID: string): WebdriverIO;
+    elementIdSize(ID: string): WebdriverIO<T>;
 
     /**
      * Returns the visible text for the element.
@@ -1790,7 +1818,7 @@ export class WebdriverIO {
      * client.elementIdText(ID);
      * ```
      */
-    elementIdText(ID: string): WebdriverIO;
+    elementIdText(ID: string): WebdriverIO<T>;
 
     /**
      * Send a sequence of key strokes to an element.
@@ -1805,7 +1833,7 @@ export class WebdriverIO {
      * client.elementIdValue(ID,value);
      * ```
      */
-    elementIdValue(ID: string, value: string | string[]): WebdriverIO;
+    elementIdValue(ID: string, value: string | string[]): WebdriverIO<T>;
 
     /**
      * Search for multiple elements on the page, starting from the document root. The located elements will be returned as a WebElement
@@ -1825,7 +1853,7 @@ export class WebdriverIO {
      * client.elements(selector);
      * ```
      */
-    elements(selector: string): WebdriverIO;
+    elements(selector: string): WebdriverIO<T>;
 
     /**
      * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. The executed script is 
@@ -1848,7 +1876,7 @@ export class WebdriverIO {
      * client.execute(script[,argument1,...,argumentN]);
      * ```
      */
-    execute(script: string | Function, ...args: any[]): WebdriverIO;
+    execute(script: string | Function, ...args: any[]): WebdriverIO<T>;
 
     /**
      * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. The executed script is 
@@ -1878,7 +1906,7 @@ export class WebdriverIO {
      * client.executeAsync(script,arguments);
      * ```
      */
-    executeAsync(script: string | Function, ...args: any[]): WebdriverIO;
+    executeAsync(script: string | Function, ...args: any[]): WebdriverIO<T>;
 
     /**
      * Uploads a base64 data object. (not documented, not part of Webdriver specs)
@@ -1891,7 +1919,7 @@ export class WebdriverIO {
      * client.file(data);
      * ```
      */
-    file(data: Object): WebdriverIO;
+    file(data: Object): WebdriverIO<T>;
 
     /**
      * Navigate forwards in the browser history, if possible.
@@ -1903,7 +1931,7 @@ export class WebdriverIO {
      * client.forward();
      * ```
      */
-    forward(): WebdriverIO;
+    forward(): WebdriverIO<T>;
 
     /**
      * Change focus to another frame on the page. If the frame id is null,  the server should switch to the page's default content.
@@ -1918,7 +1946,7 @@ export class WebdriverIO {
      * client.frame(id);
      * ```
      */
-    frame(id: string | Object): WebdriverIO;
+    frame(id: string | Object): WebdriverIO<T>;
 
     /**
      * Change focus to the parent context. If the current context is the top level browsing context, the context remains unchanged.
@@ -1931,7 +1959,7 @@ export class WebdriverIO {
      * client.frameParent();
      * ```
      */
-    frameParent(): WebdriverIO;
+    frameParent(): WebdriverIO<T>;
 
     /**
      * Make an engines that is available (appears on the list returned by getAvailableEngines) active. After this call, the engine will 
@@ -1948,7 +1976,7 @@ export class WebdriverIO {
      * client.imeActivate(engine);
      * ```
      */
-    imeActivate(engine: string): WebdriverIO;
+    imeActivate(engine: string): WebdriverIO<T>;
 
     /**
      * Indicates whether IME input is active at the moment (not if it's available. *(Not part of the official Webdriver specification)*
@@ -1963,7 +1991,7 @@ export class WebdriverIO {
      * client.imeActivated();
      * ```
      */
-    imeActivated(): WebdriverIO;
+    imeActivated(): WebdriverIO<T>;
 
     /**
      * Get the name of the active IME engine. The name string is platform specific. *(Not part of the official Webdriver specification)*
@@ -1977,7 +2005,7 @@ export class WebdriverIO {
      * client.imeActiveEngine();
      * ```
      */
-    imeActiveEngine(): WebdriverIO;
+    imeActiveEngine(): WebdriverIO<T>;
 
     /**
      * List all available engines on the machine. To use an engine, it has to be present in this list. (Not part of the official Webdriver specification)
@@ -1991,7 +2019,7 @@ export class WebdriverIO {
      * client.imeAvailableEngines();
      * ```
      */
-    imeAvailableEngines(): WebdriverIO;
+    imeAvailableEngines(): WebdriverIO<T>;
 
     /**
      * De-activates the currently-active IME engine. (Not part of the official Webdriver specification)
@@ -2004,7 +2032,7 @@ export class WebdriverIO {
      * client.imeDeactivated();
      * ```
      */
-    imeDeactivated(): WebdriverIO;
+    imeDeactivated(): WebdriverIO<T>;
 
     /**
      * Create a new session. The server should attempt to create a session that most closely matches the desired and required capabilities. Required capabilities
@@ -2019,14 +2047,14 @@ export class WebdriverIO {
      * client.init([capabilities]);
      * ```
      */
-    init(capabilities?: Object): WebdriverIO;
+    init(capabilities?: Object): WebdriverIO<T>;
 
     /**
      * Send a sequence of key strokes to the active element. This command is similar to the send keys command in every aspect 
      * except the implicit termination: The modifiers are *not* released at the end of the call. Rather, the state of the modifier 
      * keys is kept between calls, so mouse interactions can be performed while modifier keys are depressed.
      *
-     * You can also use unicode characters like Left arrow or Back space. WebdriverIO will take care of translating them into 
+     * You can also use unicode characters like Left arrow or Back space. WebdriverIO<T> will take care of translating them into 
      * unicode characters. You’ll find all supported characters [here](https://w3c.github.io/webdriver/webdriver-spec.html#h-keyboard-actions). 
      * To do that, the value has to correspond to a key from the table.
      *
@@ -2041,7 +2069,7 @@ export class WebdriverIO {
      * client.keys(value);
      * ```
      */
-    keys(value: string | string[]): WebdriverIO;
+    keys(value: string | string[]): WebdriverIO<T>;
 
     /**
      * Protocol bindings for all localStorage operations. *(Not part of the official Webdriver specification)*
@@ -2056,7 +2084,7 @@ export class WebdriverIO {
      * client.localStorage(method[,args]);
      * ```
      */
-    localStorage(method: string, args: string | Object): WebdriverIO;
+    localStorage(method: string, args: string | Object): WebdriverIO<T>;
 
     /**
      * protocol bindings to get local_storage size. (Not part of the official Webdriver specification)
@@ -2070,7 +2098,7 @@ export class WebdriverIO {
      * client.localStorageSize();
      * ```
      */
-    localStorageSize(): WebdriverIO;
+    localStorageSize(): WebdriverIO<T>;
 
     /**
      * Protocol bindings for all geolocation operations. *(Not part of the official Webdriver specification)*.
@@ -2085,7 +2113,7 @@ export class WebdriverIO {
      * client.location(location);
      * ```
      */
-    location(location?: Object): WebdriverIO;
+    location(location?: Object): WebdriverIO<T>;
 
     /**
      * Get the log for a given log type. Log buffer is reset after each request. *(Not part of the official Webdriver specification)*.
@@ -2100,7 +2128,7 @@ export class WebdriverIO {
      * client.log(type);
      * ```
      */
-    log(type: string): WebdriverIO;
+    log(type: string): WebdriverIO<T>;
 
     /**
      * Get available log types. *(Not part of the official Webdriver specification)*.
@@ -2114,7 +2142,7 @@ export class WebdriverIO {
      * client.logTypes();
      * ```
      */
-    logTypes(): WebdriverIO;
+    logTypes(): WebdriverIO<T>;
 
     /**
      * Move the mouse by an offset of the specificed element. If no element is specified, the move is relative to the current mouse cursor. If an element is provided but
@@ -2132,7 +2160,7 @@ export class WebdriverIO {
      * client.moveTo(element,xoffset,yoffset);
      * ```
      */
-    moveTo(element: string, xoffset: number, yoffset: number): WebdriverIO;
+    moveTo(element: string, xoffset: number, yoffset: number): WebdriverIO<T>;
 
     /**
      * Refresh the current page.
@@ -2145,7 +2173,7 @@ export class WebdriverIO {
      * client.refresh();
      * ```
      */
-    refresh(): WebdriverIO;
+    refresh(): WebdriverIO<T>;
 
     /**
      * Take a screenshot of the current viewport. To get the screenshot of the whole page use the action command {@link saveScreenshot}.
@@ -2159,7 +2187,7 @@ export class WebdriverIO {
      * client.screenshot();
      * ```
      */
-    screenshot(): WebdriverIO;
+    screenshot(): WebdriverIO<T>;
 
     /**
      * Protocol bindings for all session operations. In case you are looking for `[POST] session` to initialise a session on the server, take a look at `/lib/protocol/init`.
@@ -2174,7 +2202,7 @@ export class WebdriverIO {
      * client.session([doWhat],sessionId);
      * ```
      */
-    session(doWhat?: string, sessionId?: string): WebdriverIO;
+    session(doWhat?: string, sessionId?: string): WebdriverIO<T>;
 
     /**
      * Protocol bindings for all sessionStorage operations. *(Not part of the official Webdriver specification)*.
@@ -2189,7 +2217,7 @@ export class WebdriverIO {
      * client.sessionStorage([method][,args]);
      * ```
      */
-    sessionStorage(method?: string, args?: Object | string): WebdriverIO;
+    sessionStorage(method?: string, args?: Object | string): WebdriverIO<T>;
 
     /**
      * Protocol bindings to get the session storage size. *(Not part of the official Webdriver specification)*.
@@ -2202,7 +2230,7 @@ export class WebdriverIO {
      * client.sessionStorageSize();
      * ```
      */
-    sessionStorageSize(): WebdriverIO;
+    sessionStorageSize(): WebdriverIO<T>;
 
     /**
      * Returns a list of the currently active sessions. Each session will be returned
@@ -2224,7 +2252,7 @@ export class WebdriverIO {
      * client.sessions();
      * ```
      */
-    sessions(): WebdriverIO;
+    sessions(): WebdriverIO<T>;
 
     /**
      * Get the current page source.
@@ -2238,7 +2266,7 @@ export class WebdriverIO {
      * client.source();
      * ```
      */
-    source(): WebdriverIO;
+    source(): WebdriverIO<T>;
 
     /**
      * Query the server's current status. The server should respond with a general "HTTP 200 OK" response if it is alive and accepting commands. The response body 
@@ -2264,7 +2292,7 @@ export class WebdriverIO {
      * client.status();
      * ```
      */
-    status(): WebdriverIO;
+    status(): WebdriverIO<T>;
 
     /**
      * Submit a FORM element. The submit command may also be applied to any element that is a descendant of a FORM element. (Not part of the official Webdriver specification).
@@ -2278,7 +2306,7 @@ export class WebdriverIO {
      * client.submit(ID);
      * ```
      */
-    submit(ID: string): WebdriverIO;
+    submit(ID: string): WebdriverIO<T>;
 
     /**
      * Configure the amount of time that a particular type of operation can execute for before they are aborted and a |Timeout| error is returned to the client.
@@ -2293,7 +2321,7 @@ export class WebdriverIO {
      * client.timeouts(type,ms);
      * ```
      */
-    timeouts(type: number, ms: number): WebdriverIO;
+    timeouts(type: number, ms: number): WebdriverIO<T>;
 
     /**
      * Set the amount of time, in milliseconds, that asynchronous scripts executed by /session/:sessionId/execute_async are permitted to run before they are 
@@ -2309,7 +2337,7 @@ export class WebdriverIO {
      * client.timeoutsAsyncScript(ms);
      * ```
      */
-    timeoutsAsyncScript(ms: number): WebdriverIO;
+    timeoutsAsyncScript(ms: number): WebdriverIO<T>;
 
     /**
      * Set the amount of time the driver should wait when searching for elements. When searching for a single element, the driver should poll the page until an 
@@ -2328,7 +2356,7 @@ export class WebdriverIO {
      * client.timeoutsImplicitWait(ms);
      * ```
      */
-    timeoutsImplicitWait(ms: string): WebdriverIO;
+    timeoutsImplicitWait(ms: string): WebdriverIO<T>;
 
     /**
      * Gets an object containing the current page title.
@@ -2341,7 +2369,7 @@ export class WebdriverIO {
      * client.title();
      * ```
      */
-    title(): WebdriverIO;
+    title(): WebdriverIO<T>;
 
     /**
      * Single tap on the touch enabled device.
@@ -2357,7 +2385,7 @@ export class WebdriverIO {
      * client. touchClick(ID);
      * ```
      */
-    touchClick(ID: string): WebdriverIO;
+    touchClick(ID: string): WebdriverIO<T>;
 
     /**
      * Finger down on the screen.
@@ -2373,7 +2401,7 @@ export class WebdriverIO {
      * client.touchDown(x,y);
      * ```
      */
-    touchDown(x: number, y: number): WebdriverIO;
+    touchDown(x: number, y: number): WebdriverIO<T>;
 
     /**
      * Flick on the touch screen using finger motion events. This flick command starts at a particular screen location.
@@ -2391,7 +2419,7 @@ export class WebdriverIO {
      * client.touchFlick(ID,xoffset,yoffset,speed);
      * ```
      */
-    touchFlick(ID: string, xoffset: number, yoffset: number, speed: number): WebdriverIO;
+    touchFlick(ID: string, xoffset: number, yoffset: number, speed: number): WebdriverIO<T>;
 
     /**
      * Long press on the touch screen using finger motion events.
@@ -2408,7 +2436,7 @@ export class WebdriverIO {
      * client.touchLongClick(id);
      * ```
      */
-    touchLongClick(id: string): WebdriverIO;
+    touchLongClick(id: string): WebdriverIO<T>;
 
     /**
      * Finger move on the screen.
@@ -2425,7 +2453,7 @@ export class WebdriverIO {
      * client.touchMove(x,y);
      * ```
      */
-    touchMove(x: number, y: number): WebdriverIO;
+    touchMove(x: number, y: number): WebdriverIO<T>;
 
     /**
      * croll on the touch screen using finger based motion events. If element ID is given start scrolling at a particular screen location.
@@ -2443,7 +2471,7 @@ export class WebdriverIO {
      * client.touchScroll(id,xoffset,yoffset);
      * ```
      */
-    touchScroll(id: string, xoffset: number, yoffset: number): WebdriverIO;
+    touchScroll(id: string, xoffset: number, yoffset: number): WebdriverIO<T>;
 
     /**
      * Finger up on the screen.
@@ -2460,7 +2488,7 @@ export class WebdriverIO {
      * client.touchUp(x,y);
      * ```
      */
-    touchUp(x: number, y: number): WebdriverIO;
+    touchUp(x: number, y: number): WebdriverIO<T>;
 
     /**
      * Protocol binding to load or get the URL of the browser.
@@ -2475,7 +2503,7 @@ export class WebdriverIO {
      * client.url([url]);
      * ```
      */
-    url(url?: string): WebdriverIO;
+    url(url?: string): WebdriverIO<T>;
 
     /**
      * Protocol binding to handle with tabs in the browser.
@@ -2491,7 +2519,7 @@ export class WebdriverIO {
      * client.window([windowHandle]);
      * ```
      */
-    window(windowHandle?: string): WebdriverIO;
+    window(windowHandle?: string): WebdriverIO<T>;
 
     /**
      * Retrieve the current window handle.
@@ -2504,7 +2532,7 @@ export class WebdriverIO {
      * client.windowHandle();
      * ```
      */
-    windowHandle(): WebdriverIO;
+    windowHandle(): WebdriverIO<T>;
 
     /**
      * The Fullscreen Window command invokes the window manager-specific “full screen” operation, if any, on the window containing the current 
@@ -2520,7 +2548,7 @@ export class WebdriverIO {
      * client.windowHandleFullscreen();
      * ```
      */
-    windowHandleFullscreen(): WebdriverIO;
+    windowHandleFullscreen(): WebdriverIO<T>;
 
     /**
      * Maximize the specified window if not already maximized. If the :windowHandle URL parameter is "current", the currently active window will be maximized.
@@ -2534,7 +2562,7 @@ export class WebdriverIO {
      * client.windowHandleMaximize([windowHandle]);
      * ```
      */
-    windowHandleMaximize(windowHandle?: string): WebdriverIO;
+    windowHandleMaximize(windowHandle?: string): WebdriverIO<T>;
 
     /**
      *  Protocol bindings to receive or change the position of the browser window. If the `windowHandle` URL parameter is falsy, the currently active window will be considered.
@@ -2550,7 +2578,7 @@ export class WebdriverIO {
      * client.windowHandlePosition([windowHandle][,position]);
      * ```
      */
-    windowHandlePosition(windowHandle?: string, position?: Object): WebdriverIO;
+    windowHandlePosition(windowHandle?: string, position?: Object): WebdriverIO<T>;
 
     /**
      * Protocol binding to get or change the size of the browser.
@@ -2565,7 +2593,7 @@ export class WebdriverIO {
      * client.windowHandleSize([windowHandle][,dimension]);
      * ```
      */
-    windowHandleSize(windowHandle?: string, dimension?: Object): WebdriverIO;
+    windowHandleSize(windowHandle?: string, dimension?: Object): WebdriverIO<T>;
 
     /** 
      * Retrieve the list of all window handles available to the session.
@@ -2578,7 +2606,7 @@ export class WebdriverIO {
      * client.windowHandles();
      * ```
      */
-    windowHandles(): WebdriverIO;
+    windowHandles(): WebdriverIO<T>;
     // End of "Protocol" section
 
     // Start of "State" section
@@ -2593,7 +2621,7 @@ export class WebdriverIO {
      * client.hasFocus(selector);
      * ```
      */
-    hasFocus(selector: string): WebdriverIO;
+    hasFocus(selector: string): WebdriverIO<T>;
 
     /**
      * Return true or false if the selected DOM-element found by given selector is enabled.
@@ -2606,7 +2634,7 @@ export class WebdriverIO {
      * client.isEnabled(selector);
      * ```
      */
-    isEnabled(selector: string): WebdriverIO;
+    isEnabled(selector: string): WebdriverIO<T>;
 
     /**
      * Returns true if at least one element is existing by given selector.
@@ -2619,7 +2647,7 @@ export class WebdriverIO {
      * client.isExisting(selector);
      * ```
      */
-    isExisting(selector: string): WebdriverIO;
+    isExisting(selector: string): WebdriverIO<T>;
 
     /**
      * Return true or false if an `<option>` element, or an `<input>` element of type checkbox or radio is currently selected found by given selector.
@@ -2632,7 +2660,7 @@ export class WebdriverIO {
      * client.isSelected(selector);
      * ```
      */
-    isSelected(selector: string): WebdriverIO;
+    isSelected(selector: string): WebdriverIO<T>;
 
     /**
      * Return true if the selected DOM-element found by given selector is visible. Returns an array if multiple DOM-elements are found for the given selector.
@@ -2645,7 +2673,7 @@ export class WebdriverIO {
      * client.isVisible(selector);
      * ```
      */
-    isVisible(selector: string): WebdriverIO;
+    isVisible(selector: string): WebdriverIO<T>;
 
     /**
      * Return true if the selected DOM-element found by given selector is visible and within the viewport.
@@ -2658,7 +2686,7 @@ export class WebdriverIO {
      * client.isVisibleWithinViewport(selector);
      * ```
      */
-    isVisibleWithinViewport(selector: string): WebdriverIO;
+    isVisibleWithinViewport(selector: string): WebdriverIO<T>;
     // End of "State" section
 
     // Start of "Utilty" section
@@ -2675,7 +2703,7 @@ export class WebdriverIO {
      * client.addCommand(commandName,customMethod,overwrite);
      * ```
      */
-    addCommand(commandName: string, customMethod: Function, overwrite?: boolean): WebdriverIO;
+    addCommand(commandName: string, customMethod: Function, overwrite?: boolean): WebdriverIO<T>;
 
     /**
      * Call an own function within running chain. It is mostly used to end an async BDD/TDD block (see example below) when running in standalone mode. Using the wdio test runner this command
@@ -2689,7 +2717,7 @@ export class WebdriverIO {
      * client.call(callback);
      * ```
      */
-    call(callback: Function): WebdriverIO;
+    call(callback: Function): WebdriverIO<T>;
 
     /**
      * Given a selector corresponding to an `<input type=file>`, will upload the local file to the browser machine and fill the form accordingly.
@@ -2704,7 +2732,7 @@ export class WebdriverIO {
      * client.chooseFile(selector,localPath);
      * ```
      */
-    chooseFile(selector: string, localPath: string): WebdriverIO;
+    chooseFile(selector: string, localPath: string): WebdriverIO<T>;
 
     /**
      * This command helps you to debug your integration tests. It stops the running queue and gives  you time to jump into the browser and check the state of 
@@ -2721,7 +2749,7 @@ export class WebdriverIO {
      * client.debug();
      * ```
      */
-    debug(): WebdriverIO;
+    debug(): WebdriverIO<T>;
 
     /**
      * End the session and close browser.
@@ -2733,7 +2761,7 @@ export class WebdriverIO {
      * client.end();
      * ```
      */
-    end(): WebdriverIO;
+    end(): WebdriverIO<T>;
 
     /**
      * End all selenium server sessions at once.
@@ -2745,7 +2773,7 @@ export class WebdriverIO {
      * client.endAll();
      * ```
      */
-    endAll(): WebdriverIO;
+    endAll(): WebdriverIO<T>;
 
     /**
      * Returns a list of previous called commands + their arguments.
@@ -2757,7 +2785,7 @@ export class WebdriverIO {
      * client.getCommandHistory();
      * ```
      */
-    getCommandHistory(): WebdriverIO;
+    getCommandHistory(): WebdriverIO<T>;
 
     /**
      * Pauses queue execution for a specific amount of time.
@@ -2770,7 +2798,7 @@ export class WebdriverIO {
      * client.pause(milliseconds);
      * ```
      */
-    pause(ms: number): WebdriverIO;
+    pause(ms: number): WebdriverIO<T>;
 
     /**
      * Creates a new Selenium session with your current capabilities. This is useful if you test highly stateful application where you need to
@@ -2784,12 +2812,12 @@ export class WebdriverIO {
      * client.reload();
      * ```
      */
-    reload(): WebdriverIO;
+    reload(): WebdriverIO<T>;
 
     /**
      * Save a screenshot as a base64 encoded PNG with the current state of the browser. Be aware that some Selenium driver are taking screenshots
      *  of the whole document (e.g. phantomjs) and others only of the current viewport. If you want to always be sure that the screenshot has the 
-     * size of the whole document, use [WebdriverCSS](https://github.com/webdriverio/webdrivercss) to enhance this command with that functionality.
+     * size of the whole document, use [WebdriverCSS](https://github.com/WebdriverIO<T>/webdrivercss) to enhance this command with that functionality.
      * 
      * @param {Function|String}   filename    path to the generated image (relative to the execution directory)
      * @returns self reference
@@ -2799,7 +2827,7 @@ export class WebdriverIO {
      * client.saveScreenshot([filename]);
      * ```
      */
-    saveScreenshot(filenam?: Function | string): WebdriverIO;
+    saveScreenshot(filenam?: Function | string): WebdriverIO<T>;
 
     /**
      * Scroll to a specific element. You can also append/pass two offset values as parameter to scroll to a specific position.
@@ -2814,7 +2842,7 @@ export class WebdriverIO {
      * client.scroll([selector],xoffset,yoffset);
      * ```
      */
-    scroll(selector: string, xoffset: number, yoffset: number): WebdriverIO;
+    scroll(selector: string, xoffset: number, yoffset: number): WebdriverIO<T>;
 
     /**
      * Uploads a file to the selenium server.
@@ -2827,7 +2855,7 @@ export class WebdriverIO {
      * client.uploadFile(localPath);
      * ```
      */
-    uploadFile(localPath: string): WebdriverIO;
+    uploadFile(localPath: string): WebdriverIO<T>;
 
     /**
      * Wait for an element (selected by css selector) for the provided amount of milliseconds to be (dis/en)abled. If multiple elements get queryied by given
@@ -2843,7 +2871,7 @@ export class WebdriverIO {
      * client.waitForEnabled(selector[,ms][,reverse]);
      * ```
      */
-    waitForEnabled(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+    waitForEnabled(selector: string, ms?: number, reverse?: boolean): WebdriverIO<T>;
 
     /**
      * Wait for an element (selected by css selector) for the provided amount of milliseconds to be present within the DOM. Returns true if the selector
@@ -2860,7 +2888,7 @@ export class WebdriverIO {
      * client.waitForExist(selector[,ms][,reverse]);
      * ```
      */
-    waitForExist(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+    waitForExist(selector: string, ms?: number, reverse?: boolean): WebdriverIO<T>;
 
     /**
      * Wait for an option or radio/checkbox element (selected by css selector) for the provided amount of milliseconds to be (un)selected or (un)checked.
@@ -2876,7 +2904,7 @@ export class WebdriverIO {
      * client.waitForSelected(selector[,ms][,reverse]);
      * ```
      */
-    waitForSelected(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+    waitForSelected(selector: string, ms?: number, reverse?: boolean): WebdriverIO<T>;
 
     /**
      * Wait for an element (selected by css selector) for the provided amount of milliseconds to have text/content. If multiple elements get queryied by 
@@ -2892,7 +2920,7 @@ export class WebdriverIO {
      * client.waitForText(selector[,ms][,reverse]);
      * ```
      */
-    waitForText(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+    waitForText(selector: string, ms?: number, reverse?: boolean): WebdriverIO<T>;
 
     /**
      * Wait for an element (selected by css selector) for the provided amount of milliseconds to have a value. If multiple elements get queryied by given selector,
@@ -2908,7 +2936,7 @@ export class WebdriverIO {
      * client.waitForValue(selector[,ms][,reverse]);
      * ```
      */
-    waitForValue(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+    waitForValue(selector: string, ms?: number, reverse?: boolean): WebdriverIO<T>;
 
     /**
      * Wait for an element (selected by css selector) for the provided amount of milliseconds to be (in)visible. If multiple elements get queryied by given selector,
@@ -2924,7 +2952,7 @@ export class WebdriverIO {
      * client.waitForVisible(selector[,ms][,reverse]);
      * ```
      */
-    waitForVisible(selector: string, ms?: number, reverse?: boolean): WebdriverIO;
+    waitForVisible(selector: string, ms?: number, reverse?: boolean): WebdriverIO<T>;
 
     /**
      * This wait command is your universal weapon if you want to wait on something. It expects a condition and waits until that condition is fulfilled with an 
@@ -2941,7 +2969,7 @@ export class WebdriverIO {
      * client.waitUntil(condition[,timeout][,timeoutMsg][,interval]);
      * ```
      */
-    waitUntil(condition: Function, timeout?: number, timeoutMsg?: string, interval?: number): WebdriverIO;
+    waitUntil(condition: Function, timeout?: number, timeoutMsg?: string, interval?: number): WebdriverIO<T>;
 
     // End of "Utilty" section
 
@@ -2957,7 +2985,7 @@ export class WebdriverIO {
      * client.close([windowHandle]);
      * ```
      */
-    close(windowHandle?: string): WebdriverIO;
+    close(windowHandle?: string): WebdriverIO<T>;
 
     /**
      * Retrieve the current window handle.
@@ -2969,7 +2997,7 @@ export class WebdriverIO {
      * client.getCurrentTabId();
      * ```
      */
-    getCurrentTabId(): WebdriverIO;
+    getCurrentTabId(): WebdriverIO<T>;
 
     /**
      * Retrieve a list of all window handles available in the session.
@@ -2981,7 +3009,7 @@ export class WebdriverIO {
      * client.getTabIds();
      * ```
      */
-    getTabIds(): WebdriverIO;
+    getTabIds(): WebdriverIO<T>;
 
     /**
      * Get viewport size of the current browser window.
@@ -2994,7 +3022,7 @@ export class WebdriverIO {
      * client.getViewportSize([property]);
      * ```
      */
-    getViewportSize(property?: string): WebdriverIO;
+    getViewportSize(property?: string): WebdriverIO<T>;
 
     /**
      * Open new window in browser. This command is the equivalent function to `window.open()`. This command does not work in mobile environments.
@@ -3011,7 +3039,7 @@ export class WebdriverIO {
      * client.newWindow(url,windowName,windowFeatures);
      * ```
      */
-    newWindow(url: string, windowName: string, windowFeatures: string): WebdriverIO;
+    newWindow(url: string, windowName: string, windowFeatures: string): WebdriverIO<T>;
 
     /**
      * This command changes the viewport size of the browser. When talking about browser size we have to differentiate between the actual window size
@@ -3027,7 +3055,7 @@ export class WebdriverIO {
      * client.setViewportSize(size,type);
      * ```
      */
-    setViewportSize(size: Object, type: boolean): WebdriverIO;
+    setViewportSize(size: Object, type: boolean): WebdriverIO<T>;
 
     /**
      * Switch focus to a particular tab / window handle.
@@ -3040,11 +3068,25 @@ export class WebdriverIO {
      * client.switchTab([windowHandle]);
      * ```
      */
-    switchTab(windowHandle?: string): WebdriverIO;
+    switchTab(windowHandle?: string): WebdriverIO<T>;
     // End of "Windown" section
 }
 
 export interface Size {
     width: number;
     height: number;
+}
+
+export interface CssProperty {
+    property: string;
+    value: string;
+    parsed: ParsedCssProperty;
+}
+
+export interface ParsedCssProperty {
+    type: string;
+    string: string;
+    quote: string;
+    unit: string;
+    value: string | number | string[] | number[];
 }
