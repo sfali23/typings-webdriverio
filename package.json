@@ -8,7 +8,7 @@
     "build_test": "npm run build && npm test",
     "lint": "tslint -c tslint.json index.d.ts lib/*.d.ts test/*.ts",
     "all": "npm run typedoc && npm run lint && npm run build && npm test",
-    "typedoc": "typedoc --module es5 --target es5 --includeDeclarations --excludeExternals --readme docs_index.md --name \"TypeScript definitions for WebDriverIO\" --mode file --out typedoc index.d.ts typings/index.d.ts lib/webdriverio.d.ts"
+    "typedoc": "typedoc --module es5 --target es5 --includeDeclarations --excludeExternals --readme docs_index.md --name \"TypeScript definitions for WebDriverIO\" --mode file --out typedoc index.d.ts typings/index.d.ts lib/webdriverio.d.ts lib/model.d.ts"
   },
   "license": "MIT",
   "author": "Syed Farhan Ali",

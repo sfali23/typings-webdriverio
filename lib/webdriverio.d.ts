@@ -1,3 +1,6 @@
+import {ApplicationCacheStatus, Button, Cookie, CssProperty, Point, Size, BooleanResponse, CookiesResponse,
+    PointResponse, SizeResponse, StringResponse, WebElementResponse, WebElementsResponse} from './model';
+
 export class WebdriverIO<T> {
 
     then<P>(onFulfilled?: (value: T) => P | WebdriverIO<P>, onRejected?: (err: any) => P | WebdriverIO<P>): WebdriverIO<T>;
@@ -1278,7 +1281,7 @@ export class WebdriverIO<T> {
      * client.getLocation(selector);
      * ```
      */
-    getLocation(selector: string): WebdriverIO<Location>;
+    getLocation(selector: string): WebdriverIO<Point>;
 
     /**
      * Determine an element's location for given `axis`. The possible values for `axis` are `x' or `y'.
@@ -1306,7 +1309,7 @@ export class WebdriverIO<T> {
      * client.getLocationInView(selector);
      * ```
      */
-    getLocationInView(selector: string): WebdriverIO<Location>;
+    getLocationInView(selector: string): WebdriverIO<Point>;
 
     getLocationInView(selector: string, axis: string): WebdriverIO<number>;
 
@@ -1410,7 +1413,7 @@ export class WebdriverIO<T> {
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#accept-alert
      * @type protocol
      */
-    alertAccept(): WebdriverIO<T>;
+    alertAccept(): WebdriverIO<void>;
 
     /**
      * Dismisses the currently displayed alert dialog. For confirm() and prompt() dialogs, this is equivalent to clicking the 'Cancel' button. For alert()
@@ -1426,7 +1429,7 @@ export class WebdriverIO<T> {
      * * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dismiss-alert
      * @type protocol
      */
-    alertDismiss(): WebdriverIO<T>;
+    alertDismiss(): WebdriverIO<void>;
 
     /**
      * Gets the text of the currently displayed JavaScript alert(), confirm(), or prompt() dialog.
@@ -1440,10 +1443,9 @@ export class WebdriverIO<T> {
      * client.alertText([text]);
      * ```
      * @see  https://w3c.github.io/webdriver/webdriver-spec.html#get-alert-text
-     * @see  https://w3c.github.io/webdriver/webdriver-spec.html#send-alert-text
      * @type protocol
      */
-    alertText(text?: string): WebdriverIO<T>;
+    alertText(text?: string): WebdriverIO<string>;
 
     /**
      * Get the status of the html5 application cache.
@@ -1459,7 +1461,7 @@ export class WebdriverIO<T> {
      * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidapplication_cachestatus
      * @type protocol
      */
-    applicationCacheStatus(): WebdriverIO<T>;
+    applicationCacheStatus(): WebdriverIO<ApplicationCacheStatus>;
 
     /**
      * Navigate backwards in the browser history, if possible.
@@ -1473,7 +1475,7 @@ export class WebdriverIO<T> {
      * @see https://w3c.github.io/webdriver/webdriver-spec.html#back
      * @type protocol
      */
-    back(): WebdriverIO<T>;
+    back(): WebdriverIO<void>;
 
     /**
      * * Click and hold the left mouse button (at the coordinates set by the last moveto command). Note that the next mouse-related command 
@@ -1490,7 +1492,7 @@ export class WebdriverIO<T> {
      * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidbuttondown
      * @type protocol
      */
-    buttonDown(button: number): WebdriverIO<T>;
+    buttonDown(button: number | Button): WebdriverIO<void>;
 
     /**
      * Click any mouse button (at the coordinates set by the last moveto command). Note  that calling this command after calling 
@@ -1506,7 +1508,7 @@ export class WebdriverIO<T> {
      * client.buttonPress(button);
      * ```
      */
-    buttonPress(button: number): WebdriverIO<T>;
+    buttonPress(button: number | Button): WebdriverIO<void>;
 
     /**
      * Releases the mouse button previously held (where the mouse is currently at). Must be called once for every buttondown command issued. See the note in click and
@@ -1523,7 +1525,7 @@ export class WebdriverIO<T> {
      * client.buttonUp(button);
      * ```
      */
-    buttonUp(button: number): WebdriverIO<T>;
+    buttonUp(button: number | Button): WebdriverIO<void>;
 
     /**
      * Protocol binding to operate with cookies on the current page.
@@ -1540,7 +1542,7 @@ export class WebdriverIO<T> {
      * client.cookie([method][,args]);
      * ```
      */
-    cookie(method?: string, args?: Object | string): WebdriverIO<T>;
+    cookie(method?: string, args?: Cookie | string): WebdriverIO<CookiesResponse>;
 
     /**
      * Double-clicks at the current mouse coordinates (set by moveto. (Not part of the official Webdriver specification).
@@ -1555,7 +1557,7 @@ export class WebdriverIO<T> {
      * client.doDoubleClick();
      * ```
      */
-    doDoubleClick(): WebdriverIO<T>;
+    doDoubleClick(): WebdriverIO<void>;
 
     /**
      * Search for an element on the page, starting from the document root. The located element will be returned as a WebElement JSON object.
@@ -1573,7 +1575,7 @@ export class WebdriverIO<T> {
      * client.element(selector);
      * ```
      */
-    element(selector: string): WebdriverIO<T>;
+    element(selector: string): WebdriverIO<WebElementResponse>;
 
     /**
      * Get the element on the page that currently has focus. The element will be returned as a WebElement JSON object.
@@ -1589,7 +1591,7 @@ export class WebdriverIO<T> {
      * client.elementActive();
      * ```
      */
-    elementActive(): WebdriverIO<T>;
+    elementActive(): WebdriverIO<WebElementResponse>;
 
     /**
      * Get the value of an element's attribute.
@@ -1608,7 +1610,7 @@ export class WebdriverIO<T> {
      * client.elementIdAttribute(ID,attributeName);
      * ```
      */
-    elementIdAttribute(ID: string, attributeName: string): WebdriverIO<T>;
+    elementIdAttribute(ID: string | number, attributeName: string): WebdriverIO<StringResponse>;
 
     /**
      *  Clear a `TEXTAREA` or text `INPUT element's value.
@@ -1624,7 +1626,7 @@ export class WebdriverIO<T> {
      * client.elementIdClear(ID);
      * ```
      */
-    elementIdClear(ID: string): WebdriverIO<T>;
+    elementIdClear(ID: string | number): WebdriverIO<void>;
 
     /**
      * Click on an element.
@@ -1640,7 +1642,7 @@ export class WebdriverIO<T> {
      * client.elementIdClick(ID);
      * ```
      */
-    elementIdClick(ID: string): WebdriverIO<T>;
+    elementIdClick(ID: string | number): WebdriverIO<void>;
 
     /**
      * Query the value of an element's computed CSS property. The CSS property to query should be specified using the CSS property name,
@@ -1659,7 +1661,7 @@ export class WebdriverIO<T> {
      * client.elementIdCssProperty(ID,cssPropertyName);
      * ```
      */
-    elementIdCssProperty(ID: string, cssPropertyName: string): WebdriverIO<T>;
+    elementIdCssProperty(ID: string | number, cssPropertyName: string): WebdriverIO<StringResponse>;
 
     /**
      * Determine if an element is currently displayed.
@@ -1676,11 +1678,12 @@ export class WebdriverIO<T> {
      * client.elementIdDisplayed(ID);
      * ```
      */
-    elementIdDisplayed(ID: string): WebdriverIO<T>;
+    elementIdDisplayed(ID: string | number): WebdriverIO<BooleanResponse>;
 
     /**
      * Search for an element on the page, starting from an element. The located element will be returned as a WebElement JSON object.
-     * The table below lists the locator strategies that each server should support. Each locator must return the first matching element located in the DOM.
+     * The table below lists the locator strategies that each server should support. Each locator must return the first matching element 
+     * located in the DOM.
      *
      * @param {String} ID ID of a WebElement JSON object to route the command to
      * @param {String} selector selector to query the element
@@ -1694,7 +1697,7 @@ export class WebdriverIO<T> {
      * client.elementIdElement(ID,selector);
      * ```
      */
-    elementIdElement(ID: string, selector: string): WebdriverIO<T>;
+    elementIdElement(ID: string | number, selector: string): WebdriverIO<WebElementResponse>;
 
     /**
      * Search for multiple elements on the page, starting from an element. The located elements will be returned as a WebElement JSON objects.
@@ -1713,7 +1716,7 @@ export class WebdriverIO<T> {
      * client.elementIdElements(ID,selector);
      * ```
      */
-    elementIdElements(ID: string, selector: string): WebdriverIO<T>;
+    elementIdElements(ID: string | number, selector: string): WebdriverIO<WebElementsResponse>;
 
     /**
      * Determine if an element is currently enabled.
@@ -1729,7 +1732,7 @@ export class WebdriverIO<T> {
      * client.elementIdEnabled(ID);
      * ```
      */
-    elementIdEnabled(ID: string): WebdriverIO<T>;
+    elementIdEnabled(ID: string | number): WebdriverIO<BooleanResponse>;
 
     /**
      * Determine an element's location on the page. The point (0, 0) refers to the upper-left corner of the page. The element's coordinates are returned as a
@@ -1747,7 +1750,7 @@ export class WebdriverIO<T> {
      * client.elementIdLocation(ID);
      * ```
      */
-    elementIdLocation(ID: string): WebdriverIO<T>;
+    elementIdLocation(ID: string | number): WebdriverIO<PointResponse>;
 
     /**
      * Determine an element's location on the screen once it has been scrolled into view.
@@ -1765,7 +1768,7 @@ export class WebdriverIO<T> {
      * elementIdLocationInView(ID);
      * ```
      */
-    elementIdLocationInView(ID: string): WebdriverIO<T>;
+    elementIdLocationInView(ID: string | number): WebdriverIO<PointResponse>;
 
     /**
      * Query for an element's tag name.
@@ -1780,7 +1783,7 @@ export class WebdriverIO<T> {
      * client.elementIdName(ID);
      * ```
      */
-    elementIdName(ID: string): WebdriverIO<T>;
+    elementIdName(ID: string | number): WebdriverIO<StringResponse>;
 
     /**
      * The Get Element Rect command returns the dimensions and coordinates of the given web element. The returned value is a dictionary 
@@ -1798,7 +1801,7 @@ export class WebdriverIO<T> {
      * client.elementIdRect(ID);
      * ```
      */
-    elementIdRect(ID: string): WebdriverIO<T>;
+    elementIdRect(ID: string | number): WebdriverIO<PointResponse>;
 
     /**
      * Determine if an OPTION element, or an INPUT element of type checkbox or radiobutton is currently selected.
@@ -1813,7 +1816,7 @@ export class WebdriverIO<T> {
      * client.elementIdSelected(ID);
      * ```
      */
-    elementIdSelected(ID: string): WebdriverIO<T>;
+    elementIdSelected(ID: string | number): WebdriverIO<BooleanResponse>;
 
     /**
      * Determine an element's size in pixels. The size will be returned as a JSON object with width and height properties.
@@ -1829,7 +1832,7 @@ export class WebdriverIO<T> {
      * client.elementIdSize(ID);
      * ```
      */
-    elementIdSize(ID: string): WebdriverIO<T>;
+    elementIdSize(ID: string | number): WebdriverIO<SizeResponse>;
 
     /**
      * Returns the visible text for the element.
@@ -1844,7 +1847,7 @@ export class WebdriverIO<T> {
      * client.elementIdText(ID);
      * ```
      */
-    elementIdText(ID: string): WebdriverIO<T>;
+    elementIdText(ID: string | number): WebdriverIO<StringResponse>;
 
     /**
      * Send a sequence of key strokes to an element.
@@ -1859,7 +1862,7 @@ export class WebdriverIO<T> {
      * client.elementIdValue(ID,value);
      * ```
      */
-    elementIdValue(ID: string, value: string | string[]): WebdriverIO<T>;
+    elementIdValue(ID: string | number, value: string | string[]): WebdriverIO<void>;
 
     /**
      * Search for multiple elements on the page, starting from the document root. The located elements will be returned as a WebElement
@@ -1879,7 +1882,7 @@ export class WebdriverIO<T> {
      * client.elements(selector);
      * ```
      */
-    elements(selector: string): WebdriverIO<T>;
+    elements(selector: string): WebdriverIO<WebElementsResponse>;
 
     /**
      * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. The executed script is 
@@ -3096,38 +3099,4 @@ export class WebdriverIO<T> {
      */
     switchTab(windowHandle?: string): WebdriverIO<T>;
     // End of "Windown" section
-}
-
-export interface Size {
-    width: number;
-    height: number;
-}
-
-export interface Location {
-    x: number;
-    y: number;
-}
-
-export interface CssProperty {
-    property: string;
-    value: string;
-    parsed: ParsedCssProperty;
-}
-
-export interface ParsedCssProperty {
-    type: string;
-    string: string;
-    quote: string;
-    unit: string;
-    value: string | number | string[] | number[];
-}
-
-export interface Cookie {
-    name: string;
-    value: string;
-    path?: string;
-    domain?: string;
-    secure?: boolean;
-    httpOnly?: boolean;
-    expiry?: number;
 }
