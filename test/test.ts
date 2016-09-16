@@ -1,4 +1,5 @@
 import client = require('webdriverio');
+import {Cookie, CookiesResponse} from 'webdriverio';
 
 let options = {
     desiredCapabilities: {
@@ -12,4 +13,11 @@ client.remote(options)
     .setValue('*[name="q"]', 'webdriverio')
     .click('*[name="btnG"]')
     .pause(5000)
+    .cookie().then((result: CookiesResponse) => {
+        let cookies: Cookie[] = result.value;
+        console.log('Cookies: %s', JSON.stringify(cookies));
+    })
+    .elementActive().then((result: any) => {
+        console.log('active: %s', JSON.stringify(result));
+    })
     .end();
