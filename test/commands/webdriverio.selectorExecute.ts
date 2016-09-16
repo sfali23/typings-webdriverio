@@ -9,8 +9,8 @@ let options = {
 client.remote(options)
     .init()
     .url('https://news.ycombinator.com/')
-    .selectorExecute('//div', function (inputs: string, message: string) {
-        return inputs.length + ' ' + message;
+    .selectorExecute('//div', function (elements: HTMLElement[], message: string) {
+        return elements.length + ' ' + message;
     }, 'divs on the page')
     .then(function (res: string) {
         console.log(res);

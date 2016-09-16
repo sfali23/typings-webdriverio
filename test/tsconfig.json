@@ -6,6 +6,7 @@
     },
     "files": [
         "test.ts",
+        "commands.ts",
         "commands/webdriverio.selectBy.ts",
         "commands/webdriverio.selectorExecute.ts",
         "bundle.d.ts",
