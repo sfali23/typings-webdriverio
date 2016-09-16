@@ -51,6 +51,8 @@ export interface Response<T> {
     message?: string;
 }
 
+export interface AnyResponse extends Response<any> { }
+
 export interface BooleanResponse extends Response<Boolean> { }
 
 export interface CookiesResponse extends Response<Cookie[]> { }
@@ -61,11 +63,9 @@ export interface SizeResponse extends Response<Size> { }
 
 export interface StringResponse extends Response<String> { }
 
-export interface WebElementResponse extends Response<WebElementJSONObject> {
-}
+export interface WebElementResponse extends Response<WebElementJSONObject> { }
 
-export interface WebElementsResponse extends Response<WebElementJSONObject[]> {
-}
+export interface WebElementsResponse extends Response<WebElementJSONObject[]> { }
 
 export interface WebElementJSONObject {
     ELEMENT: string;
