@@ -307,11 +307,21 @@ export class WebdriverIO<T> {
      * client.deleteCookie([name]);
      * ```
      */
-    deleteCookie(name?: string): WebdriverIO<T>;
+    deleteCookie(name?: string): WebdriverIO<void>;
 
     /**
-     * Retrieve a [cookie](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page. You can query a specific cookie by
-     *  providing the cookie name or retrieve all.
+     * Retrieve all [cookies](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page. This method will retrieve all cookies.
+     * 
+     * @return self reference
+     * ### Usage
+     * ```
+     * client.getCookie([name]);
+     * ```
+     */
+    getCookie(): WebdriverIO<Cookie[]>;
+
+    /**
+     * Retrieve a [cookie](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page.
      * 
      * @param {String} name name of requested cookie
      * @return self reference
@@ -322,7 +332,7 @@ export class WebdriverIO<T> {
      * client.getCookie([name]);
      * ```
      */
-    getCookie(name?: string): WebdriverIO<T>;
+    getCookie(name: string): WebdriverIO<Cookie>;
 
     /**
      * Sets a [cookie](https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#cookie-json-object) for current page.
@@ -336,7 +346,7 @@ export class WebdriverIO<T> {
      * client.setCookie(cookie);
      * ```
      */
-    setCookie(cookie: Object): WebdriverIO<T>;
+    setCookie(cookie: Object): WebdriverIO<void>;
     // End of "Cookie" section
 
     // Start of "grid" section
@@ -344,38 +354,35 @@ export class WebdriverIO<T> {
      * Get the details of the Selenium Grid node running a session.
      * 
      * @return self reference
-     * 
      * ### Usage
      * 
      * ```
      * client.getGridNodeDetails();
      * ```
      */
-    getGridNodeDetails(): WebdriverIO<T>;
+    getGridNodeDetails(): WebdriverIO<Object>;
 
     /**
      * 
      * @return self reference
-     * 
      * ### Usage
      * 
      * ```
      * client.gridProxyDetails();
      * ```
      */
-    gridProxyDetails(): WebdriverIO<T>;
+    gridProxyDetails(): WebdriverIO<Object>;
 
     /**
      * 
      * @return self reference
-     * 
      * ### Usage
      * 
      * ```
      * client.gridTestSession();
      * ```
      */
-    gridTestSession(): WebdriverIO<T>;
+    gridTestSession(): WebdriverIO<Object>;
     // End of "Grid" section
 
     // Strat of "Mobile" section
@@ -392,7 +399,7 @@ export class WebdriverIO<T> {
      * client.background(seconds);
      * ```
      */
-    background(seconds: number): WebdriverIO<T>;
+    background(seconds: number): WebdriverIO<void>;
 
     /**
      * Close the given application.
@@ -406,7 +413,7 @@ export class WebdriverIO<T> {
      * client.closeApp();
      * ```
      */
-    closeApp(): WebdriverIO<T>;
+    closeApp(): WebdriverIO<void>;
 
     /**
      * Retrieve current context or switch to the specified context
@@ -1188,7 +1195,7 @@ export class WebdriverIO<T> {
      * client.getAttribute(selector,attributeName);
      * ```
      */
-    getAttribute(selector: string, attributeName: string): WebdriverIO<T>;
+    getAttribute(selector: string, attributeName: string): WebdriverIO<string | string[]>;
 
     /**
      *  Get a css property from a DOM-element selected by given selector. The return value is formatted to be testable. 
@@ -1254,21 +1261,38 @@ export class WebdriverIO<T> {
      * client.getHTML(selector[,includeSelectorTag]);
      * ```
      */
-    getHTML(selector: string, includeSelectorTag?: boolean): WebdriverIO<T>;
+    getHTML(selector: string, includeSelectorTag?: boolean): WebdriverIO<string | string[]>;
+
+    getHTML<P>(selector: string, callback: (err: any, html: string | string[]) => P): WebdriverIO<P>;
+
+    getHTML<P>(selector: string, includeSelectorTag: boolean, callback: (err: any, html: string | string[]) => P): WebdriverIO<P>;
 
     /**
      * Determine an element’s location on the page. The point (0, 0) refers to the upper-left corner of the page.
      * 
      * @param {String} selector    element with requested position offset
      * @returns self reference
-     * 
      * ### Usage
      * 
      * ```
      * client.getLocation(selector);
      * ```
      */
-    getLocation(selector: string): boolean;
+    getLocation(selector: string): WebdriverIO<Location>;
+
+    /**
+     * Determine an element's location for given `axis`. The possible values for `axis` are `x' or `y'.
+     * 
+     * @param {String} selector    element with requested position offset
+     * @param {String} axis axis to get the value for
+     * @returns self reference
+     * ### Usage
+     * 
+     * ```
+     * client.getLocation(selector, axis);
+     * ```
+     */
+    getLocation(selector: string, axis: string): WebdriverIO<number>;
 
     /**
      * Determine an element’s location on the screen once it has been scrolled into view.
@@ -1282,7 +1306,9 @@ export class WebdriverIO<T> {
      * client.getLocationInView(selector);
      * ```
      */
-    getLocationInView(selector: string): WebdriverIO<T>;
+    getLocationInView(selector: string): WebdriverIO<Location>;
+
+    getLocationInView(selector: string, axis: string): WebdriverIO<number>;
 
     /**
      * Get source code of the page.
@@ -1295,7 +1321,7 @@ export class WebdriverIO<T> {
      * client.getSource();
      * ```
      */
-    getSource(): WebdriverIO<T>;
+    getSource(): WebdriverIO<string>;
 
     /**
      * Get tag name of a DOM-element found by given selector.
@@ -1309,7 +1335,7 @@ export class WebdriverIO<T> {
      * client.getTagName(selector);
      * ```
      */
-    getTagName(selector: string): WebdriverIO<T>;
+    getTagName(selector: string): WebdriverIO<string>;
 
     /**
      * Get the text content from a DOM-element found by given selector. Make sure the element you want to request the text from 
@@ -1326,7 +1352,7 @@ export class WebdriverIO<T> {
      * client.getText(selector);
      * ```
      */
-    getText(selector: string): WebdriverIO<string>;
+    getText(selector: string): WebdriverIO<string | string[]>;
 
     /**
      * Get the title of current opened website.
@@ -1339,7 +1365,7 @@ export class WebdriverIO<T> {
      * client.getTitle();
      * ```
      */
-    getTitle(): WebdriverIO<T>;
+    getTitle(): WebdriverIO<string>;
 
     /**
      * Get the url of current opened website.
@@ -1352,7 +1378,7 @@ export class WebdriverIO<T> {
      * client.getUrl();
      * ```
      */
-    getUrl(): WebdriverIO<T>;
+    getUrl(): WebdriverIO<string>;
 
     /**
      * Get the value of a `<textarea>` or text `<input>` found by given selector.
@@ -1366,7 +1392,7 @@ export class WebdriverIO<T> {
      * client.getValue(selector);
      * ```
      */
-    getValue(selector: string): WebdriverIO<T>;
+    getValue(selector: string): WebdriverIO<string | string[]>;
     // End of "Property" section
 
     // Start of "Protocol" section
@@ -3077,6 +3103,11 @@ export interface Size {
     height: number;
 }
 
+export interface Location {
+    x: number;
+    y: number;
+}
+
 export interface CssProperty {
     property: string;
     value: string;
@@ -3089,4 +3120,14 @@ export interface ParsedCssProperty {
     quote: string;
     unit: string;
     value: string | number | string[] | number[];
+}
+
+export interface Cookie {
+    name: string;
+    value: string;
+    path?: string;
+    domain?: string;
+    secure?: boolean;
+    httpOnly?: boolean;
+    expiry?: number;
 }

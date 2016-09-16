@@ -31,4 +31,12 @@ client.remote(options).init()
     .then((result: CssProperty) => {
         console.log('Property: {\"background-color\": %s}', result.value);
     })
+    .getHTML('#quote')
+    .then((html: string) => {
+        console.log(html.trim());
+    })
+    .getHTML('#quote', false)
+    .then((html: string) => {
+        console.log(html.trim());
+    })
     .end();
