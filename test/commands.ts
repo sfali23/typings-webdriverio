@@ -1,4 +1,4 @@
-import {Size, Point, CssProperty, WebElementResponse, StringResponse, SizeResponse, BooleanResponse, WebElementsResponse, PointResponse} from 'webdriverio';
+import {Size, Point, CssProperty, WebElementResponse, StringResponse, SizeResponse, BooleanResponse, WebElementsResponse, PointResponse, WebdriverIO} from 'webdriverio';
 import client = require('webdriverio');
 
 let options = {
@@ -7,7 +7,9 @@ let options = {
     }
 };
 
-client.remote(options).init()
+let browser: WebdriverIO<void> = client.remote(options).init();
+
+browser
     .url('file:///C:/Users/sali/GitHub/typings-webdriverio/test/index.html')
     .getElementSize('#google_logo').then((size: Size) => {
         console.log('%s', JSON.stringify(size));
@@ -109,9 +111,25 @@ client.remote(options).init()
     .elementIdText(2).then((result: StringResponse) => {
         console.log('2:%s', result.value);
     })
-    .elementIdValue(4, 'Hello World')
-    .pause(2000)
     .elements('#form').then((result: any) => {
         console.log(JSON.stringify(result));
     })
+    .element('iframe[name="my_iframe"]').then((result: WebElementResponse) => {
+        console.log('FRAME RESULT: %s', JSON.stringify(result));
+        browser.frame(result.value).then((result2: WebdriverIO<void>) => {
+            console.log('FRAME: %s', JSON.stringify(result2));
+            browser.element('#heading1').then((r: WebElementResponse) => {
+                console.log('>>>>>>>>>>>>>>> %s', JSON.stringify(r));
+                browser.elementIdText(r.value.ELEMENT).then((r1: any) => {
+                    console.log(JSON.stringify(r1));
+                });
+            }, (err1: any) => {
+                console.log(':::::::::::::::::::: %s', JSON.stringify(err1));
+            });
+        }, (err: any) => {
+            console.log('FRAME ERROR: %s', JSON.stringify(err));
+        });
+    })
+    .elementIdValue(4, 'Hello World')
+    .pause(2000)
     .end();
