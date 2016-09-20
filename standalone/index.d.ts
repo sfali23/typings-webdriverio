@@ -1367,7 +1367,7 @@ declare namespace WebdriverIO {
          * client.getTitle();
          * ```
          */
-        getTitle(): string | Browser<string>;
+        getTitle(): Browser<string>;
 
         /**
          * Get the url of current opened website.
@@ -2531,7 +2531,7 @@ declare namespace WebdriverIO {
          * client.url([url]);
          * ```
          */
-        url(url?: string): string | Browser<any>;
+        url(url?: string): Browser<any>;
 
         /**
          * Protocol binding to handle with tabs in the browser.
