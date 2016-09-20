@@ -3,18 +3,27 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "typings bundle -o test/bundle.d.ts",
-    "test": "tsc -p test",
-    "build_test": "npm run build && npm test",
-    "lint": "tslint -c tslint.json index.d.ts lib/*.d.ts test/*.ts",
-    "all": "npm run typedoc && npm run lint && npm run build && npm test",
-    "typedoc": "typedoc --module es5 --target es5 --includeDeclarations --excludeExternals --readme docs_index.md --name \"TypeScript definitions for WebDriverIO\" --mode file --out typedoc index.d.ts typings/index.d.ts lib/webdriverio.d.ts lib/model.d.ts"
+    "postinstall": "cd standalone && typings install && typings prune && cd ../wdio && typings install && typings prune",
+    "build-standalone": "cd standalone && tsc -p . && typings bundle -o out --global",
+    "build-wdio": "cd wdio && tsc -p . && typings bundle -o out --global",
+    "build": "npm run build-standalone && npm run build-wdio",
+    "test-standalone": "tsc -p standalone/test",
+    "test-wdio": "tsc -p wdio/test",
+    "test": "npm run test-standalone && npm run test-wdio",
+    "build+test-standalone": "npm run build-standalone && npm run test-standalone",
+    "build+test-wdio": "npm run build-wdio && npm run test-wdio",
+    "build+test": "npm run build+test-standalone && npm run build+test-wdio",
+    "lint": "tslint -c tslint.json standalone/**/*.ts wdio/**/*.ts",
+    "typedoc-standalone": "typedoc --module es6 --target es6 --includeDeclarations --excludeExternals --readme standalone/docs_index.md --name \"TypeScript definitions for WebDriverIO Stanalone mode\" --mode file --out typedoc/standalone stanalone/index.d.ts stanalone/typings/index.d.ts",
+    "typedoc-wdio": "typedoc --module es6 --target es6 --includeDeclarations --excludeExternals --readme wdio/docs_index.md --name \"TypeScript definitions for WebDriverIO WDIO mode\" --mode file --out typedoc/wdio wdio/index.d.ts wdio/typings/index.d.ts",
+    "typedoc": "npm run typedoc-standalone && npm run typedoc-wdio",
+    "all": "npm run typedoc && npm run lint && npm run build+test"
   },
   "license": "MIT",
   "author": "Syed Farhan Ali",
   "keywords": [
     "typings",
-    "selenium-webdriver"
+    "webdriverio"
   ],
   "devDependencies": {
     "tslint": "^3.15.1",

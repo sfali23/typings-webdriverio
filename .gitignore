@@ -3,7 +3,7 @@ typings
 *.js
 *.log
 out/
-test/*.js
-test/*.d.ts
+/**/*.js
 .vscode/*.*
-typedoc
+/**/out
+*.sh
