@@ -309,7 +309,7 @@ declare namespace WebdriverIO {
          * client.deleteCookie([name]);
          * ```
          */
-        deleteCookie(name?: string): Browser<any>;
+        deleteCookie(name?: string): Browser<AnyResponse>;
 
         /**
          * Retrieve all [cookies](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page. This method will retrieve all cookies.
@@ -339,7 +339,7 @@ declare namespace WebdriverIO {
         /**
          * Sets a [cookie](https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#cookie-json-object) for current page.
          * 
-         * @param {Object} cookie cookie object
+         * @param {WebdriverIO.Cookie} cookie cookie object
          * @return self reference
          * 
          * ### Usage
@@ -348,7 +348,7 @@ declare namespace WebdriverIO {
          * client.setCookie(cookie);
          * ```
          */
-        setCookie(cookie: Object): Browser<any>;
+        setCookie(cookie: WebdriverIO.Cookie): Browser<AnyResponse>;
         // End of "Cookie" section
 
         // Start of "grid" section
@@ -1394,7 +1394,7 @@ declare namespace WebdriverIO {
          * client.getValue(selector);
          * ```
          */
-        getValue(selector: string): Browser<string | string[]> | string | string[];
+        getValue(selector: string): Browser<string | string[]>;
         // End of "Property" section
 
         // Start of "Protocol" section
@@ -2903,7 +2903,7 @@ declare namespace WebdriverIO {
          * client.waitForEnabled(selector[,ms][,reverse]);
          * ```
          */
-        waitForEnabled(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForEnabled(selector: string, ms?: number, reverse?: boolean): Browser<boolean>;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to be present within the DOM. Returns true if the selector
@@ -2920,7 +2920,7 @@ declare namespace WebdriverIO {
          * client.waitForExist(selector[,ms][,reverse]);
          * ```
          */
-        waitForExist(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForExist(selector: string, ms?: number, reverse?: boolean): Browser<boolean>;
 
         /**
          * Wait for an option or radio/checkbox element (selected by css selector) for the provided amount of milliseconds to be (un)selected or (un)checked.
@@ -2936,7 +2936,7 @@ declare namespace WebdriverIO {
          * client.waitForSelected(selector[,ms][,reverse]);
          * ```
          */
-        waitForSelected(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForSelected(selector: string, ms?: number, reverse?: boolean): Browser<boolean>;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to have text/content. If multiple elements get queryied by 
@@ -2952,7 +2952,7 @@ declare namespace WebdriverIO {
          * client.waitForText(selector[,ms][,reverse]);
          * ```
          */
-        waitForText(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForText(selector: string, ms?: number, reverse?: boolean): Browser<boolean>;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to have a value. If multiple elements get queryied by given selector,
@@ -2968,7 +2968,7 @@ declare namespace WebdriverIO {
          * client.waitForValue(selector[,ms][,reverse]);
          * ```
          */
-        waitForValue(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForValue(selector: string, ms?: number, reverse?: boolean): Browser<boolean>;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to be (in)visible. If multiple elements get queryied by given selector,
@@ -2984,7 +2984,7 @@ declare namespace WebdriverIO {
          * client.waitForVisible(selector[,ms][,reverse]);
          * ```
          */
-        waitForVisible(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForVisible(selector: string, ms?: number, reverse?: boolean): Browser<boolean>;
 
         /**
          * This wait command is your universal weapon if you want to wait on something. It expects a condition and waits until that condition is fulfilled with an 

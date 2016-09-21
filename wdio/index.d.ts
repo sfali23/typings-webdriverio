@@ -50,7 +50,7 @@ declare namespace WebdriverIO {
          * client.click(selector);
          * ```
          */
-        click(selector: string): Browser<any>;
+        click(selector: string): void;
 
         /**
          * Click on an element based on given selector.
@@ -64,7 +64,7 @@ declare namespace WebdriverIO {
          * client.doubleClick(selector);
          * ```
          */
-        doubleClick(selector: string): Browser<any>;
+        doubleClick(selector: string): void;
 
         /**
          * Drag an item to a destination element.
@@ -190,7 +190,7 @@ declare namespace WebdriverIO {
          * client.selectByIndex(selector,index);
          * ```
          */
-        selectByIndex(selector: string, index: number): Browser<any>;
+        selectByIndex(selector: string, index: number): void;
 
         /**
          * Select option with a specific value.
@@ -205,7 +205,7 @@ declare namespace WebdriverIO {
          * client.selectByValue(selector,value);
          * ```
          */
-        selectByValue(selector: string, value: string): Browser<any>;
+        selectByValue(selector: string, value: string): void;
 
         /**
          * Select option that display text matching the argument.
@@ -220,7 +220,7 @@ declare namespace WebdriverIO {
          * client.selectByVisibleText(selector,text);
          * ```
          */
-        selectByVisibleText(selector: string, text: string): Browser<any>;
+        selectByVisibleText(selector: string, text: string): void;
 
         /**
          * Works just like execute, only you can use selectors to pass html elements to the function you wish to execute in the browser.
@@ -242,7 +242,7 @@ declare namespace WebdriverIO {
          * client.selectorExecute(selectors,script[,argument1,...,argumentN]);
          * ```
          */
-        selectorExecute<P>(selectors: string | string[], script: (elements: HTMLElement | HTMLElement[], ...args: any[]) => P, ...args: any[]): Browser<P>;
+        selectorExecute<P>(selectors: string | string[], script: (elements: HTMLElement | HTMLElement[], ...args: any[]) => P, ...args: any[]): P;
 
         /**
          * Works just like execute, only you can use Selenium selector strategies to pass html elements to the asynchronous function you wish to execute in the browser.
@@ -294,7 +294,7 @@ declare namespace WebdriverIO {
          * client.submitForm(selector);
          * ```
          */
-        submitForm(selector: string): Browser<any>;
+        submitForm(selector: string): AnyResponse;
         // End of "Action" section
 
         // Start of "Cookie" section
@@ -309,7 +309,7 @@ declare namespace WebdriverIO {
          * client.deleteCookie([name]);
          * ```
          */
-        deleteCookie(name?: string): Browser<any>;
+        deleteCookie(name?: string): AnyResponse;
 
         /**
          * Retrieve all [cookies](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page. This method will retrieve all cookies.
@@ -320,7 +320,7 @@ declare namespace WebdriverIO {
          * client.getCookie([name]);
          * ```
          */
-        getCookie(): Browser<WebdriverIO.Cookie[]>;
+        getCookie(): WebdriverIO.Cookie[];
 
         /**
          * Retrieve a [cookie](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page.
@@ -334,12 +334,12 @@ declare namespace WebdriverIO {
          * client.getCookie([name]);
          * ```
          */
-        getCookie(name: string): Browser<WebdriverIO.Cookie>;
+        getCookie(name: string): WebdriverIO.Cookie;
 
         /**
          * Sets a [cookie](https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#cookie-json-object) for current page.
          * 
-         * @param {Object} cookie cookie object
+         * @param {WebdriverIO.Cookie} cookie cookie object
          * @return self reference
          * 
          * ### Usage
@@ -348,7 +348,7 @@ declare namespace WebdriverIO {
          * client.setCookie(cookie);
          * ```
          */
-        setCookie(cookie: Object): Browser<any>;
+        setCookie(cookie: WebdriverIO.Cookie): AnyResponse;
         // End of "Cookie" section
 
         // Start of "grid" section
@@ -1354,7 +1354,7 @@ declare namespace WebdriverIO {
          * client.getText(selector);
          * ```
          */
-        getText(selector: string): Browser<string | string[]>;
+        getText(selector: string): string | string[];
 
         /**
          * Get the title of current opened website.
@@ -1380,7 +1380,7 @@ declare namespace WebdriverIO {
          * client.getUrl();
          * ```
          */
-        getUrl(): Browser<string>;
+        getUrl(): string;
 
         /**
          * Get the value of a `<textarea>` or text `<input>` found by given selector.
@@ -1394,7 +1394,7 @@ declare namespace WebdriverIO {
          * client.getValue(selector);
          * ```
          */
-        getValue(selector: string): Browser<string | string[]> | string | string[];
+        getValue(selector: string): string | string[];
         // End of "Property" section
 
         // Start of "Protocol" section
@@ -1574,7 +1574,7 @@ declare namespace WebdriverIO {
          * client.element(selector);
          * ```
          */
-        element(selector: string): Browser<WebdriverIO.WebElementResponse>;
+        element(selector: string): WebdriverIO.WebElementResponse;
 
         /**
          * Get the element on the page that currently has focus. The element will be returned as a WebElement JSON object.
@@ -1590,7 +1590,7 @@ declare namespace WebdriverIO {
          * client.elementActive();
          * ```
          */
-        elementActive(): Browser<WebdriverIO.WebElementResponse>;
+        elementActive(): WebdriverIO.WebElementResponse;
 
         /**
          * Get the value of an element's attribute.
@@ -1609,7 +1609,7 @@ declare namespace WebdriverIO {
          * client.elementIdAttribute(ID,attributeName);
          * ```
          */
-        elementIdAttribute(ID: string | number, attributeName: string): Browser<WebdriverIO.StringResponse>;
+        elementIdAttribute(ID: string | number, attributeName: string): WebdriverIO.StringResponse;
 
         /**
          *  Clear a `TEXTAREA` or text `INPUT element's value.
@@ -2826,7 +2826,7 @@ declare namespace WebdriverIO {
          * client.pause(milliseconds);
          * ```
          */
-        pause(ms: number): Browser<any>;
+        pause(ms: number): void;
 
         /**
          * Creates a new Selenium session with your current capabilities. This is useful if you test highly stateful application where you need to
@@ -2903,7 +2903,7 @@ declare namespace WebdriverIO {
          * client.waitForEnabled(selector[,ms][,reverse]);
          * ```
          */
-        waitForEnabled(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForEnabled(selector: string, ms?: number, reverse?: boolean): boolean;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to be present within the DOM. Returns true if the selector
@@ -2920,7 +2920,7 @@ declare namespace WebdriverIO {
          * client.waitForExist(selector[,ms][,reverse]);
          * ```
          */
-        waitForExist(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForExist(selector: string, ms?: number, reverse?: boolean): boolean;
 
         /**
          * Wait for an option or radio/checkbox element (selected by css selector) for the provided amount of milliseconds to be (un)selected or (un)checked.
@@ -2936,7 +2936,7 @@ declare namespace WebdriverIO {
          * client.waitForSelected(selector[,ms][,reverse]);
          * ```
          */
-        waitForSelected(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForSelected(selector: string, ms?: number, reverse?: boolean): boolean;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to have text/content. If multiple elements get queryied by 
@@ -2952,7 +2952,7 @@ declare namespace WebdriverIO {
          * client.waitForText(selector[,ms][,reverse]);
          * ```
          */
-        waitForText(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForText(selector: string, ms?: number, reverse?: boolean): boolean;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to have a value. If multiple elements get queryied by given selector,
@@ -2968,7 +2968,7 @@ declare namespace WebdriverIO {
          * client.waitForValue(selector[,ms][,reverse]);
          * ```
          */
-        waitForValue(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForValue(selector: string, ms?: number, reverse?: boolean): boolean;
 
         /**
          * Wait for an element (selected by css selector) for the provided amount of milliseconds to be (in)visible. If multiple elements get queryied by given selector,
@@ -2984,7 +2984,7 @@ declare namespace WebdriverIO {
          * client.waitForVisible(selector[,ms][,reverse]);
          * ```
          */
-        waitForVisible(selector: string, ms?: number, reverse?: boolean): Browser<any>;
+        waitForVisible(selector: string, ms?: number, reverse?: boolean): boolean;
 
         /**
          * This wait command is your universal weapon if you want to wait on something. It expects a condition and waits until that condition is fulfilled with an 
