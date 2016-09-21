@@ -156,6 +156,12 @@ describe('Test WebdriverIO in standalone mode', function () {
                 assert(cookie.name === cookieName);
                 assert(cookie.value === cookieValue);
             })
+            .getCookie()
+            .then((cookies: Cookie[]) => {
+                cookies.forEach((cookie: Cookie) => {
+                    console.log(JSON.stringify(cookie));
+                });
+            })
             .deleteCookie(cookieName)
             .getCookie(cookieName)
             .then((cookie: Cookie) => {

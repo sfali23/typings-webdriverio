@@ -1,5 +1,5 @@
 import assert = require('assert');
-import {Cookie, WebElementResponse} from 'webdriverio';
+import {Cookie} from 'webdriverio';
 
 describe('Test WebdriverIO in standalone mode', function () {
     // set timeout to 60 seconds
@@ -78,7 +78,7 @@ describe('Test WebdriverIO in standalone mode', function () {
         assert(text === 'Chicago Blackhawks');
 
         browser.pause(500);
-        browser.selectByAttribute('#selectbox', 'value', 'Coyotes')
+        browser.selectByAttribute('#selectbox', 'value', 'Coyotes');
         text = <string>browser.getText('#selectbox option:checked');
         console.log('Selected Text by \'selectByAttribute\': %s', text);
         assert(text === 'Arizona Coyotes');
@@ -131,6 +131,11 @@ describe('Test WebdriverIO in standalone mode', function () {
         assert(cookie);
         assert(cookie.name === cookieName);
         assert(cookie.value === cookieValue);
+
+        let cookies: Cookie[] = browser.getCookie();
+        cookies.forEach((cookie: Cookie) => {
+            console.log(JSON.stringify(cookie));
+        });
 
         browser.deleteCookie(cookieName);
 
