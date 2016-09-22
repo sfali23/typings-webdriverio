@@ -2651,7 +2651,7 @@ declare namespace WebdriverIO {
          * client.hasFocus(selector);
          * ```
          */
-        hasFocus(selector: string): Browser<AnyResponse>;
+        hasFocus(selector: string): Browser<Boolean>;
 
         /**
          * Return true or false if the selected DOM-element found by given selector is enabled.
@@ -2664,7 +2664,7 @@ declare namespace WebdriverIO {
          * client.isEnabled(selector);
          * ```
          */
-        isEnabled(selector: string): Browser<AnyResponse>;
+        isEnabled(selector: string): Browser<Boolean | Boolean[]>;
 
         /**
          * Returns true if at least one element is existing by given selector.
@@ -2677,7 +2677,7 @@ declare namespace WebdriverIO {
          * client.isExisting(selector);
          * ```
          */
-        isExisting(selector: string): Browser<AnyResponse>;
+        isExisting(selector: string): Browser<Boolean | Boolean[]>;
 
         /**
          * Return true or false if an `<option>` element, or an `<input>` element of type checkbox or radio is currently selected found by given selector.
@@ -2690,7 +2690,7 @@ declare namespace WebdriverIO {
          * client.isSelected(selector);
          * ```
          */
-        isSelected(selector: string): Browser<AnyResponse>;
+        isSelected(selector: string): Browser<Boolean | Boolean[]>;
 
         /**
          * Return true if the selected DOM-element found by given selector is visible. Returns an array if multiple DOM-elements are found for the given selector.
@@ -2703,7 +2703,7 @@ declare namespace WebdriverIO {
          * client.isVisible(selector);
          * ```
          */
-        isVisible(selector: string): Browser<AnyResponse>;
+        isVisible(selector: string): Browser<Boolean | Boolean[]>;
 
         /**
          * Return true if the selected DOM-element found by given selector is visible and within the viewport.
@@ -2716,7 +2716,7 @@ declare namespace WebdriverIO {
          * client.isVisibleWithinViewport(selector);
          * ```
          */
-        isVisibleWithinViewport(selector: string): Browser<AnyResponse>;
+        isVisibleWithinViewport(selector: string): Browser<Boolean | Boolean[]>;
         // End of "State" section
 
         // Start of "Utilty" section
@@ -3031,7 +3031,7 @@ declare namespace WebdriverIO {
          * client.getCurrentTabId();
          * ```
          */
-        getCurrentTabId(): Browser<AnyResponse>;
+        getCurrentTabId(): Browser<string>;
 
         /**
          * Retrieve a list of all window handles available in the session.
@@ -3043,7 +3043,7 @@ declare namespace WebdriverIO {
          * client.getTabIds();
          * ```
          */
-        getTabIds(): Browser<AnyResponse>;
+        getTabIds(): Browser<string[]>;
 
         /**
          * Get viewport size of the current browser window.

@@ -30,7 +30,7 @@ declare namespace WebdriverIO {
          * client.clearElement(selector);
          * ```
          */
-        clearElement(selector: string): Browser<any>;
+        clearElement(selector: string): AnyResponse;
 
         /**
          * Click on an element based on given selector.
@@ -73,7 +73,7 @@ declare namespace WebdriverIO {
          * client.dragAndDrop(sourceElem,destinationElem);
          * ```
          */
-        dragAndDrop(selector: string, destinationElem: string): Browser<any>;
+        dragAndDrop(selector: string, destinationElem: string): AnyResponse;
 
         /**
          * Apply left click on an element. If selector is not provided, click on the last moved-to location.
@@ -89,7 +89,7 @@ declare namespace WebdriverIO {
          * client.leftClick(selector,xoffset,yoffset);
          * ```
          */
-        leftClick(selector: string, xoffset: number, yoffset: number): Browser<any>;
+        leftClick(selector: string, xoffset: number, yoffset: number): AnyResponse;
 
         /**
          * Apply middle click on an element. If selector is not provided, click on the last moved-to location.
@@ -105,7 +105,7 @@ declare namespace WebdriverIO {
          * client.middleClick(selector,xoffset,yoffset);
          * ```
          */
-        middleClick(selector: string, xoffset: number, yoffset: number): Browser<any>;
+        middleClick(selector: string, xoffset: number, yoffset: number): AnyResponse;
 
         /**
          *
@@ -120,7 +120,7 @@ declare namespace WebdriverIO {
          * client.moveToObject(selector);
          * ```
          */
-        moveToObject(selector: string): Browser<any>;
+        moveToObject(selector: string): AnyResponse;
 
         /**
          *
@@ -137,7 +137,7 @@ declare namespace WebdriverIO {
          * client.moveToObject(selector,xoffset,yoffset);
          * ```
          */
-        moveToObject(selector: string, xoffset: number, yoffset: number): Browser<any>;
+        moveToObject(selector: string, xoffset: number, yoffset: number): AnyResponse;
 
         /**
          * Apply right click on an element. If selector is not provided, click on the last moved-to location.
@@ -153,7 +153,7 @@ declare namespace WebdriverIO {
          * client.rightClick(selector,xoffset,yoffset);
          * ```
          */
-        rightClick(selector: string, xoffset: number, yoffset: number): Browser<any>;
+        rightClick(selector: string, xoffset: number, yoffset: number): AnyResponse;
 
         /**
          * Select option with a specific value.
@@ -169,7 +169,7 @@ declare namespace WebdriverIO {
          * client.selectByAttribute(selector,attribute,value);
          * ```
          */
-        selectByAttribute(selector: string, attribute: string, value: string): Browser<any>;
+        selectByAttribute(selector: string, attribute: string, value: string): AnyResponse;
 
         /**
          * Select option with a specific index.
@@ -184,7 +184,7 @@ declare namespace WebdriverIO {
          * client.selectByIndex(selector,index);
          * ```
          */
-        selectByIndex(selector: string, index: number): void;
+        selectByIndex(selector: string, index: number): AnyResponse;
 
         /**
          * Select option with a specific value.
@@ -199,7 +199,7 @@ declare namespace WebdriverIO {
          * client.selectByValue(selector,value);
          * ```
          */
-        selectByValue(selector: string, value: string): void;
+        selectByValue(selector: string, value: string): AnyResponse;
 
         /**
          * Select option that display text matching the argument.
@@ -214,7 +214,7 @@ declare namespace WebdriverIO {
          * client.selectByVisibleText(selector,text);
          * ```
          */
-        selectByVisibleText(selector: string, text: string): void;
+        selectByVisibleText(selector: string, text: string): AnyResponse;
 
         /**
          * Works just like execute, only you can use selectors to pass html elements to the function you wish to execute in the browser.
@@ -356,7 +356,7 @@ declare namespace WebdriverIO {
          * client.getGridNodeDetails();
          * ```
          */
-        getGridNodeDetails(): Browser<Object>;
+        getGridNodeDetails(): Object;
 
         /**
          * 
@@ -367,7 +367,7 @@ declare namespace WebdriverIO {
          * client.gridProxyDetails();
          * ```
          */
-        gridProxyDetails(): Browser<Object>;
+        gridProxyDetails(): Object;
 
         /**
          * 
@@ -378,7 +378,7 @@ declare namespace WebdriverIO {
          * client.gridTestSession();
          * ```
          */
-        gridTestSession(): Browser<Object>;
+        gridTestSession(): Object;
         // End of "Grid" section
 
         // Strat of "Mobile" section
@@ -409,7 +409,7 @@ declare namespace WebdriverIO {
          * client.closeApp();
          * ```
          */
-        closeApp(): Browser<any>;
+        closeApp(): AnyResponse;
 
         /**
          * Retrieve current context or switch to the specified context
@@ -425,7 +425,7 @@ declare namespace WebdriverIO {
          * client.context([id]);
          * ```
          */
-        context(id?: string): Browser<any>;
+        context(id?: string): AnyResponse;
 
         /**
          * list all available contexts.
@@ -440,7 +440,7 @@ declare namespace WebdriverIO {
          * client.contexts();
          * ```
          */
-        contexts(): Browser<any>;
+        contexts(): AnyResponse;
 
         /**
          * Receive the current activity on an Android device.
@@ -454,7 +454,7 @@ declare namespace WebdriverIO {
          * client.currentActivity();
          * ```
          */
-        currentActivity(): Browser<any>;
+        currentActivity(): AnyResponse;
 
         /**
          * Send a key event to the device.
@@ -470,7 +470,7 @@ declare namespace WebdriverIO {
          * client.deviceKeyEvent(keycode[, metastate]);
          * ```
          */
-        deviceKeyEvent(keycode: number, metastate?: Object): Browser<any>;
+        deviceKeyEvent(keycode: number, metastate?: Object): AnyResponse;
 
         /**
          * Get all defined Strings from an app for the default language.
@@ -485,7 +485,7 @@ declare namespace WebdriverIO {
          * client.getAppStrings(language);
          * ```
          */
-        getAppStrings(language: string): Browser<any>;
+        getAppStrings(language: string): AnyResponse;
 
         /**
          * Get current device activity.
@@ -499,7 +499,7 @@ declare namespace WebdriverIO {
          * client.getCurrentDeviceActivity();
          * ```
          */
-        getCurrentDeviceActivity(): Browser<any>;
+        getCurrentDeviceActivity(): AnyResponse;
 
         /**
          * Captures iOS device date and time (command works only for real devices).
@@ -513,7 +513,7 @@ declare namespace WebdriverIO {
          * client.getDeviceTime();
          * ```
          */
-        getDeviceTime(): Browser<any>;
+        getDeviceTime(): AnyResponse;
 
         /**
          * Get the current geolocation.
@@ -526,11 +526,11 @@ declare namespace WebdriverIO {
          * client.getGeoLocation();
          * ```
          */
-        getGeoLocation(): Browser<any>;
+        getGeoLocation(): AnyResponse;
 
         /**
          * Get informations about the current network connection (Data/WIFI/Airplane). The actual server value will be a number
-         *  (see `getNetworkConnection.js` example). However Browser<any> additional properties to the response object to allow
+         *  (see `getNetworkConnection.js` example). However AnyResponse additional properties to the response object to allow
          *  easier assertions (see `getNetworkConnectionEasier.js` example).
          * 
          * @return self reference
@@ -542,7 +542,7 @@ declare namespace WebdriverIO {
          * client.getNetworkConnection();
          * ```
          */
-        getNetworkConnection(): Browser<any>;
+        getNetworkConnection(): AnyResponse;
 
         /**
          * Get the current browser orientation.
@@ -555,7 +555,7 @@ declare namespace WebdriverIO {
          * client.getOrientation();
          * ```
          */
-        getOrientation(): Browser<any>;
+        getOrientation(): AnyResponse;
 
         /**
          * Hide the keyboard.
@@ -571,7 +571,7 @@ declare namespace WebdriverIO {
          * client.hideDeviceKeyboard(strategy);
          * ```
          */
-        hideDeviceKeyboard(strategy: string): Browser<any>;
+        hideDeviceKeyboard(strategy: string): AnyResponse;
 
         /**
          * Long press on an element using finger motion events. This command works only in a mobile context.
@@ -584,7 +584,7 @@ declare namespace WebdriverIO {
          * client.hold(selector);
          * ```
          */
-        hold(selector: string): Browser<any>;
+        hold(selector: string): AnyResponse;
 
         /**
          * Install an app on device.
@@ -599,7 +599,7 @@ declare namespace WebdriverIO {
          * client.installApp(path);
          * ```
          */
-        installApp(path: string): Browser<any>;
+        installApp(path: string): AnyResponse;
 
         /**
          * Check if an app is installed.
@@ -614,7 +614,7 @@ declare namespace WebdriverIO {
          * client.isAppInstalled(bundleId);
          * ```
          */
-        isAppInstalled(bundleId: string): Browser<any>;
+        isAppInstalled(bundleId: string): AnyResponse;
 
         /**
          * Check whether the device is locked or not.
@@ -627,7 +627,7 @@ declare namespace WebdriverIO {
          * client.isLocked();
          * ```
          */
-        isLocked(): Browser<any>;
+        isLocked(): AnyResponse;
 
         /**
          * Launch the session for the desired capabilities. Note that this is the companion to the `autoLaunch=false` capability. 
@@ -643,7 +643,7 @@ declare namespace WebdriverIO {
          * client.launch();
          * ```
          */
-        launch(): Browser<any>;
+        launch(): AnyResponse;
 
         /**
          * Lock the device.
@@ -658,7 +658,7 @@ declare namespace WebdriverIO {
          * client.lock(seconds);
          * ```
          */
-        lock(seconds: number): Browser<any>;
+        lock(seconds: number): AnyResponse;
 
         /**
          * Press a particular key code on the device.
@@ -674,7 +674,7 @@ declare namespace WebdriverIO {
          * client.longPressKeycode(keycode,metastate);
          * ```
          */
-        longPressKeycode(keycode: string, metastate: string): Browser<any>;
+        longPressKeycode(keycode: string, metastate: string): AnyResponse;
 
         /**
          * Open the notifications pane on the device.
@@ -687,7 +687,7 @@ declare namespace WebdriverIO {
          * client.openNotifications();
          * ```
          */
-        openNotifications(): Browser<any>;
+        openNotifications(): AnyResponse;
 
         /**
          * Protocol bindings for all mobile orientation operations. (Not part of the official Webdriver specification).
@@ -702,7 +702,7 @@ declare namespace WebdriverIO {
          * client.orientation([deviceOrientation]);
          * ```
          */
-        orientation(deviceOrientation?: string): Browser<any>;
+        orientation(deviceOrientation?: string): AnyResponse;
 
         /**
          * Perform multi touch action
@@ -717,7 +717,7 @@ declare namespace WebdriverIO {
          * client.performMultiAction(touchAttr);
          * ```
          */
-        performMultiAction(touchAttr: Object): Browser<any>;
+        performMultiAction(touchAttr: Object): AnyResponse;
 
         /**
          * Perform touch action
@@ -732,7 +732,7 @@ declare namespace WebdriverIO {
          * client.performTouchAction(touchAttr);
          * ```
          */
-        performTouchAction(touchAttr: Object): Browser<any>;
+        performTouchAction(touchAttr: Object): AnyResponse;
 
         /**
          * Press a particular key code on the device.
@@ -748,7 +748,7 @@ declare namespace WebdriverIO {
          * client.pressKeycode(keycode,metastate);
          * ```
          */
-        pressKeycode(keycode: string, metastate: string): Browser<any>;
+        pressKeycode(keycode: string, metastate: string): AnyResponse;
 
         /**
          * Pulls a file from the device.
@@ -763,7 +763,7 @@ declare namespace WebdriverIO {
          * client.pullFile(path);
          * ```
          */
-        pullFile(path: string): Browser<any>;
+        pullFile(path: string): AnyResponse;
 
         /**
          * Pulls a folder from the device's file system.
@@ -777,7 +777,7 @@ declare namespace WebdriverIO {
          * client.pullFolder(path);
          * ```
          */
-        pullFolder(path: string): Browser<any>;
+        pullFolder(path: string): AnyResponse;
 
         /**
          *
@@ -790,7 +790,7 @@ declare namespace WebdriverIO {
          * @type mobile
          * @for ios, android
          */
-        pushFile(path: string, base64Data: string): Browser<any>;
+        pushFile(path: string, base64Data: string): AnyResponse;
 
         /**
          * Release touch sequenz on specific element.
@@ -803,7 +803,7 @@ declare namespace WebdriverIO {
          * client.release(selector);
          * ```
          */
-        release(selector: string): Browser<any>;
+        release(selector: string): AnyResponse;
 
         /**
          * Remove an app from the device.
@@ -818,7 +818,7 @@ declare namespace WebdriverIO {
          * client.removeApp(bundleId);
          * ```
          */
-        removeApp(bundleId: string): Browser<any>;
+        removeApp(bundleId: string): AnyResponse;
 
         /**
          * Reset the device by clearing the device un- and reinstalling app package (if existing).  
@@ -828,7 +828,7 @@ declare namespace WebdriverIO {
          * @type mobile
          * @for android
          */
-        reset(): Browser<any>;
+        reset(): AnyResponse;
 
         /**
          * Perform a rotation gesture centered on the specified element.
@@ -848,7 +848,7 @@ declare namespace WebdriverIO {
          * client.rotate(x, y, duration, radius, rotation, touchCount);
          * ```
          */
-        rotate(x: number, y: number, duration: number, radius: number, rotation: number, touchCount: number): Browser<any>;
+        rotate(x: number, y: number, duration: number, radius: number, rotation: number, touchCount: number): AnyResponse;
 
         /**
          * Set the current geo location
@@ -861,7 +861,7 @@ declare namespace WebdriverIO {
          * client.setGeoLocation(location)
          * ```
          */
-        setGeoLocation(location: Object): Browser<any>;
+        setGeoLocation(location: Object): AnyResponse;
 
         /**
          * Set immediate value in app.
@@ -876,7 +876,7 @@ declare namespace WebdriverIO {
          * client.setImmediateValue(id, value)
          * ```
          */
-        setImmediateValue(id: string, value: string): Browser<any>;
+        setImmediateValue(id: string, value: string): AnyResponse;
 
         /**
          * Set network connection.<br>
@@ -887,7 +887,7 @@ declare namespace WebdriverIO {
          *
          * These properties behave like a bitmask so if you set the network connection to 0 everything will get turned off. However if you 
          * for example set the network connection to 4 it will disable the airplane mode and turn off the wifi so that only data will be enabled. 
-         * Browser<any> provides a simplified interface to set these values without calculating bitmasks.
+         * AnyResponse provides a simplified interface to set these values without calculating bitmasks.
          *
          * __Note:__ if you have airplane mode enabled you can't have wifi or data be enabled too (for obvious reasons)
          * 
@@ -911,7 +911,7 @@ declare namespace WebdriverIO {
          * client.setNetworkConnection(type);
          * ```
          */
-        setNetworkConnection(type: number): Browser<any>;
+        setNetworkConnection(type: number): AnyResponse;
 
         /**
          * Set the current browser orientation.
@@ -925,7 +925,7 @@ declare namespace WebdriverIO {
          * client.setOrientation(orientation);
          * ```
          */
-        setOrientation(orientation: string): Browser<any>;
+        setOrientation(orientation: string): AnyResponse;
 
         /**
          * Either retrieve a JSON hash of all the currently specified settings or update the current setting on the device.
@@ -938,7 +938,7 @@ declare namespace WebdriverIO {
          * client.settings(settings);
          * ```
          */
-        settings(settings: Object): Browser<any>;
+        settings(settings: Object): AnyResponse;
 
         /**
          *
@@ -954,7 +954,7 @@ declare namespace WebdriverIO {
          * ```
          *
          */
-        shake(): Browser<any>;
+        shake(): AnyResponse;
 
         /**
          * Start an arbitrary Android activity during a session.
@@ -969,7 +969,7 @@ declare namespace WebdriverIO {
          * client.startActivity(appPackage, appActivity);
          * ```
          */
-        startActivity(appPackage: string, appActivity: string): Browser<any>;
+        startActivity(appPackage: string, appActivity: string): AnyResponse;
 
         /**
          * Returns application strings of the application in a specific language.
@@ -984,7 +984,7 @@ declare namespace WebdriverIO {
          * client.strings([language});
          * ```
          */
-        strings(language?: string): Browser<any>;
+        strings(language?: string): AnyResponse;
 
         /**
          * Perform a swipe on the screen or an element. If you want to swipe on a specific element make sure you provide
@@ -1003,7 +1003,7 @@ declare namespace WebdriverIO {
          * client.swipe(selector, xoffset, yoffset, speed);
          * ```
          */
-        swipe(selector?: string, xoffset?: number, yoffset?: number, speed?: number): Browser<any>;
+        swipe(selector?: string, xoffset?: number, yoffset?: number, speed?: number): AnyResponse;
 
         /**
          * Perform a swipe down on an element.
@@ -1018,7 +1018,7 @@ declare namespace WebdriverIO {
          * client.swipeDown(selector, yOffset, speed);
          * ```
          */
-        swipeDown(selector: string, yOffset: number, speed: number): Browser<any>;
+        swipeDown(selector: string, yOffset: number, speed: number): AnyResponse;
 
         /**
          * Perform a swipe left on an element.
@@ -1033,7 +1033,7 @@ declare namespace WebdriverIO {
          * client.swipeLeft(selector, xOffset, speed);
          * ```
          */
-        swipeLeft(selector: string, xOffset: number, speed: number): Browser<any>;
+        swipeLeft(selector: string, xOffset: number, speed: number): AnyResponse;
 
         /**
          * Perform a swipe right on an element.
@@ -1048,7 +1048,7 @@ declare namespace WebdriverIO {
          * client.swipeRight(selector, xOffset, speed);
          * ```
          */
-        swipeRight(selector: string, xOffset: number, speed: number): Browser<any>;
+        swipeRight(selector: string, xOffset: number, speed: number): AnyResponse;
 
         /**
          * Perform a swipe up on an element.
@@ -1063,7 +1063,7 @@ declare namespace WebdriverIO {
          * client.swipeUp(selector, yOffset, speed);
          * ```
          */
-        swipeUp(selector: string, yOffset: number, speed: number): Browser<any>;
+        swipeUp(selector: string, yOffset: number, speed: number): AnyResponse;
 
         /**
          * Switch the state (enabled/disabled) of airplane mode.
@@ -1076,7 +1076,7 @@ declare namespace WebdriverIO {
          * client.toggleAirplaneMode();
          * ```
          */
-        toggleAirplaneMode(): Browser<any>;
+        toggleAirplaneMode(): AnyResponse;
 
         /**
          * Switch the state (enabled/disabled) of data service.
@@ -1089,7 +1089,7 @@ declare namespace WebdriverIO {
          * client.toggleData();
          * ```
          */
-        toggleData(): Browser<any>;
+        toggleData(): AnyResponse;
 
         /**
          * Switch the state (enabled/disabled) of the location service.
@@ -1102,7 +1102,7 @@ declare namespace WebdriverIO {
          * client.toggleLocationServices();
          * ```
          */
-        toggleLocationServices(): Browser<any>;
+        toggleLocationServices(): AnyResponse;
 
         /**
          * Switch the state (enabled/disabled) of the wifi service.
@@ -1115,7 +1115,7 @@ declare namespace WebdriverIO {
          * client.toggleWiFi();
          * ```
          */
-        toggleWiFi(): Browser<any>;
+        toggleWiFi(): AnyResponse;
 
         /**
          * Put finger on an element (only in mobile context).
@@ -1130,7 +1130,7 @@ declare namespace WebdriverIO {
          * client.touch(selector, longClick);
          * ```
          */
-        touch(selector: string, longClick: boolean): Browser<any>;
+        touch(selector: string, longClick: boolean): AnyResponse;
 
         /**
          * Performs multiple touch actions. The action object is an array and its objects have to contain the action name (longPress, press, 
@@ -1146,7 +1146,7 @@ declare namespace WebdriverIO {
          * client.touchMultiPerform(actions);
          * ```
          */
-        touchMultiPerform(actions: Object): Browser<any>;
+        touchMultiPerform(actions: Object): AnyResponse;
 
         /**
          * Performs a specific touch action. The action object need to contain the action name (longPress, press, tap, wait, moveTo, release) and additional 
@@ -1162,7 +1162,7 @@ declare namespace WebdriverIO {
          * client.touchPerform(actions);
          * ```
          */
-        touchPerform(actions: Object): Browser<any>;
+        touchPerform(actions: Object): AnyResponse;
 
         /**
          * Unlock the device.
@@ -1174,7 +1174,7 @@ declare namespace WebdriverIO {
          * client.unlock();
          * ```
          */
-        unlock(): Browser<any>;
+        unlock(): AnyResponse;
         // End of "Mobile" section
 
         // Start of "Property" section
@@ -1485,7 +1485,7 @@ declare namespace WebdriverIO {
          * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidbuttondown
          * @type protocol
          */
-        buttonDown(button: number | WebdriverIO.Button): Browser<any>;
+        buttonDown(button: number | WebdriverIO.Button): AnyResponse;
 
         /**
          * Click any mouse button (at the coordinates set by the last moveto command). Note  that calling this command after calling 
@@ -1501,7 +1501,7 @@ declare namespace WebdriverIO {
          * client.buttonPress(button);
          * ```
          */
-        buttonPress(button: number | WebdriverIO.Button): Browser<any>;
+        buttonPress(button: number | WebdriverIO.Button): AnyResponse;
 
         /**
          * Releases the mouse button previously held (where the mouse is currently at). Must be called once for every buttondown command issued. See the note in click and
@@ -1518,7 +1518,7 @@ declare namespace WebdriverIO {
          * client.buttonUp(button);
          * ```
          */
-        buttonUp(button: number | WebdriverIO.Button): Browser<any>;
+        buttonUp(button: number | WebdriverIO.Button): AnyResponse;
 
         /**
          * Protocol binding to operate with cookies on the current page.
@@ -1550,7 +1550,7 @@ declare namespace WebdriverIO {
          * client.doDoubleClick();
          * ```
          */
-        doDoubleClick(): Browser<any>;
+        doDoubleClick(): AnyResponse;
 
         /**
          * Search for an element on the page, starting from the document root. The located element will be returned as a WebElement JSON object.
@@ -1619,7 +1619,7 @@ declare namespace WebdriverIO {
          * client.elementIdClear(ID);
          * ```
          */
-        elementIdClear(ID: string | number): Browser<any>;
+        elementIdClear(ID: string | number): AnyResponse;
 
         /**
          * Click on an element.
@@ -1635,7 +1635,7 @@ declare namespace WebdriverIO {
          * client.elementIdClick(ID);
          * ```
          */
-        elementIdClick(ID: string | number): Browser<any>;
+        elementIdClick(ID: string | number): Browser<AnyResponse>;
 
         /**
          * Query the value of an element's computed CSS property. The CSS property to query should be specified using the CSS property name,
@@ -1671,7 +1671,7 @@ declare namespace WebdriverIO {
          * client.elementIdDisplayed(ID);
          * ```
          */
-        elementIdDisplayed(ID: string | number): Browser<WebdriverIO.BooleanResponse>;
+        elementIdDisplayed(ID: string | number): Browser<BooleanResponse>;
 
         /**
          * Search for an element on the page, starting from an element. The located element will be returned as a WebElement JSON object.
@@ -1855,7 +1855,7 @@ declare namespace WebdriverIO {
          * client.elementIdValue(ID,value);
          * ```
          */
-        elementIdValue(ID: string | number, value: string | string[]): Browser<any>;
+        elementIdValue(ID: string | number, value: string | string[]): AnyResponse;
 
         /**
          * Search for multiple elements on the page, starting from the document root. The located elements will be returned as a WebElement
@@ -1941,7 +1941,7 @@ declare namespace WebdriverIO {
          * client.file(data);
          * ```
          */
-        file(data: Object): Browser<any>;
+        file(data: Object): AnyResponse;
 
         /**
          * Navigate forwards in the browser history, if possible.
@@ -1953,7 +1953,7 @@ declare namespace WebdriverIO {
          * client.forward();
          * ```
          */
-        forward(): Browser<any>;
+        forward(): AnyResponse;
 
         /**
          * Change focus to another frame on the page. If the frame id is null,  the server should switch to the page's default content.
@@ -1968,7 +1968,7 @@ declare namespace WebdriverIO {
          * client.frame(id);
          * ```
          */
-        frame(id?: string | number | WebdriverIO.WebElementJSONObject): Browser<any>;
+        frame(id?: string | number | WebdriverIO.WebElementJSONObject): AnyResponse;
 
         /**
          * Change focus to the parent context. If the current context is the top level browsing context, the context remains unchanged.
@@ -1981,7 +1981,7 @@ declare namespace WebdriverIO {
          * client.frameParent();
          * ```
          */
-        frameParent(): Browser<any>;
+        frameParent(): AnyResponse;
 
         /**
          * Make an engines that is available (appears on the list returned by getAvailableEngines) active. After this call, the engine will 
@@ -1998,7 +1998,7 @@ declare namespace WebdriverIO {
          * client.imeActivate(engine);
          * ```
          */
-        imeActivate(engine: string): Browser<any>;
+        imeActivate(engine: string): AnyResponse;
 
         /**
          * Indicates whether IME input is active at the moment (not if it's available. *(Not part of the official Webdriver specification)*
@@ -2013,7 +2013,7 @@ declare namespace WebdriverIO {
          * client.imeActivated();
          * ```
          */
-        imeActivated(): Browser<any>;
+        imeActivated(): AnyResponse;
 
         /**
          * Get the name of the active IME engine. The name string is platform specific. *(Not part of the official Webdriver specification)*
@@ -2027,7 +2027,7 @@ declare namespace WebdriverIO {
          * client.imeActiveEngine();
          * ```
          */
-        imeActiveEngine(): Browser<any>;
+        imeActiveEngine(): AnyResponse;
 
         /**
          * List all available engines on the machine. To use an engine, it has to be present in this list. (Not part of the official Webdriver specification)
@@ -2041,7 +2041,7 @@ declare namespace WebdriverIO {
          * client.imeAvailableEngines();
          * ```
          */
-        imeAvailableEngines(): Browser<any>;
+        imeAvailableEngines(): AnyResponse;
 
         /**
          * De-activates the currently-active IME engine. (Not part of the official Webdriver specification)
@@ -2054,7 +2054,7 @@ declare namespace WebdriverIO {
          * client.imeDeactivated();
          * ```
          */
-        imeDeactivated(): Browser<any>;
+        imeDeactivated(): AnyResponse;
 
         /**
          * Create a new session. The server should attempt to create a session that most closely matches the desired and required capabilities. Required capabilities
@@ -2069,14 +2069,14 @@ declare namespace WebdriverIO {
          * client.init([capabilities]);
          * ```
          */
-        init(capabilities?: Object): Browser<any>;
+        init(capabilities?: Object): AnyResponse;
 
         /**
          * Send a sequence of key strokes to the active element. This command is similar to the send keys command in every aspect 
          * except the implicit termination: The modifiers are *not* released at the end of the call. Rather, the state of the modifier 
          * keys is kept between calls, so mouse interactions can be performed while modifier keys are depressed.
          *
-         * You can also use unicode characters like Left arrow or Back space. Browser<any> will take care of translating them into 
+         * You can also use unicode characters like Left arrow or Back space. AnyResponse will take care of translating them into 
          * unicode characters. You’ll find all supported characters [here](https://w3c.github.io/webdriver/webdriver-spec.html#h-keyboard-actions). 
          * To do that, the value has to correspond to a key from the table.
          *
@@ -2091,7 +2091,7 @@ declare namespace WebdriverIO {
          * client.keys(value);
          * ```
          */
-        keys(value: string | string[]): Browser<any>;
+        keys(value: string | string[]): AnyResponse;
 
         /**
          * Protocol bindings for all localStorage operations. *(Not part of the official Webdriver specification)*
@@ -2106,7 +2106,7 @@ declare namespace WebdriverIO {
          * client.localStorage(method[,args]);
          * ```
          */
-        localStorage(method: string, args: string | Object): Browser<any>;
+        localStorage(method: string, args: string | Object): AnyResponse;
 
         /**
          * protocol bindings to get local_storage size. (Not part of the official Webdriver specification)
@@ -2120,7 +2120,7 @@ declare namespace WebdriverIO {
          * client.localStorageSize();
          * ```
          */
-        localStorageSize(): Browser<any>;
+        localStorageSize(): AnyResponse;
 
         /**
          * Protocol bindings for all geolocation operations. *(Not part of the official Webdriver specification)*.
@@ -2135,7 +2135,7 @@ declare namespace WebdriverIO {
          * client.location(location);
          * ```
          */
-        location(location?: Object): Browser<any>;
+        location(location?: Object): AnyResponse;
 
         /**
          * Get the log for a given log type. Log buffer is reset after each request. *(Not part of the official Webdriver specification)*.
@@ -2150,7 +2150,7 @@ declare namespace WebdriverIO {
          * client.log(type);
          * ```
          */
-        log(type: string): Browser<any>;
+        log(type: string): AnyResponse;
 
         /**
          * Get available log types. *(Not part of the official Webdriver specification)*.
@@ -2164,7 +2164,7 @@ declare namespace WebdriverIO {
          * client.logTypes();
          * ```
          */
-        logTypes(): Browser<any>;
+        logTypes(): AnyResponse;
 
         /**
          * Move the mouse by an offset of the specificed element. If no element is specified, the move is relative to the current mouse cursor. If an element is provided but
@@ -2182,7 +2182,7 @@ declare namespace WebdriverIO {
          * client.moveTo(element,xoffset,yoffset);
          * ```
          */
-        moveTo(element: string, xoffset: number, yoffset: number): Browser<any>;
+        moveTo(element: string, xoffset: number, yoffset: number): AnyResponse;
 
         /**
          * Refresh the current page.
@@ -2195,7 +2195,7 @@ declare namespace WebdriverIO {
          * client.refresh();
          * ```
          */
-        refresh(): Browser<any>;
+        refresh(): AnyResponse;
 
         /**
          * Take a screenshot of the current viewport. To get the screenshot of the whole page use the action command {@link saveScreenshot}.
@@ -2209,7 +2209,7 @@ declare namespace WebdriverIO {
          * client.screenshot();
          * ```
          */
-        screenshot(): Browser<any>;
+        screenshot(): AnyResponse;
 
         /**
          * Protocol bindings for all session operations. In case you are looking for `[POST] session` to initialise a session on the server, take a look at `/lib/protocol/init`.
@@ -2224,7 +2224,7 @@ declare namespace WebdriverIO {
          * client.session([doWhat],sessionId);
          * ```
          */
-        session(doWhat?: string, sessionId?: string): Browser<any>;
+        session(doWhat?: string, sessionId?: string): AnyResponse;
 
         /**
          * Protocol bindings for all sessionStorage operations. *(Not part of the official Webdriver specification)*.
@@ -2239,7 +2239,7 @@ declare namespace WebdriverIO {
          * client.sessionStorage([method][,args]);
          * ```
          */
-        sessionStorage(method?: string, args?: Object | string): Browser<any>;
+        sessionStorage(method?: string, args?: Object | string): AnyResponse;
 
         /**
          * Protocol bindings to get the session storage size. *(Not part of the official Webdriver specification)*.
@@ -2252,7 +2252,7 @@ declare namespace WebdriverIO {
          * client.sessionStorageSize();
          * ```
          */
-        sessionStorageSize(): Browser<any>;
+        sessionStorageSize(): AnyResponse;
 
         /**
          * Returns a list of the currently active sessions. Each session will be returned
@@ -2274,7 +2274,7 @@ declare namespace WebdriverIO {
          * client.sessions();
          * ```
          */
-        sessions(): Browser<any>;
+        sessions(): AnyResponse;
 
         /**
          * Get the current page source.
@@ -2343,7 +2343,7 @@ declare namespace WebdriverIO {
          * client.timeouts(type,ms);
          * ```
          */
-        timeouts(type: number, ms: number): Browser<any>;
+        timeouts(type: number, ms: number): AnyResponse;
 
         /**
          * Set the amount of time, in milliseconds, that asynchronous scripts executed by /session/:sessionId/execute_async are permitted to run before they are 
@@ -2359,7 +2359,7 @@ declare namespace WebdriverIO {
          * client.timeoutsAsyncScript(ms);
          * ```
          */
-        timeoutsAsyncScript(ms: number): Browser<any>;
+        timeoutsAsyncScript(ms: number): AnyResponse;
 
         /**
          * Set the amount of time the driver should wait when searching for elements. When searching for a single element, the driver should poll the page until an 
@@ -2378,7 +2378,7 @@ declare namespace WebdriverIO {
          * client.timeoutsImplicitWait(ms);
          * ```
          */
-        timeoutsImplicitWait(ms: string): Browser<any>;
+        timeoutsImplicitWait(ms: string): AnyResponse;
 
         /**
          * Gets an object containing the current page title.
@@ -2391,7 +2391,7 @@ declare namespace WebdriverIO {
          * client.title();
          * ```
          */
-        title(): Browser<any>;
+        title(): StringResponse;
 
         /**
          * Single tap on the touch enabled device.
@@ -2407,7 +2407,7 @@ declare namespace WebdriverIO {
          * client. touchClick(ID);
          * ```
          */
-        touchClick(ID: string): Browser<any>;
+        touchClick(ID: string): AnyResponse;
 
         /**
          * Finger down on the screen.
@@ -2423,7 +2423,7 @@ declare namespace WebdriverIO {
          * client.touchDown(x,y);
          * ```
          */
-        touchDown(x: number, y: number): Browser<any>;
+        touchDown(x: number, y: number): AnyResponse;
 
         /**
          * Flick on the touch screen using finger motion events. This flick command starts at a particular screen location.
@@ -2441,7 +2441,7 @@ declare namespace WebdriverIO {
          * client.touchFlick(ID,xoffset,yoffset,speed);
          * ```
          */
-        touchFlick(ID: string, xoffset: number, yoffset: number, speed: number): Browser<any>;
+        touchFlick(ID: string, xoffset: number, yoffset: number, speed: number): AnyResponse;
 
         /**
          * Long press on the touch screen using finger motion events.
@@ -2458,7 +2458,7 @@ declare namespace WebdriverIO {
          * client.touchLongClick(id);
          * ```
          */
-        touchLongClick(id: string): Browser<any>;
+        touchLongClick(id: string): AnyResponse;
 
         /**
          * Finger move on the screen.
@@ -2475,7 +2475,7 @@ declare namespace WebdriverIO {
          * client.touchMove(x,y);
          * ```
          */
-        touchMove(x: number, y: number): Browser<any>;
+        touchMove(x: number, y: number): AnyResponse;
 
         /**
          * croll on the touch screen using finger based motion events. If element ID is given start scrolling at a particular screen location.
@@ -2493,7 +2493,7 @@ declare namespace WebdriverIO {
          * client.touchScroll(id,xoffset,yoffset);
          * ```
          */
-        touchScroll(id: string, xoffset: number, yoffset: number): Browser<any>;
+        touchScroll(id: string, xoffset: number, yoffset: number): AnyResponse;
 
         /**
          * Finger up on the screen.
@@ -2510,7 +2510,7 @@ declare namespace WebdriverIO {
          * client.touchUp(x,y);
          * ```
          */
-        touchUp(x: number, y: number): Browser<any>;
+        touchUp(x: number, y: number): AnyResponse;
 
         /**
          * Protocol binding to load or get the URL of the browser.
@@ -2541,7 +2541,7 @@ declare namespace WebdriverIO {
          * client.window([windowHandle]);
          * ```
          */
-        window(windowHandle?: string): Browser<any>;
+        window(windowHandle?: string): AnyResponse;
 
         /**
          * Retrieve the current window handle.
@@ -2554,7 +2554,7 @@ declare namespace WebdriverIO {
          * client.windowHandle();
          * ```
          */
-        windowHandle(): Browser<any>;
+        windowHandle(): AnyResponse;
 
         /**
          * The Fullscreen Window command invokes the window manager-specific “full screen” operation, if any, on the window containing the current 
@@ -2570,7 +2570,7 @@ declare namespace WebdriverIO {
          * client.windowHandleFullscreen();
          * ```
          */
-        windowHandleFullscreen(): Browser<any>;
+        windowHandleFullscreen(): Browser<AnyResponse>;
 
         /**
          * Maximize the specified window if not already maximized. If the :windowHandle URL parameter is "current", the currently active window will be maximized.
@@ -2584,7 +2584,7 @@ declare namespace WebdriverIO {
          * client.windowHandleMaximize([windowHandle]);
          * ```
          */
-        windowHandleMaximize(windowHandle?: string): Browser<any>;
+        windowHandleMaximize(windowHandle?: string): Browser<AnyResponse>;
 
         /**
          *  Protocol bindings to receive or change the position of the browser window. If the `windowHandle` URL parameter is falsy, the currently active window will be considered.
@@ -2600,7 +2600,7 @@ declare namespace WebdriverIO {
          * client.windowHandlePosition([windowHandle][,position]);
          * ```
          */
-        windowHandlePosition(windowHandle?: string, position?: Object): Browser<any>;
+        windowHandlePosition(windowHandle?: string, position?: Object): Browser<AnyResponse>;
 
         /**
          * Protocol binding to get or change the size of the browser.
@@ -2615,7 +2615,7 @@ declare namespace WebdriverIO {
          * client.windowHandleSize([windowHandle][,dimension]);
          * ```
          */
-        windowHandleSize(windowHandle?: string, dimension?: Object): Browser<any>;
+        windowHandleSize(windowHandle?: string, dimension?: Object): Browser<AnyResponse>;
 
         /** 
          * Retrieve the list of all window handles available to the session.
@@ -2628,14 +2628,14 @@ declare namespace WebdriverIO {
          * client.windowHandles();
          * ```
          */
-        windowHandles(): Browser<any>;
+        windowHandles(): Browser<AnyResponse>;
         // End of "Protocol" section
 
         // Start of "State" section
         /** 
          * Return true or false if the selected DOM-element currently has focus.
          *  
-         * @param {String} selecto  r   select active element
+         * @param {String} selector   select active element
          * @returns self reference &mdash; **Boolean**         true if element has focus
          * @type state
          * ### Usage
@@ -2643,7 +2643,7 @@ declare namespace WebdriverIO {
          * client.hasFocus(selector);
          * ```
          */
-        hasFocus(selector: string): Browser<any>;
+        hasFocus(selector: string): Boolean;
 
         /**
          * Return true or false if the selected DOM-element found by given selector is enabled.
@@ -2656,7 +2656,7 @@ declare namespace WebdriverIO {
          * client.isEnabled(selector);
          * ```
          */
-        isEnabled(selector: string): Browser<any>;
+        isEnabled(selector: string): Boolean | Boolean[];
 
         /**
          * Returns true if at least one element is existing by given selector.
@@ -2669,7 +2669,7 @@ declare namespace WebdriverIO {
          * client.isExisting(selector);
          * ```
          */
-        isExisting(selector: string): Browser<any>;
+        isExisting(selector: string): Boolean | Boolean[];
 
         /**
          * Return true or false if an `<option>` element, or an `<input>` element of type checkbox or radio is currently selected found by given selector.
@@ -2682,7 +2682,7 @@ declare namespace WebdriverIO {
          * client.isSelected(selector);
          * ```
          */
-        isSelected(selector: string): Browser<any>;
+        isSelected(selector: string): Boolean | Boolean[];
 
         /**
          * Return true if the selected DOM-element found by given selector is visible. Returns an array if multiple DOM-elements are found for the given selector.
@@ -2695,7 +2695,7 @@ declare namespace WebdriverIO {
          * client.isVisible(selector);
          * ```
          */
-        isVisible(selector: string): Browser<any>;
+        isVisible(selector: string): Boolean | Boolean[];
 
         /**
          * Return true if the selected DOM-element found by given selector is visible and within the viewport.
@@ -2708,7 +2708,7 @@ declare namespace WebdriverIO {
          * client.isVisibleWithinViewport(selector);
          * ```
          */
-        isVisibleWithinViewport(selector: string): Browser<any>;
+        isVisibleWithinViewport(selector: string): Boolean | Boolean[];
         // End of "State" section
 
         // Start of "Utilty" section
@@ -2725,7 +2725,7 @@ declare namespace WebdriverIO {
          * client.addCommand(commandName,customMethod,overwrite);
          * ```
          */
-        addCommand(commandName: string, customMethod: Function, overwrite?: boolean): Browser<any>;
+        addCommand(commandName: string, customMethod: Function, overwrite?: boolean): AnyResponse;
 
         /**
          * Call an own function within running chain. It is mostly used to end an async BDD/TDD block (see example below) when running in standalone mode. Using the wdio test runner this command
@@ -2834,7 +2834,7 @@ declare namespace WebdriverIO {
          * client.reload();
          * ```
          */
-        reload(): Browser<any>;
+        reload(): AnyResponse;
 
         /**
          * Save a screenshot as a base64 encoded PNG with the current state of the browser. Be aware that some Selenium driver are taking screenshots
@@ -2864,11 +2864,11 @@ declare namespace WebdriverIO {
          * client.scroll([selector],xoffset,yoffset);
          * ```
          */
-        scroll(selector: string, xoffset: number, yoffset: number): Browser<any>;
+        scroll(selector: string, xoffset: number, yoffset: number): Browser<AnyResponse>;
 
-        scroll(selector: string): Browser<any>;
+        scroll(selector: string): Browser<AnyResponse>;
 
-        scroll(xoffset: number, yoffset: number): Browser<any>;
+        scroll(xoffset: number, yoffset: number): Browser<AnyResponse>;
 
         /**
          * Uploads a file to the selenium server.
@@ -3023,7 +3023,7 @@ declare namespace WebdriverIO {
          * client.getCurrentTabId();
          * ```
          */
-        getCurrentTabId(): Browser<any>;
+        getCurrentTabId(): string;
 
         /**
          * Retrieve a list of all window handles available in the session.
@@ -3035,7 +3035,7 @@ declare namespace WebdriverIO {
          * client.getTabIds();
          * ```
          */
-        getTabIds(): Browser<any>;
+        getTabIds(): string[];
 
         /**
          * Get viewport size of the current browser window.

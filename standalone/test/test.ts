@@ -1,8 +1,10 @@
 import webdriverio = require('webdriverio');
 import assert = require('assert');
-import {Browser, Cookie} from 'webdriverio';
+import {AnyResponse, Browser, Cookie, WebElementJSONObject} from 'webdriverio';
 
 const defaultUrl: string = 'http://www.tlkeith.com/WebDriverIOTutorialTest.html';
+let mainTabId: string = '';
+
 describe('Test WebdriverIO in standalone mode', function () {
     // set timeout to 60 seconds
     this.timeout(60 * 1000);
@@ -15,7 +17,11 @@ describe('Test WebdriverIO in standalone mode', function () {
     });
 
     it('should be load correct page and title', function () {
-        return browser.url(defaultUrl)
+        return browser.windowHandleMaximize('current').url(defaultUrl)
+            .getCurrentTabId()
+            .then((handle: string) => {
+                mainTabId = handle;
+            })
             .getTitle().then((title: string) => {
                 console.log('Current Page Title: %s', title);
                 assert(title === 'Web Driver IO - Tutorial Test Page');
@@ -229,6 +235,37 @@ describe('Test WebdriverIO in standalone mode', function () {
             .then((url: string) => {
                 assert(url === defaultUrl);
             });
+    });
+
+    it('demonstrate the \"isEnabled\" command', function () {
+        let selector: string = '#fname';
+        return browser.isEnabled(selector)
+            .then((res: boolean) => {
+                let msg: string = res ? 'enabled' : 'disabled';
+                console.log('Selector \"%s\" is %s', selector, msg);
+            });
+    });
+
+    it('demonstrate the \"execute, createTab, and switchTab\" commands', function () {
+        return browser
+            .execute(function () {
+                let link: HTMLAnchorElement = document.createElement('a');
+                link.setAttribute('href', 'http://www.google.com/ncr');
+                link.setAttribute('target', '_blank');
+                link.innerText = 'Google';
+                let divs: NodeListOf<Element> = document.getElementsByClassName('dropdown');
+                let div = divs.item(0);
+                div.appendChild(link);
+                return link;
+            })
+            .then((res: AnyResponse) => {
+                let element: WebElementJSONObject = res.value;
+                console.log('Element: %s', element.ELEMENT);
+                browser.elementIdClick(element.ELEMENT);
+            })
+            .pause(2000)
+            .switchTab(mainTabId)
+            .pause(5000);
     });
 
     // a "hook" to run after all tests in this block
