@@ -2,6 +2,7 @@ import webdriverio = require('webdriverio');
 import assert = require('assert');
 import {Browser, Cookie} from 'webdriverio';
 
+const defaultUrl: string = 'http://www.tlkeith.com/WebDriverIOTutorialTest.html';
 describe('Test WebdriverIO in standalone mode', function () {
     // set timeout to 60 seconds
     this.timeout(60 * 1000);
@@ -14,7 +15,7 @@ describe('Test WebdriverIO in standalone mode', function () {
     });
 
     it('should be load correct page and title', function () {
-        return browser.url('http://www.tlkeith.com/WebDriverIOTutorialTest.html')
+        return browser.url(defaultUrl)
             .getTitle().then((title: string) => {
                 console.log('Current Page Title: %s', title);
                 assert(title === 'Web Driver IO - Tutorial Test Page');
@@ -166,6 +167,67 @@ describe('Test WebdriverIO in standalone mode', function () {
             .getCookie(cookieName)
             .then((cookie: Cookie) => {
                 assert(!cookie);
+            });
+    });
+
+    it('should demonstrate the \"getAttribute\" command', function () {
+        let name: string = 'data-toggle';
+        return browser.url(defaultUrl)
+            .getAttribute('#dropdownMenu1', name).then((value: string) => {
+                console.log('Attribute \"%s\" value is \"%s\"', name, value);
+            });
+    });
+
+    it('demonstrate the \"alertAccept\" command', function () {
+        return browser.execute(function () {
+            let result = confirm('Isn\'t \"WebdriverIO\" cool?');
+            let msg = result ? 'Accepted' : 'Rejected';
+            console.log(msg);
+        })
+            .alertText()
+            .then((text: string) => {
+                assert(text === 'Isn\'t \"WebdriverIO\" cool?');
+            })
+            .alertAccept()
+            // uncomment folowing line and go to console of browser, you will see "Accepted" printed
+            // .pause(10000)
+            ;
+    });
+
+    it('demonstrate the \"alertDismiss\" command', function () {
+        return browser.execute(function () {
+            let result = confirm('Isn\'t \"WebdriverIO\" cool?');
+            let msg = result ? 'Accepted' : 'Rejected';
+            console.log(msg);
+        })
+            .alertText()
+            .then((text: string) => {
+                assert(text === 'Isn\'t \"WebdriverIO\" cool?');
+            })
+            .alertDismiss()
+            // uncomment folowing line and go to console of browser, you will see "Rejected" printed
+            // .pause(10000)
+            ;
+    });
+
+    it('demonstrate the \"back\" command', function () {
+        let selector: string = '//table[1]/tbody/tr[1]/td[2]/a';
+        let href: string = '';
+
+        return browser.getAttribute(selector, 'href')
+            .then((value: string) => {
+                href = value;
+            })
+            .click(selector)
+            .getUrl()
+            .then((url: string) => {
+                assert(url === href);
+            })
+            .pause(1000)
+            .back()
+            .getUrl()
+            .then((url: string) => {
+                assert(url === defaultUrl);
             });
     });
 

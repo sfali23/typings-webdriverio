@@ -50,7 +50,7 @@ declare namespace WebdriverIO {
          * client.click(selector);
          * ```
          */
-        click(selector: string): Browser<any>;
+        click(selector: string): Browser<AnyResponse>;
 
         /**
          * Click on an element based on given selector.
@@ -159,7 +159,7 @@ declare namespace WebdriverIO {
          * client.rightClick(selector,xoffset,yoffset);
          * ```
          */
-        rightClick(selector: string, xoffset: number, yoffset: number): Browser<any>;
+        rightClick(selector: string, xoffset: number, yoffset: number): Browser<AnyResponse>;
 
         /**
          * Select option with a specific value.
@@ -1412,7 +1412,7 @@ declare namespace WebdriverIO {
          * @see  https://w3c.github.io/webdriver/webdriver-spec.html#accept-alert
          * @type protocol
          */
-        alertAccept(): Browser<any>;
+        alertAccept(): Browser<AnyResponse>;
 
         /**
          * Dismisses the currently displayed alert dialog. For confirm() and prompt() dialogs, this is equivalent to clicking the 'Cancel' button. For alert()
@@ -1428,7 +1428,7 @@ declare namespace WebdriverIO {
          * * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dismiss-alert
          * @type protocol
          */
-        alertDismiss(): Browser<any>;
+        alertDismiss(): Browser<AnyResponse>;
 
         /**
          * Gets the text of the currently displayed JavaScript alert(), confirm(), or prompt() dialog.
@@ -2188,7 +2188,9 @@ declare namespace WebdriverIO {
          * client.moveTo(element,xoffset,yoffset);
          * ```
          */
-        moveTo(element: string, xoffset: number, yoffset: number): Browser<any>;
+        moveTo(element: string, xoffset: number, yoffset: number): Browser<AnyResponse>;
+
+        moveTo(xoffset: number, yoffset: number): Browser<AnyResponse>;
 
         /**
          * Refresh the current page.

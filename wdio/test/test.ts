@@ -1,12 +1,13 @@
 import assert = require('assert');
 import {Cookie} from 'webdriverio';
 
+const defaultUrl: string = 'http://www.tlkeith.com/WebDriverIOTutorialTest.html';
 describe('Test WebdriverIO in standalone mode', function () {
     // set timeout to 60 seconds
     this.timeout(60 * 1000);
 
     it('should be load correct page and title', function () {
-        browser.url('http://www.tlkeith.com/WebDriverIOTutorialTest.html');
+        browser.url(defaultUrl);
         let title: string = browser.getTitle();
         console.log('Current Page Title: %s', title);
         assert(title === 'Web Driver IO - Tutorial Test Page');
@@ -142,6 +143,64 @@ describe('Test WebdriverIO in standalone mode', function () {
         cookie = browser.getCookie(cookieName);
         assert(!cookie);
 
+        return browser;
+    });
+
+    it('should demonstrate the \"getAttribute\" command', function () {
+        let name: string = 'data-toggle';
+        browser.url(defaultUrl);
+        let value: string = <string>browser.getAttribute('#dropdownMenu1', name);
+        console.log('Attribute \"%s\" value is \"%s\"', name, value);
+        return browser;
+    });
+
+    /*it('should demonstrate the \"getCssProperty\" command', function () {
+
+    });*/
+
+    it('demonstrate the \"alertAccept\" command', function () {
+        browser.execute(function () {
+            let result = confirm('Isn\'t \"WebdriverIO\" cool?');
+            let msg = result ? 'Accepted' : 'Rejected';
+            console.log(msg);
+        });
+
+        let text: string = browser.alertText();
+        assert(text === 'Isn\'t \"WebdriverIO\" cool?');
+
+        browser.alertAccept();
+        // uncomment folowing line and go to console of browser, you will see "Accepted" printed
+        // browser.pause(10000);
+        return browser;
+    });
+
+    it('demonstrate the \"alertDismiss\" command', function () {
+        browser.execute(function () {
+            let result = confirm('Isn\'t \"WebdriverIO\" cool?');
+            let msg = result ? 'Accepted' : 'Rejected';
+            console.log(msg);
+        });
+
+        let text: string = browser.alertText();
+        assert(text === 'Isn\'t \"WebdriverIO\" cool?');
+
+        browser.alertDismiss();
+        // uncomment folowing line and go to console of browser, you will see "Accepted" printed
+        // browser.pause(10000);
+        return browser;
+    });
+
+    it('demonstrate the \"back\" command', function () {
+        let selector: string = '//table[1]/tbody/tr[1]/td[2]/a';
+        let href: string = <string>browser.getAttribute(selector, 'href');
+
+        browser.click(selector);
+        let url: string = browser.getUrl();
+        assert(url === href);
+        browser.pause(1000);
+        browser.back();
+        url = browser.getUrl();
+        assert(url === defaultUrl);
         return browser;
     });
 

@@ -1197,7 +1197,7 @@ declare namespace WebdriverIO {
          * client.getAttribute(selector,attributeName);
          * ```
          */
-        getAttribute(selector: string, attributeName: string): Browser<string | string[]>;
+        getAttribute(selector: string, attributeName: string): string | string[];
 
         /**
          *  Get a css property from a DOM-element selected by given selector. The return value is formatted to be testable. 
@@ -1412,7 +1412,7 @@ declare namespace WebdriverIO {
          * @see  https://w3c.github.io/webdriver/webdriver-spec.html#accept-alert
          * @type protocol
          */
-        alertAccept(): Browser<any>;
+        alertAccept(): WebdriverIO.AnyResponse;
 
         /**
          * Dismisses the currently displayed alert dialog. For confirm() and prompt() dialogs, this is equivalent to clicking the 'Cancel' button. For alert()
@@ -1428,7 +1428,7 @@ declare namespace WebdriverIO {
          * * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dismiss-alert
          * @type protocol
          */
-        alertDismiss(): Browser<any>;
+        alertDismiss(): WebdriverIO.AnyResponse;
 
         /**
          * Gets the text of the currently displayed JavaScript alert(), confirm(), or prompt() dialog.
@@ -1444,7 +1444,7 @@ declare namespace WebdriverIO {
          * @see  https://w3c.github.io/webdriver/webdriver-spec.html#get-alert-text
          * @type protocol
          */
-        alertText(text?: string): Browser<string>;
+        alertText(text?: string): string;
 
         /**
          * Get the status of the html5 application cache.
@@ -1474,7 +1474,7 @@ declare namespace WebdriverIO {
          * @see https://w3c.github.io/webdriver/webdriver-spec.html#back
          * @type protocol
          */
-        back(): Browser<any>;
+        back(): AnyResponse;
 
         /**
          * * Click and hold the left mouse button (at the coordinates set by the last moveto command). Note that the next mouse-related command 
@@ -1574,7 +1574,7 @@ declare namespace WebdriverIO {
          * client.element(selector);
          * ```
          */
-        element(selector: string): WebdriverIO.WebElementResponse;
+        element(selector: string): Browser<WebdriverIO.WebElementResponse>;
 
         /**
          * Get the element on the page that currently has focus. The element will be returned as a WebElement JSON object.
@@ -1904,7 +1904,7 @@ declare namespace WebdriverIO {
          * client.execute(script[,argument1,...,argumentN]);
          * ```
          */
-        execute(script: string | Function, ...args: any[]): Browser<WebdriverIO.AnyResponse>;
+        execute(script: string | Function, ...args: any[]): WebdriverIO.AnyResponse;
 
         /**
          * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. The executed script is 
