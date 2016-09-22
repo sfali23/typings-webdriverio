@@ -2,12 +2,6 @@ declare namespace WebdriverIO {
 
     export interface Browser<T> {
 
-        then<P>(onFulfilled?: (value: T) => P | Browser<P>, onRejected?: (err: any) => P | Browser<P>): Browser<T>;
-
-        catch<P>(onRejected?: (err: any) => P | Browser<P>): Browser<P>;
-
-        finally(fn?: Function): Browser<T>;
-
         // Start of "Action" section
         /**
          * Add a value to an object found by given selector. You can also use unicode characters like Left arrow or Back space. WebdriverIO will take care of
