@@ -14,7 +14,7 @@
     "build+test-wdio": "npm run build-wdio && npm run test-wdio",
     "build+test": "npm run build+test-standalone && npm run build+test-wdio",
     "lint": "tslint -c tslint.json standalone/index.d.ts standalone/test/**/*.ts wdio/index.d.ts wdio/test/**/*.ts",
-    "typedoc-standalone": "typedoc --module es6 --target es6 --includeDeclarations --excludeExternals --readme standalone/docs_index.md --name \"TypeScript definitions for WebDriverIO Stanalone mode\" --mode file --out typedoc/standalone stanalone/index.d.ts stanalone/typings/index.d.ts",
+    "typedoc-standalone": "typedoc --module es6 --target es6 --includeDeclarations --excludeExternals --readme standalone/docs_index.md --name \"TypeScript definitions for WebDriverIO Standlone mode\" --mode file --out typedoc/standalone standalone/index.d.ts standalone/typings/index.d.ts",
     "typedoc-wdio": "typedoc --module es6 --target es6 --includeDeclarations --excludeExternals --readme wdio/docs_index.md --name \"TypeScript definitions for WebDriverIO WDIO mode\" --mode file --out typedoc/wdio wdio/index.d.ts wdio/typings/index.d.ts",
     "typedoc": "npm run typedoc-standalone && npm run typedoc-wdio",
     "all": "npm run typedoc && npm run lint && npm run build+test"
