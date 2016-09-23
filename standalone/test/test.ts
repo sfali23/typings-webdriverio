@@ -1,9 +1,11 @@
 import webdriverio = require('webdriverio');
 import assert = require('assert');
-import {AnyResponse, Browser, Cookie, WebElementJSONObject} from 'webdriverio';
+import {Browser, Cookie} from 'webdriverio';
 
 const defaultUrl: string = 'http://www.tlkeith.com/WebDriverIOTutorialTest.html';
+// const googleUrl: string = 'http://www.google.com/ncr';
 let mainTabId: string = '';
+// let googleTabId: string = '';
 
 describe('Test WebdriverIO in standalone mode', function () {
     // set timeout to 60 seconds
@@ -246,30 +248,46 @@ describe('Test WebdriverIO in standalone mode', function () {
             });
     });
 
-    it('demonstrate the \"execute, createTab, and switchTab\" commands', function () {
-        return browser
-            .execute(function () {
-                let link: HTMLAnchorElement = document.createElement('a');
-                link.setAttribute('href', 'http://www.google.com/ncr');
-                link.setAttribute('target', '_blank');
-                link.innerText = 'Google';
-                let divs: NodeListOf<Element> = document.getElementsByClassName('dropdown');
-                let div = divs.item(0);
-                div.appendChild(link);
-                return link;
+    /*it('demonstrate the \"newWindow and switchTab\" commands', function () {
+        return browser.newWindow(googleUrl, 'google')
+            .getCurrentTabId()
+            .then((tabId: string) => {
+                console.log('%s ::::::::::: %s', mainTabId, tabId);
+                googleTabId = tabId;
             })
-            .then((res: AnyResponse) => {
-                let element: WebElementJSONObject = res.value;
-                console.log('Element: %s', element.ELEMENT);
-                browser.elementIdClick(element.ELEMENT);
+            .getUrl()
+            .then((url: string) => {
+                assert(url.indexOf('www.google.com') > 0);
             })
             .pause(2000)
-            .switchTab(mainTabId)
-            .pause(5000);
+            .switchTab()
+            .getUrl()
+            .then((url: string) => {
+                assert(url === defaultUrl);
+            })
+            .pause(5 * 1000);
+    });
+
+    it('demonstrate the \"switchTab\" command', function () {
+        return browser.switchTab(googleTabId);
+    });*/
+
+    it('demonstrate the \"frame\" command', function () {
+        return browser.frame('main')
+            .getText('//div[@class=\'jumbotron\']/div/h3')
+            .then((text: string) => {
+                assert(text === 'Welcome and Thank You for Visiting tlkeith.com\n\nHome of Tony Keith\'s Online Professional Resume and Information Site.');
+            })
+            .frameParent()
+            .frame('contact')
+            .getText('//h2')
+            .then((text: string) => {
+                assert(text === 'Contact Information');
+            });
     });
 
     // a "hook" to run after all tests in this block
     after(function () {
-        return browser.end();
+        return browser.pause(10 * 1000).end();
     });
 });

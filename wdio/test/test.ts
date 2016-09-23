@@ -1,5 +1,5 @@
 import assert = require('assert');
-import {AnyResponse, Cookie, WebElementJSONObject} from 'webdriverio';
+import {Cookie} from 'webdriverio';
 
 const defaultUrl: string = 'http://www.tlkeith.com/WebDriverIOTutorialTest.html';
 let mainTabId: string = '';
@@ -207,7 +207,7 @@ describe('Test WebdriverIO in standalone mode', function () {
         return browser;
     });
 
-    it('demonstrate the \"execute, createTab, and switchTab\" commands', function () {
+    /*it('demonstrate the \"execute, createTab, and switchTab\" commands', function () {
         let res: AnyResponse = browser.execute(function () {
             let link: HTMLAnchorElement = document.createElement('a');
             link.setAttribute('href', 'http://www.google.com/ncr');
@@ -222,6 +222,21 @@ describe('Test WebdriverIO in standalone mode', function () {
         console.log('Element: %s', element.ELEMENT);
         browser.elementIdClick(element.ELEMENT).pause(2000);
         browser.switchTab(mainTabId).pause(5000);
+        return browser;
+    });*/
+
+    it('demonstrate the \"frame\" command', function () {
+        browser.frame('main');
+        let text: string = <string>browser.getText('//div[@class=\'jumbotron\']/div/h3');
+        assert(text === 'Welcome and Thank You for Visiting tlkeith.com\n\nHome of Tony Keith\'s Online Professional Resume and Information Site.');
+
+        let x: any = browser.frameParent();
+        console.log(JSON.stringify(x));
+
+        browser.frame('contact');
+        text = <string>browser.getText('//h2');
+        assert(text === 'Contact Information');
+
         return browser;
     });
 

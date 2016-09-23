@@ -2562,7 +2562,7 @@ declare namespace WebdriverIO {
          * client.windowHandle();
          * ```
          */
-        windowHandle(): Browser<AnyResponse>;
+        windowHandle(): Browser<string>;
 
         /**
          * The Fullscreen Window command invokes the window manager-specific “full screen” operation, if any, on the window containing the current 
@@ -3073,7 +3073,7 @@ declare namespace WebdriverIO {
          * client.newWindow(url,windowName,windowFeatures);
          * ```
          */
-        newWindow(url: string, windowName: string, windowFeatures: string): Browser<AnyResponse>;
+        newWindow(url: string, windowName?: string, windowFeatures?: string): Browser<AnyResponse>;
 
         /**
          * This command changes the viewport size of the browser. When talking about browser size we have to differentiate between the actual window size
