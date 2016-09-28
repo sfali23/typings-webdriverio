@@ -9,3 +9,4 @@ out/
 *.sh
 errorShots/**/*
 typedoc/**/*
+test/**/build.d.ts
