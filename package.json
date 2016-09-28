@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "cd standalone && typings install && typings prune && cd ../wdio && typings install && typings prune",
+    "postinstall": "cd test && typings install && typings prune",
     "build-standalone": "cd standalone && tsc -p . && typings bundle -o ../test/standalone/build.d.ts --global",
     "build-wdio": "cd wdio && tsc -p . && typings bundle -o ../test/wdio/build.d.ts --global",
     "build": "npm run build-standalone && npm run build-wdio",
