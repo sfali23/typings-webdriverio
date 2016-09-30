@@ -37,28 +37,19 @@ node_modules/.bin/selenium-standalone start
 node_modules/.bin/mocha test/standalone/test.js
 ```
 
-### Run examples with WDIO test runner
-
-```
-node_modules/.bin/wdio test/wdio/wdio.conf.js
-```
-
 ## Installing WebdriverIO in Standalone mode
 
 ```
-typings install webdriverio --global  --save
+typings install npm~webdriverio --global  --save
 ```
 
 ## Installing WebdriverIO in WDIO mode
 
-```
-typings install webdriverio@4.2.16-w --global  --save
-```
+### Coming Soon
 
 ## Examples
 
 [Standalone mode examples](./test/standalone/test.ts)
-[WDIO mode examples](./test/wdio/test.ts)
 
 # License
 MIT
