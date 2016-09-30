@@ -24,7 +24,7 @@ describe('Test WebdriverIO in standalone mode', function () {
         return browser.init();
     });
 
-    it('demnostrate simple google searc', function () {
+    it('demnostrate simple google search', function () {
         return browser.windowHandleMaximize()
             .url('http://www.google.com/ncr')
             .setValue('*[name="q"]', 'webdriverio').click('*[name="btnG"]')
