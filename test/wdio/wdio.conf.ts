@@ -1,6 +1,6 @@
 /// <reference path="./build.d.ts"/>
 
-import {Config} from 'webdriverio';
+import { Config } from 'webdriverio';
 
 export var config: Config = <Config>{
     //
@@ -11,7 +11,7 @@ export var config: Config = <Config>{
     // file.
     //
     specs: [
-        'wdio/test/test.js'
+        './test.js'
     ],
     // Patterns to exclude.
     exclude: [

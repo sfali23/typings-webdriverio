@@ -316,7 +316,7 @@ declare namespace WebdriverIO {
          * client.getCookie([name]);
          * ```
          */
-        getCookie(): WebdriverIO.Cookie[];
+        getCookie(): Cookie[];
 
         /**
          * Retrieve a [cookie](https://w3c.github.io/webdriver/webdriver-spec.html#cookies) visible to the current page.
@@ -330,12 +330,12 @@ declare namespace WebdriverIO {
          * client.getCookie([name]);
          * ```
          */
-        getCookie(name: string): WebdriverIO.Cookie;
+        getCookie(name: string): Cookie;
 
         /**
          * Sets a [cookie](https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#cookie-json-object) for current page.
          * 
-         * @param {WebdriverIO.Cookie} cookie cookie object
+         * @param {Cookie} cookie cookie object
          * @return self reference
          * 
          * ### Usage
@@ -344,7 +344,7 @@ declare namespace WebdriverIO {
          * client.setCookie(cookie);
          * ```
          */
-        setCookie(cookie: WebdriverIO.Cookie): AnyResponse;
+        setCookie(cookie: Cookie): AnyResponse;
         // End of "Cookie" section
 
         // Start of "grid" section
@@ -1214,7 +1214,7 @@ declare namespace WebdriverIO {
          * client.getCssProperty(selector,cssProperty);
          * ```
          */
-        getCssProperty(selector: string, cssProperty: string): Browser<WebdriverIO.CssProperty | WebdriverIO.CssProperty[]>;
+        getCssProperty(selector: string, cssProperty: string): Browser<CssProperty | CssProperty[]>;
 
         /**
          * Get the width and height for an DOM-element based given selector.
@@ -1244,7 +1244,7 @@ declare namespace WebdriverIO {
          * client.getElementSize(selector);
          * ```
          */
-        getElementSize(selector: string): Browser<WebdriverIO.Size | WebdriverIO.Size[]>;
+        getElementSize(selector: string): Browser<Size | Size[]>;
 
         /**
          * Get source code of specified DOM element by selector.
@@ -1276,7 +1276,7 @@ declare namespace WebdriverIO {
          * client.getLocation(selector);
          * ```
          */
-        getLocation(selector: string): Browser<WebdriverIO.Point>;
+        getLocation(selector: string): Browser<Point>;
 
         /**
          * Determine an element's location for given `axis`. The possible values for `axis` are `x' or `y'.
@@ -1304,7 +1304,7 @@ declare namespace WebdriverIO {
          * client.getLocationInView(selector);
          * ```
          */
-        getLocationInView(selector: string): Browser<WebdriverIO.Point>;
+        getLocationInView(selector: string): Browser<Point>;
 
         getLocationInView(selector: string, axis: string): Browser<number>;
 
@@ -1408,7 +1408,7 @@ declare namespace WebdriverIO {
          * @see  https://w3c.github.io/webdriver/webdriver-spec.html#accept-alert
          * @type protocol
          */
-        alertAccept(): WebdriverIO.AnyResponse;
+        alertAccept(): AnyResponse;
 
         /**
          * Dismisses the currently displayed alert dialog. For confirm() and prompt() dialogs, this is equivalent to clicking the 'Cancel' button. For alert()
@@ -1424,7 +1424,7 @@ declare namespace WebdriverIO {
          * * @see  https://w3c.github.io/webdriver/webdriver-spec.html#dismiss-alert
          * @type protocol
          */
-        alertDismiss(): WebdriverIO.AnyResponse;
+        alertDismiss(): AnyResponse;
 
         /**
          * Gets the text of the currently displayed JavaScript alert(), confirm(), or prompt() dialog.
@@ -1456,7 +1456,7 @@ declare namespace WebdriverIO {
          * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidapplication_cachestatus
          * @type protocol
          */
-        applicationCacheStatus(): Browser<WebdriverIO.ApplicationCacheStatus>;
+        applicationCacheStatus(): Browser<ApplicationCacheStatus>;
 
         /**
          * Navigate backwards in the browser history, if possible.
@@ -1487,7 +1487,7 @@ declare namespace WebdriverIO {
          * @see  https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidbuttondown
          * @type protocol
          */
-        buttonDown(button: number | WebdriverIO.Button): AnyResponse;
+        buttonDown(button: number | Button): AnyResponse;
 
         /**
          * Click any mouse button (at the coordinates set by the last moveto command). Note  that calling this command after calling 
@@ -1503,7 +1503,7 @@ declare namespace WebdriverIO {
          * client.buttonPress(button);
          * ```
          */
-        buttonPress(button: number | WebdriverIO.Button): AnyResponse;
+        buttonPress(button: number | Button): AnyResponse;
 
         /**
          * Releases the mouse button previously held (where the mouse is currently at). Must be called once for every buttondown command issued. See the note in click and
@@ -1520,7 +1520,7 @@ declare namespace WebdriverIO {
          * client.buttonUp(button);
          * ```
          */
-        buttonUp(button: number | WebdriverIO.Button): AnyResponse;
+        buttonUp(button: number | Button): AnyResponse;
 
         /**
          * Protocol binding to operate with cookies on the current page.
@@ -1537,7 +1537,7 @@ declare namespace WebdriverIO {
          * client.cookie([method][,args]);
          * ```
          */
-        cookie(method?: string, args?: WebdriverIO.Cookie | string): Browser<WebdriverIO.CookiesResponse>;
+        cookie(method?: string, args?: Cookie | string): Browser<CookiesResponse>;
 
         /**
          * Double-clicks at the current mouse coordinates (set by moveto. (Not part of the official Webdriver specification).
@@ -1570,7 +1570,7 @@ declare namespace WebdriverIO {
          * client.element(selector);
          * ```
          */
-        element(selector: string): Browser<WebdriverIO.WebElementResponse>;
+        element(selector: string): Browser<WebElementResponse>;
 
         /**
          * Get the element on the page that currently has focus. The element will be returned as a WebElement JSON object.
@@ -1586,7 +1586,7 @@ declare namespace WebdriverIO {
          * client.elementActive();
          * ```
          */
-        elementActive(): WebdriverIO.WebElementResponse;
+        elementActive(): WebElementResponse;
 
         /**
          * Get the value of an element's attribute.
@@ -1605,7 +1605,7 @@ declare namespace WebdriverIO {
          * client.elementIdAttribute(ID,attributeName);
          * ```
          */
-        elementIdAttribute(ID: string | number, attributeName: string): WebdriverIO.StringResponse;
+        elementIdAttribute(ID: string | number, attributeName: string): StringResponse;
 
         /**
          *  Clear a `TEXTAREA` or text `INPUT element's value.
@@ -1656,7 +1656,7 @@ declare namespace WebdriverIO {
          * client.elementIdCssProperty(ID,cssPropertyName);
          * ```
          */
-        elementIdCssProperty(ID: string | number, cssPropertyName: string): Browser<WebdriverIO.StringResponse>;
+        elementIdCssProperty(ID: string | number, cssPropertyName: string): Browser<StringResponse>;
 
         /**
          * Determine if an element is currently displayed.
@@ -1692,7 +1692,7 @@ declare namespace WebdriverIO {
          * client.elementIdElement(ID,selector);
          * ```
          */
-        elementIdElement(ID: string | number, selector: string): Browser<WebdriverIO.WebElementResponse>;
+        elementIdElement(ID: string | number, selector: string): Browser<WebElementResponse>;
 
         /**
          * Search for multiple elements on the page, starting from an element. The located elements will be returned as a WebElement JSON objects.
@@ -1711,7 +1711,7 @@ declare namespace WebdriverIO {
          * client.elementIdElements(ID,selector);
          * ```
          */
-        elementIdElements(ID: string | number, selector: string): Browser<WebdriverIO.WebElementsResponse>;
+        elementIdElements(ID: string | number, selector: string): Browser<WebElementsResponse>;
 
         /**
          * Determine if an element is currently enabled.
@@ -1727,7 +1727,7 @@ declare namespace WebdriverIO {
          * client.elementIdEnabled(ID);
          * ```
          */
-        elementIdEnabled(ID: string | number): Browser<WebdriverIO.BooleanResponse>;
+        elementIdEnabled(ID: string | number): Browser<BooleanResponse>;
 
         /**
          * Determine an element's location on the page. The point (0, 0) refers to the upper-left corner of the page. The element's coordinates are returned as a
@@ -1745,7 +1745,7 @@ declare namespace WebdriverIO {
          * client.elementIdLocation(ID);
          * ```
          */
-        elementIdLocation(ID: string | number): Browser<WebdriverIO.PointResponse>;
+        elementIdLocation(ID: string | number): Browser<PointResponse>;
 
         /**
          * Determine an element's location on the screen once it has been scrolled into view.
@@ -1763,7 +1763,7 @@ declare namespace WebdriverIO {
          * elementIdLocationInView(ID);
          * ```
          */
-        elementIdLocationInView(ID: string | number): Browser<WebdriverIO.PointResponse>;
+        elementIdLocationInView(ID: string | number): Browser<PointResponse>;
 
         /**
          * Query for an element's tag name.
@@ -1778,7 +1778,7 @@ declare namespace WebdriverIO {
          * client.elementIdName(ID);
          * ```
          */
-        elementIdName(ID: string | number): Browser<WebdriverIO.StringResponse>;
+        elementIdName(ID: string | number): Browser<StringResponse>;
 
         /**
          * The Get Element Rect command returns the dimensions and coordinates of the given web element. The returned value is a dictionary 
@@ -1796,7 +1796,7 @@ declare namespace WebdriverIO {
          * client.elementIdRect(ID);
          * ```
          */
-        elementIdRect(ID: string | number): Browser<WebdriverIO.PointResponse>;
+        elementIdRect(ID: string | number): Browser<PointResponse>;
 
         /**
          * Determine if an OPTION element, or an INPUT element of type checkbox or radiobutton is currently selected.
@@ -1811,7 +1811,7 @@ declare namespace WebdriverIO {
          * client.elementIdSelected(ID);
          * ```
          */
-        elementIdSelected(ID: string | number): Browser<WebdriverIO.BooleanResponse>;
+        elementIdSelected(ID: string | number): Browser<BooleanResponse>;
 
         /**
          * Determine an element's size in pixels. The size will be returned as a JSON object with width and height properties.
@@ -1827,7 +1827,7 @@ declare namespace WebdriverIO {
          * client.elementIdSize(ID);
          * ```
          */
-        elementIdSize(ID: string | number): Browser<WebdriverIO.SizeResponse>;
+        elementIdSize(ID: string | number): Browser<SizeResponse>;
 
         /**
          * Returns the visible text for the element.
@@ -1842,7 +1842,7 @@ declare namespace WebdriverIO {
          * client.elementIdText(ID);
          * ```
          */
-        elementIdText(ID: string | number): Browser<WebdriverIO.StringResponse>;
+        elementIdText(ID: string | number): Browser<StringResponse>;
 
         /**
          * Send a sequence of key strokes to an element.
@@ -1877,7 +1877,7 @@ declare namespace WebdriverIO {
          * client.elements(selector);
          * ```
          */
-        elements(selector: string): Browser<WebdriverIO.WebElementsResponse>;
+        elements(selector: string): Browser<WebElementsResponse>;
 
         /**
          * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. The executed script is 
@@ -1900,7 +1900,7 @@ declare namespace WebdriverIO {
          * client.execute(script[,argument1,...,argumentN]);
          * ```
          */
-        execute(script: string | Function, ...args: any[]): WebdriverIO.AnyResponse;
+        execute(script: string | Function, ...args: any[]): AnyResponse;
 
         /**
          * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. The executed script is 
@@ -1930,7 +1930,7 @@ declare namespace WebdriverIO {
          * client.executeAsync(script,arguments);
          * ```
          */
-        executeAsync(script: string | Function, ...args: any[]): Browser<WebdriverIO.AnyResponse>;
+        executeAsync(script: string | Function, ...args: any[]): Browser<AnyResponse>;
 
         /**
          * Uploads a base64 data object. (not documented, not part of Webdriver specs)
@@ -1970,7 +1970,7 @@ declare namespace WebdriverIO {
          * client.frame(id);
          * ```
          */
-        frame(id?: string | number | WebdriverIO.WebElementJSONObject): AnyResponse;
+        frame(id?: string | number | WebElementJSONObject): AnyResponse;
 
         /**
          * Change focus to the parent context. If the current context is the top level browsing context, the context remains unchanged.
