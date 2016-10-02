@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "cd test && typings install && typings prune",
     "build-standalone": "cd standalone && tsc -p . && typings bundle -o ../test/standalone/build.d.ts",
-    "build-wdio": "cd wdio && tsc -p . && typings bundle -o ../test/wdio/build.d.ts --global",
+    "build-wdio": "cd wdio && tsc -p . && typings bundle -o ../test/wdio/build.d.ts",
     "build": "npm run build-standalone && npm run build-wdio",
     "test-standalone": "tsc -p test/standalone",
     "test-wdio": "tsc -p test/wdio",
