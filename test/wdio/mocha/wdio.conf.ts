@@ -1,4 +1,4 @@
-/// <reference path="./build.d.ts"/>
+/// <reference path="../build.d.ts"/>
 
 import { Config } from 'webdriverio';
 

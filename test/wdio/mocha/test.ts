@@ -1,5 +1,5 @@
-/// <reference path="../typings/index.d.ts"/>
-/// <reference path="./build.d.ts"/>
+/// <reference path="../../typings/index.d.ts"/>
+/// <reference path="../build.d.ts"/>
 
 import assert = require('assert');
 import { Cookie } from 'webdriverio';
