@@ -3,7 +3,7 @@
 
 import webdriverio = require('webdriverio');
 import assert = require('assert');
-import {Browser, Cookie} from 'webdriverio';
+import { Browser, Cookie } from 'webdriverio';
 
 const defaultUrl: string = 'http://www.tlkeith.com/WebDriverIOTutorialTest.html';
 // const googleUrl: string = 'http://www.google.com/ncr';
@@ -18,9 +18,7 @@ describe('Test WebdriverIO in standalone mode', function () {
     // hook to run before tests
     before(function () {
         browser = webdriverio.remote(
-            { desiredCapabilities: { browserName: 'chrome' },
-            services: ['selenium-standalone']
-         });
+            { desiredCapabilities: { browserName: 'chrome' } });
         return browser.init();
     });
 
