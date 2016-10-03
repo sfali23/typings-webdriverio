@@ -6,7 +6,7 @@ out/
 /**/*.js
 .vscode/*.*
 /**/out
-*.sh
 errorShots/**/*
 typedoc/**/*
 test/**/build.d.ts
+test/wdio/cucumber/allure-results/**/*
