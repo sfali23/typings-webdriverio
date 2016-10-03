@@ -3,9 +3,57 @@ The typescript typings for [WebdriverIO](http://webdriver.io/).
 
 [![Build Status](https://travis-ci.org/sfali23/typings-webdriverio.svg?branch=master)](https://travis-ci.org/sfali23/typings-webdriverio)
 
-# Installation notes:
+## Installation notes:
 
-You do not need typings for node and/or mocha, but test examples are written using mocha, however if you are planning to use WDIO test runnner then you will need either of `mocha`, `cucumber`, or `jasmine`.
+### Installing standalone mode
+
+```
+typings install npm~webdriverio -S
+```
+
+### Example
+
+```
+/// <reference path="../typings/index.d.ts"/>
+
+import webdriverio = require('webdriverio');
+import {Browser} from 'webdriverio';
+
+let options: any = {{ desiredCapabilities: { browserName: 'chrome' }};
+let browser: Browser<any> = webdriverio.remote(options)
+                                .init()
+                                .url('http://webdriver.io/')
+                                .getTitle()
+                                .then((title: string) => {
+                                    console.log('Title was: %s', title);
+                                })
+                                .end();
+```
+
+## Installing WDIO mode
+
+```
+typings install npm~webdriverio@4.2.16-w -S
+```
+
+### Example
+
+**NOTE:** Following example is written using _mocha_ framework.
+
+```
+/// <reference path="../typings/index.d.ts"/>
+
+import assert = require('assert');
+let browser = global.browser;
+
+describe('webdriver.io page', function() {
+    it('should have the right title - the fancy generator way', function () {
+        browser.url('http://webdriver.io');
+        var title = browser.getTitle();
+        assert.equal(title, 'WebdriverIO - Selenium 2.0 javascript bindings for nodejs');
+    });
+});
+```
 
 ## Running test examples
 
@@ -19,8 +67,7 @@ npm install
 
 ```
 cd test
-typings install env~node --global -S
-typings install env~mocha --global -S
+typings install
 ```
 
 ### Run examples in standalone mode
@@ -37,19 +84,29 @@ node_modules/.bin/selenium-standalone start
 node_modules/.bin/mocha test/standalone/test.js
 ```
 
-## Installing WebdriverIO in Standalone mode
+### Run examples in WDIO mode
+
+**Running examples in _mocha_ framework**
 
 ```
-typings install npm~webdriverio --global  --save
+cd test/wdio/mocha
+../../../node_modules/.bin/wdio
 ```
 
-## Installing WebdriverIO in WDIO mode
+**Running examples in _cucumber_ framework**
 
-### Coming Soon
+```
+cd test/wdio/cucumber
+../../../node_modules/.bin/wdio
+```
 
 ## Examples
 
 [Standalone mode examples](./test/standalone/test.ts)
+
+[WDIO mode examples using mocha](./test/wdio/mocha/test.ts)
+
+For WDIO mode examples using cucumber, see examples under `./test/wdio/cucumber`
 
 # License
 MIT
