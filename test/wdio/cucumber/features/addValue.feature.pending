@@ -1,0 +1,12 @@
+Feature: addValue command test
+    As a developer
+    I want to demonstrate addValue command
+
+    Background:
+        Given I open the url "http://www.tlkeith.com/WebDriverIOTutorialTest.html"
+
+    Scenario:
+        When I set "Syed" to the inputfield "#fname"
+        Then I expect that inputfield "#fname" contains the text "Syed"
+        When I add " Farhan" to the inputfield "#fname"
+        Then I expect that inputfield "#fname" contains the text "Syed Farhan"

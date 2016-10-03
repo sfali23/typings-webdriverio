@@ -8,7 +8,7 @@
     "build-wdio": "cd wdio && tsc -p . && typings bundle -o ../test/wdio/build.d.ts",
     "build": "npm run build-standalone && npm run build-wdio",
     "test-standalone": "tsc -p test/standalone",
-    "test-wdio": "tsc -p test/wdio/mocha",
+    "test-wdio": "tsc -p test/wdio/mocha && tsc -p test/wdio/cucumber",
     "test": "npm run test-standalone && npm run test-wdio",
     "build+test-standalone": "npm run build-standalone && npm run test-standalone",
     "build+test-wdio": "npm run build-wdio && npm run test-wdio",
