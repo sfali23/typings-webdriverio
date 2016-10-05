@@ -33,7 +33,7 @@ let browser: Browser<any> = webdriverio.remote(options)
 ## Installing WDIO mode
 
 ```
-typings install npm~webdriverio@4.2.16-w -S
+typings install env~webdriverio -GS
 ```
 
 ### Example
