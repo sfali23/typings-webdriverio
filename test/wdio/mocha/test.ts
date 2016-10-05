@@ -11,8 +11,6 @@ describe('Test WebdriverIO in WDIO mode', function () {
     // set timeout to 60 seconds
     this.timeout(60 * 1000);
 
-    let browser = global.browser;
-
     it('demnostrate simple google search', function () {
         browser.windowHandleMaximize().url('http://www.google.com/ncr');
         browser.setValue('*[name="q"]', 'webdriverio').click('*[name="btnG"]');

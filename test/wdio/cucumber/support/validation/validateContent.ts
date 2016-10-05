@@ -1,7 +1,6 @@
 /// <reference path="../../../../typings/index.d.ts"/>
 
 import { CallbackStepDefinition } from 'cucumber';
-let browser = global.browser;
 
 export default (type: string, element: string, falseCase: string, expectedText: string | CallbackStepDefinition, done?: CallbackStepDefinition) => {
     let parsedExpectedText: string = '';

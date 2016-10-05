@@ -1,7 +1,6 @@
 /// <reference path="../../../../typings/index.d.ts"/>
 
 import { CallbackStepDefinition } from 'cucumber';
-let browser = global.browser;
 
 export default (falseCase: string, expectedTitle: string, done: CallbackStepDefinition) => {
     let title: string = browser.getTitle();
